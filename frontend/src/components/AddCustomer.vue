@@ -47,8 +47,8 @@ export default {
     async saveCustomer() {
       try {
         await axios.post("http://localhost:5000/Customers", {
-          Customer_name: this.CustomerName,
-          Customer_Email: this.CustomerEmail,
+          customer_name: this.CustomerName,
+          customer_email: this.CustomerEmail,
         });
         this.CustomerName = "";
         this.CustomerEmail = "";
@@ -60,6 +60,7 @@ export default {
   },
 };
 </script>
- 
+
+
 <style>
 </style>

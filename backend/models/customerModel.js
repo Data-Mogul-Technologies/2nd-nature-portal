@@ -27,7 +27,7 @@ export const getCustomerById = (id, result) => {
  
 // Insert Customer to Database
 export const insertCustomer = (data, result) => {
-    db.query("INSERT INTO customers (customer_name, customer_email) values ?", [data], (err, results) => {             
+    db.query("INSERT INTO Customers SET ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

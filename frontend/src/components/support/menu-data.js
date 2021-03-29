@@ -3,23 +3,23 @@ export default {
   // home is a section without childs, set as an empty array
   home: [],
 
-  products: [
+  profiles: [
 
     {
       type: 'title',
-      txt: 'Products',
+      txt: 'profiles',
       icon: 'fa fa-tag context-menu__title-icon',
     },
 
     {
       type: 'link',
-      txt: 'List Products',
+      txt: 'List profiles',
       link: '/page',
     },
 
     {
       type: 'link',
-      txt: 'Add New Product',
+      txt: 'Add New Profile',
       link: '/page',
     },
 
@@ -47,13 +47,13 @@ export default {
 
     {
       type: 'link',
-      txt: 'List Contacts',
+      txt: 'List Businesses',
       link: '/page',
     },
 
     {
       type: 'link',
-      txt: 'List Newsletters',
+      txt: 'Manage Categories',
       link: '/page',
     },
 

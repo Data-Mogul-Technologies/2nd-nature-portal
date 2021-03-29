@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Create from '../components/AddCustomer.vue'
 import Edit from '../components/EditCustomer.vue'
 import Home from '../components/CustomerList.vue'
+import View from '../components/ViewCustomer.vue'
 //import Home from '../views/Home.vue'
 
 Vue.use(VueRouter)
@@ -22,6 +23,11 @@ const routes = [
     name: 'Edit',
     path: '/edit/:id',
     component: Edit
+  },
+  {
+    name: 'View',
+    path: '/view/:id',
+    component: View
   },
   {
     path: '/about',

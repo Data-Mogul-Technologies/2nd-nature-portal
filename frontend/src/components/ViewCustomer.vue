@@ -121,26 +121,36 @@
     </div>
 
     <div class="field">
-      <label class="label">Prospect Date</label>
+      <label class="label">How Can 2NP Help</label>
       <div class="control">
         <input
           class="input"
           type="text"
-          placeholder="Prospect Date"
-          v-model="CustomerPDate"
+          placeholder="How Can We Help"
+          v-model="CustomerHelp"
         />
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Prospect Date</label>
+      <div class="control">
+        <p>{{CustomerPDate | formatDate}}</p>
       </div>
     </div>
 
     <div class="field">
       <label class="label">Actual Date</label>
       <div class="control">
-        <input
-          class="input"
-          type="text"
-          placeholder=" Actual Date"
-          v-model="CustomerADate"
-        />
+        <p>{{CustomerADate | formatDate}}</p>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Comments</label>
+      <div class="control">
+       <textarea rows="4" cols="50" name="comment" form="usrform" v-model="CustomerComment">
+</textarea>
       </div>
     </div>
  
@@ -170,8 +180,10 @@ export default {
         CustomerHPhone:"",
         CustomerEmail :"",
         CustomerHeard:"",
+        CustomerHelp:"",
         CustomerPDate:"",
-        CustomerADate:""
+        CustomerADate:"",
+        CustomerComment:""
     };
   },
   created: function () {
@@ -194,14 +206,16 @@ export default {
         this.CustomerHPhone = response.data.home_phone;
         this.CustomerEmail = response.data.email;
         this.CustomerHeard = response.data.hear_about_us;
+        this.CustomerHelp = response.data.how_can_help;
         this.CustomerPDate = response.data.prospect_date;
         this.CustomerADate = response.data.actual_date;
+        this.CustomerComment = response.data.comments;
 
       } catch (err) {
         console.log(err);
       }
     },
- 
+    
     // Update Customer
     async updateCustomer() {
       try {
@@ -218,8 +232,10 @@ export default {
             home_phone: this.CustomerHPhone,
             email: this.CustomerEmail,
             hear_about_us: this.CustomerHeard,
+            how_can_help:this.CustomerHelp,
             prospect_date: this.CustomerPDate,
-            actual_date: this.CustomerADate
+            actual_date: this.CustomerADate,
+            comments: this.CustomerComment
           }
         );
         this.CustomerFName = "";
@@ -232,8 +248,10 @@ export default {
         this.CustomerHPhone="";
         this.CustomerEmail = "";
         this.CustomerHeard="";
+        this.CustomerHelp="";
         this.CustomerPDate="";
         this.CustomerADate="";
+        this.CustomerComment="";
         
         this.$router.push("/");
       } catch (err) {

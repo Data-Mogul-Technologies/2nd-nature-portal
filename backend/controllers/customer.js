@@ -1,9 +1,63 @@
 // Import function from Customer Model
-import { getCustomers, getCustomerById, insertCustomer, updateCustomerById, deleteCustomerById } from "../models/CustomerModel.js";
+import { getCustomers, getSportTypes, getStatusTypes, getBusiness, getService, getState, getCustomerById, insertCustomer, updateCustomerById, deleteCustomerById } from "../models/CustomerModel.js";
  
 // Get All Customers
 export const showCustomers = (req, res) => {
     getCustomers((err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+// Get All Sport Types
+export const allSportTypes = (req, res) => {
+    getSportTypes((err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+
+//Get All Business
+export const allBusiness = (req, res) => {
+    getBusiness((err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+
+//Get All Customer Status Types
+export const allCustomerStatusTypes = (req, res) => {
+    getStatusTypes((err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+
+//Get Service Type
+export const allServiceTypes = (req, res) => {
+    getService((err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+
+//Get State
+export const allState = (req, res) => {
+    getState((err, results) => {
         if (err){
             res.send(err);
         }else{
@@ -59,3 +113,4 @@ export const deleteCustomer = (req, res) => {
         }
     });
 }
+

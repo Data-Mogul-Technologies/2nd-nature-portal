@@ -11,7 +11,6 @@
         />
       </div>
     </div>
-
     <div class="field">
       <label class="label">Customer Last Name</label>
       <div class="control">
@@ -23,12 +22,6 @@
         />
       </div>
     </div>
-
-<CustomerStatusDrop />
-<ServiceTypeDrop />
-<BusinessDrop />
-<SportTypeDrop />
-
 
  <div class="field">
       <label class="label">Address</label>
@@ -53,8 +46,6 @@
         />
       </div>
     </div>
-
-<StateDrop />    
 
     <div class="field">
       <label class="label">Zip Code</label>
@@ -141,30 +132,20 @@
       </div>
     </div>
 
-   <div class="field">
+    <div class="field">
       <label class="label">Prospect Date</label>
       <div class="control">
-        <input
-          class="input"
-          type="date"
-          placeholder="Prospect Date"
-          v-model="CustomerPDate"
-        />
+        <p>{{CustomerPDate | formatDate}}</p>
       </div>
     </div>
 
     <div class="field">
       <label class="label">Actual Date</label>
       <div class="control">
-        <input
-          class="input"
-          type="date"
-          placeholder="Actual Date"
-          v-model="CustomerADate"
-        />   
+        <p>{{CustomerADate | formatDate}}</p>
       </div>
     </div>
- 
+
     <div class="field">
       <label class="label">Comments</label>
       <div class="control">
@@ -172,96 +153,106 @@
 </textarea>
       </div>
     </div>
+ 
     
     <div class="control">
-      <button class="button is-success" @click="saveCustomer">Add</button>
+      <button class="button is-success" @click="updateCustomer">UPDATE</button>
       <router-link :to="{name:'Home'}"><button class="button is-danger">Cancel</button></router-link>
     </div>
   </div>
 </template>
+ 
 <script>
 // import axios
 import axios from "axios";
-import CustomerStatusDrop from './dropdowns/CustomerStatusDrop';
-import ServiceTypeDrop from './dropdowns/ServiceTypeDrop';
-import BusinessDrop from './dropdowns/BusinessDrop';
-import SportTypeDrop from './dropdowns/SportTypeDrop';
-import StateDrop from './dropdowns/StateDrop';
-
+ 
 export default {
-  name: "AddCustomer",
-  components:{
-    CustomerStatusDrop,
-    ServiceTypeDrop,
-    BusinessDrop,
-    SportTypeDrop,
-    StateDrop
-  },
+  name: "EditCustomer",
   data() {
     return {
         CustomerFName : "",
         CustomerLName : "",
-        selectedCustomerStatus:0,
-        selectedServiceType:0,
-        selectedBusiness:0,
-        selectedSportType:0,
         CustomerAddress:"",
         CustomerCity:"",
-        selectedState:0,
         CustomerZip : 0,
         CustomerMPhone:"",
         CustomerOPhone:"",
         CustomerHPhone:"",
         CustomerEmail :"",
         CustomerHeard:"",
-        CustomerPDate:YYYY-MM-DD,
-        CustomerADate:YYYY-MM-DD,
-        CustomerComment:"",
+        CustomerHelp:"",
+        CustomerPDate:"",
+        CustomerADate:"",
+        CustomerComment:""
     };
   },
-  
+  created: function () {
+    this.getCustomerById();
+  },
   methods: {
-    // Create New Customer
-    async saveCustomer() {
+    // Get Customer By Id
+    async getCustomerById() {
       try {
-        await axios.post("http://localhost:5000/Customers", {
+        const response = await axios.get(
+          `http://localhost:5000/Customers/${this.$route.params.id}`
+        );
+        this.CustomerFName = response.data.first_name;
+        this.CustomerLName = response.data.last_name;
+        this.CustomerAddress = response.data.address;
+        this.CustomerCity = response.data.city;
+        this.CustomerZip = response.data.zip_code;
+        this.CustomerMPhone = response.data.mobile_phone;
+        this.CustomerOPhone = response.data.office_phone;
+        this.CustomerHPhone = response.data.home_phone;
+        this.CustomerEmail = response.data.email;
+        this.CustomerHeard = response.data.hear_about_us;
+        this.CustomerHelp = response.data.how_can_help;
+        this.CustomerPDate = response.data.prospect_date;
+        this.CustomerADate = response.data.actual_date;
+        this.CustomerComment = response.data.comments;
+
+      } catch (err) {
+        console.log(err);
+      }
+    },
+    
+    // Update Customer
+    async updateCustomer() {
+      try {
+        await axios.put(
+          `http://localhost:5000/Customers/${this.$route.params.id}`,
+          {
             first_name: this.CustomerFName,
             last_name: this.CustomerLName,
-            customer_status_id:this.selectedCustomerStatus,
-            customer_type_id:this.selectedServiceType,
-            business_id:this.selectedBusiness,
-            sport_type_id:this.selectedSportType,
             address: this.CustomerAddress,
             city: this.CustomerCity,
-            state_id:this.selectedState,
             zip_code: this.CustomerZip,
             mobile_phone: this.CustomerMPhone,
             office_phone: this.CustomerOPhone,
             home_phone: this.CustomerHPhone,
             email: this.CustomerEmail,
             hear_about_us: this.CustomerHeard,
+            how_can_help:this.CustomerHelp,
             prospect_date: this.CustomerPDate,
             actual_date: this.CustomerADate,
             comments: this.CustomerComment
-        });
+          }
+        );
         this.CustomerFName = "";
         this.CustomerLName = "";
-        this.selectedCustomerStatus="";
-        this.selectedServiceType="";
-        this.selectedBusiness="";
-        this.selectedSportType="";
         this.CustomerAddress="";
         this.CustomerCity="";
-        this.selectedState="";
         this.CustomerZip= 0;
         this.CustomerMPhone="";
         this.CustomerOPhone="";
         this.CustomerHPhone="";
         this.CustomerEmail = "";
         this.CustomerHeard="";
+        this.CustomerHelp="";
         this.CustomerPDate="";
         this.CustomerADate="";
         this.CustomerComment="";
+        
         this.$router.push("/");
       } catch (err) {
         console.log(err);
@@ -270,7 +261,6 @@ export default {
   },
 };
 </script>
-
-
+ 
 <style>
 </style>

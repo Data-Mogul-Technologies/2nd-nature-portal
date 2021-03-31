@@ -10,8 +10,10 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import moment from 'moment'
+import '@fortawesome/fontawesome-free/css/all.css'
+import '@fortawesome/fontawesome-free/js/all.js'
 
-
+window.bus = new Vue();
  
 Vue.config.productionTip = false
 

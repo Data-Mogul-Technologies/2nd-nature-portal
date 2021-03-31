@@ -26,7 +26,7 @@ const routes = [
   },
   {
     name: 'Create',
-    path: '/create',
+    path: '/create/add-customer',
     component: Create
   },
   {
@@ -72,6 +72,14 @@ const routes = [
   path: '/StateDrop',
   component: StateDrop
 }
+// {
+//   path: '/page/:sectionSlug',
+//   name: 'dynamicContent',
+//   // route level code-splitting
+//   // this generates a separate chunk (dynamicContent.[hash].js) for this route
+//   // which is lazy-loaded when the route is visited.
+//   component: () => import(/* webpackChunkName: "dynamicContent" */ '../views/DynamicContent.vue')
+// }
 ]
 
 const router = new VueRouter({ mode: 'history', routes: routes })

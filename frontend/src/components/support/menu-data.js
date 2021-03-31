@@ -52,7 +52,7 @@ export default {
     },
 
     {
-      type: '',
+      type: 'link',
       txt: 'Add customer',
       link: '/create',
     },

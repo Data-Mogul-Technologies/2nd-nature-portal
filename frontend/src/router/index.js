@@ -21,7 +21,7 @@ const routes = [
   },
   {
     name: 'CustomerList',
-    path: '/customerList',
+    path: '/view/list-customers',
     component: CustomerList
   },
   {

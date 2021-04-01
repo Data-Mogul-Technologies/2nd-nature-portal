@@ -42,7 +42,7 @@ export default {
     {
       type: 'link',
       txt: 'List Customers',
-      link: '/create',
+      link: '/view',
     },
 
     {

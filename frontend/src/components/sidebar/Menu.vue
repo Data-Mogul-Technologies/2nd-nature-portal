@@ -110,7 +110,7 @@
 </template>
 
 <script>
-import menuData from './support/menu-data';
+import menuData from '../sidebar/support/menu-data.js';
 import kebabCase from 'lodash/kebabCase';
 
 export default {

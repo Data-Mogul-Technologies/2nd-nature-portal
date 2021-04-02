@@ -14,9 +14,9 @@
  
 <script>
 import Header from './views/Header'
-import MenuToggleBtn from '@/components/MenuToggleBtn.vue'
-import Menu from '@/components/Menu.vue'
-import ContentOverlay from '@/components/ContentOverlay.vue'
+import MenuToggleBtn from '@/components/sidebar/MenuToggleBtn.vue'
+import Menu from '@/components/sidebar/Menu.vue'
+import ContentOverlay from '@/components/sidebar/ContentOverlay.vue'
 
 export default {
   name: "App",

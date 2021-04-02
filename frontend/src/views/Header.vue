@@ -1,7 +1,7 @@
 <template>
     <header>
     <div class=img2NP>
-      <router-link to="/">  
+      <router-link to="CustomerList">  
       <img src ="@/assets/logo.png" />
       </router-link>
     </div>

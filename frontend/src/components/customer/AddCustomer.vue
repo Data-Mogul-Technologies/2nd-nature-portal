@@ -24,10 +24,10 @@
       </div>
     </div>
 
-<CustomerStatusDrop />
-<ServiceTypeDrop />
-<BusinessDrop />
-<SportTypeDrop />
+<CustomerStatusDrop @changeStatusType="selectedCustomerStatus=$event"/>
+<CustomerTypeDrop @changeCustomerType="selectedCustomerType=$event"/>
+<BusinessDrop @changeBusiness="selectedBusiness=$event"/>
+<SportTypeDrop @changeSportType="selectedSportType=$event"/>
 
 
  <div class="field">
@@ -54,7 +54,7 @@
       </div>
     </div>
 
-<StateDrop />    
+<StateDrop @changeState="selectedState=$event"/>    
 
     <div class="field">
       <label class="label">Zip Code</label>
@@ -182,27 +182,28 @@
 <script>
 // import axios
 import axios from "axios";
-import CustomerStatusDrop from './dropdowns/CustomerStatusDrop';
-import ServiceTypeDrop from './dropdowns/ServiceTypeDrop';
-import BusinessDrop from './dropdowns/BusinessDrop';
-import SportTypeDrop from './dropdowns/SportTypeDrop';
-import StateDrop from './dropdowns/StateDrop';
+import CustomerStatusDrop from '../dropdowns/CustomerStatusDrop';
+import CustomerTypeDrop from '../dropdowns/CustomerTypeDrop';
+import BusinessDrop from '../dropdowns/BusinessDrop';
+import SportTypeDrop from '../dropdowns/SportTypeDrop';
+import StateDrop from '../dropdowns/StateDrop';
 
 export default {
   name: "AddCustomer",
   components:{
     CustomerStatusDrop,
-    ServiceTypeDrop,
+    CustomerTypeDrop,
     BusinessDrop,
     SportTypeDrop,
     StateDrop
   },
   data() {
+    
     return {
         CustomerFName : "",
         CustomerLName : "",
         selectedCustomerStatus:0,
-        selectedServiceType:0,
+        selectedCustomerType:0,
         selectedBusiness:0,
         selectedSportType:0,
         CustomerAddress:"",
@@ -228,7 +229,7 @@ export default {
             first_name: this.CustomerFName,
             last_name: this.CustomerLName,
             customer_status_id:this.selectedCustomerStatus,
-            customer_type_id:this.selectedServiceType,
+            customer_type_id:this.selectedCustomerType,
             business_id:this.selectedBusiness,
             sport_type_id:this.selectedSportType,
             address: this.CustomerAddress,
@@ -246,13 +247,13 @@ export default {
         });
         this.CustomerFName = "";
         this.CustomerLName = "";
-        this.selectedCustomerStatus="";
-        this.selectedServiceType="";
-        this.selectedBusiness="";
-        this.selectedSportType="";
+        this.selectedCustomerStatus=0;
+        this.selectedCustomerType=0;
+        this.selectedBusiness=0;
+        this.selectedSportType=0;
         this.CustomerAddress="";
         this.CustomerCity="";
-        this.selectedState="";
+        this.selectedState=0;
         this.CustomerZip= 0;
         this.CustomerMPhone="";
         this.CustomerOPhone="";
@@ -262,7 +263,7 @@ export default {
         this.CustomerPDate="";
         this.CustomerADate="";
         this.CustomerComment="";
-        this.$router.push("/");
+        this.$router.push("/create/CustomerList");
       } catch (err) {
         console.log(err);
       }

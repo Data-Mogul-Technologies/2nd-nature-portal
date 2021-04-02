@@ -31,7 +31,7 @@
 </style>
 
 <script>
-import CustomerList from '../components/CustomerList'
+import CustomerList from '../components/customer/CustomerList'
 export default {   
   name: 'home',
   components: {

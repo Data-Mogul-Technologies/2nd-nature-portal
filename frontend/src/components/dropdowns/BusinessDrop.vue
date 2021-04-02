@@ -1,8 +1,8 @@
 <template>
     <div class="field">
       <label class="label">Business:</label>
-      <select name ="businessTypeSelect" v-model="selectedBusiness">
-          <option v-for="businessType in BusinessTypes" v-bind:key="businessType._id" v-bind:value="businessType.name">{{businessType.name}}</option>
+      <select name ="businessTypeSelect" v-model="selectedBusiness" @change="changeBusiness()">
+          <option v-for="businessType in BusinessTypes" v-bind:key="businessType._id" v-bind:value="businessType.business_id">{{businessType.name}}</option>
       </select>
       
     </div>
@@ -19,6 +19,12 @@ export default {
     return {
         selectedBusiness: 0,
         BusinessTypes: [],
+    }
+
+  },
+  methods:{
+    changeBusiness(){
+      this.$emit('changeBusiness', this.selectedBusiness)
     }
 
   },

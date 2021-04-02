@@ -50,8 +50,8 @@ export const getBusiness = (result) => {
 }
 
 //Get Service Type
-export const getService = (result) => {
-    db.query("SELECT * FROM service_type", (err, results) => {             
+export const getCustomerType = (result) => {
+    db.query("SELECT * FROM customer_type", (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -87,7 +87,7 @@ export const getCustomerById = (id, result) => {
  
 // Insert Customer to Database
 export const insertCustomer = (data, result) => {
-    db.query("INSERT INTO Customer SET ?", [data], (err, results) => {             
+    db.query("INSERT INTO customer SET ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

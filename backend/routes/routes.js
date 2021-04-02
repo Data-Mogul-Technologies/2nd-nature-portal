@@ -3,7 +3,8 @@ import express from "express";
  
 // import function from controller
 import { showCustomers, showCustomerById, allBusiness, allServiceTypes,allState, createCustomer, updateCustomer, deleteCustomer, allSportTypes, allCustomerStatusTypes } from "../controllers/Customer.js";
- 
+import { showProfiles, showProfileslessDeets } from "../controllers/profile.js"
+
 // init express router
 const router = express.Router();
  
@@ -37,6 +38,11 @@ router.put('/Customers/:id', updateCustomer);
 // Delete Customer by id
 router.delete('/Customers/:id', deleteCustomer);
 
+//Get all profiles 
+router.get('/Profiles', showProfiles)
+
+//Get all profiles 
+router.get('/ProfileslessDeets', showProfileslessDeets)
 
  
 // export default router

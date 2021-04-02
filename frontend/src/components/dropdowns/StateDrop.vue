@@ -1,8 +1,8 @@
 <template>
     <div class="field">
       <label class="label">State:</label>
-      <select name ="StateSelect" v-model="selectedState">
-          <option v-for="stateList in StateLists" v-bind:key="stateList._id" v-bind:value="stateList.name">{{stateList.name}}</option>
+      <select name ="StateSelect" v-model="selectedState"  @change="changeState()">
+          <option v-for="state in StateLists" v-bind:key="state.state_id" :value="state.state_id">{{state.name}}</option>
       </select>
       
     </div>
@@ -22,6 +22,10 @@ export default {
     }
 
   },
+  methods:{
+    changeState(){
+      this.$emit('changeState', this.selectedState)
+    }},
   mounted(){
       axios.get('http://localhost:5000/State').then(response =>{
           this.StateLists = response.data;

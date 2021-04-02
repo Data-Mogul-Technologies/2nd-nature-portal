@@ -1,8 +1,8 @@
 <template>
     <div class="field">
       <label class="label">Sport Type</label>
-      <select name ="sportTypeSelect" v-model="selectedSportType">
-          <option  v-for="sportType in SportTypes" v-bind:key="sportType.id" v-bind:value="sportType.id" >{{sportType.id}} {{sportType.name}}</option>
+      <select name ="sportTypeSelect" v-model="selectedSportType" @change="changeSportType()">
+          <option  v-for="sport_type in SportTypes" v-bind:key="sport_type.id" :value="sport_type.sport_type_id" >{{sport_type.name}}</option>
       </select>
       
     </div>
@@ -23,11 +23,18 @@ export default {
     }
 
   },
+  methods:{
+    changeSportType(){
+      this.$emit('changeSportType', this.selectedSportType)
+    }
+
+  },
   mounted(){
       axios.get('http://localhost:5000/SportTypes').then(response =>{
           this.SportTypes = response.data;
+          console.log(response.data);
       }).catch(e =>{
-
+        
       })
   },
   

@@ -1,15 +1,24 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Create from '../components/AddCustomer.vue'
-import Edit from '../components/EditCustomer.vue'
-import CustomerList from '../components/CustomerList.vue'
-import View from '../components/ViewCustomer.vue'
+import Create from '../components/customer/AddCustomer.vue'
+import Home from '../views/Home.vue'
+
+
+import CustomerList from '../components/customer/CustomerList.vue'
+import View from '../components/customer/ViewCustomer.vue'
 import SportTypeDrop from '../components/dropdowns/SportTypeDrop.vue'
 import BusinessDrop from '../components/dropdowns/BusinessDrop.vue'
 import CustomerStatusDrop from '../components/dropdowns/CustomerStatusDrop.vue'
-import ServiceTypeDrop from '../components/dropdowns/ServiceTypeDrop.vue'
+import CustomerTypeDrop from '../components/dropdowns/CustomerTypeDrop.vue'
 import StateDrop from '../components/dropdowns/StateDrop.vue'
-import Home from '../views/Home.vue'
+
+
+
+
+import ConsultantList from '../components/consultant/ConsultantList.vue'
+import AddConsultant from '../components/consultant/AddConsultant.vue'
+import EditConsultant from '../components/consultant/ViewConsultant.vue'
+import ConsultantStatusDrop from '../components/dropdowns/ConsultantStatusDrop.vue'
 
 Vue.use(VueRouter)
 
@@ -21,7 +30,7 @@ const routes = [
   },
   {
     name: 'CustomerList',
-    path: '/customerList',
+    path: '/create/list-customers',
     component: CustomerList
   },
   {
@@ -29,11 +38,7 @@ const routes = [
     path: '/create/add-customer',
     component: Create
   },
-  {
-    name: 'Edit',
-    path: '/edit/:id',
-    component: Edit
-  },
+
   {
     name: 'View',
     path: '/view/:id',
@@ -63,14 +68,34 @@ const routes = [
   component: CustomerStatusDrop
 },
 {
-  name: 'ServiceTypeDrop',
-  path: '/ServiceDrop',
-  component: ServiceTypeDrop
+  name: 'CustomerTypeDrop',
+  path: '/CustomerTypeDrop',
+  component: CustomerTypeDrop
 },
 {
   name: 'StateDrop',
   path: '/StateDrop',
   component: StateDrop
+},
+{
+  name: 'ConsultantList',
+  path: '/page/list-consultants',
+  component: ConsultantList
+},
+{
+  name: 'ConsultantStatusDrop',
+  path: '/ConsultantStatusDrop',
+  component: ConsultantStatusDrop
+},
+{
+  name: 'AddConsultant',
+  path: '/page/add-new-consultant',
+  component: AddConsultant
+},
+{
+  name: 'EditConsultant',
+  path: '/view/:id',
+  component: EditConsultant
 }
 // {
 //   path: '/page/:sectionSlug',

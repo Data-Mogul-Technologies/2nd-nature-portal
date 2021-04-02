@@ -1,35 +1,35 @@
 <template>
   <div>
-    <router-link :to="{ name: 'Create' }" class="button is-success mt-5"
+    <router-link :to="{ name: 'AddConsultant' }" class="button is-success mt-5"
       >Add New</router-link>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">
       <thead>
         <tr>
           <th>First Name</th>
-          <th>Last Name Name</th>
+          <th>Last Name</th>
           <th>Email</th>
           <th>Phone Number</th>
-          <th>Date Joined</th>
+          <th>Start Date</th>
           <th class="has-text-centered">Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="customer in customers" :key="customer.customer_id">
-          <td>{{ customer.first_name }}</td>
-          <td>{{ customer.last_name }}</td>
-          <td>{{ customer.email }}</td>
-          <td>{{ customer.mobile_phone}}</td>
-          <td>{{ customer.actual_date | formatDate }}</td>
+        <tr v-for="consultant in consultants" :key="consultant.sport_consultant_id">
+          <td>{{ consultant.first_name }}</td>
+          <td>{{ consultant.last_name }}</td>
+          <td>{{ consultant.email }}</td>
+          <td>{{ consultant.phone}}</td>
+          <td>{{ consultant.start_date | formatDate }}</td>
           
           <td class="has-text-centered">
             <router-link
-              :to="{ name: 'View', params: { id: customer.customer_id } }"
+              :to="{ name: 'EditConsultant', params: { id: consultant.sport_consultant_id } }"
               class="button is-info is-small"
               >View</router-link
             >
             <a
               class="button is-danger is-small"
-              @click="deleteCustomer(customer.customer_id)"
+              @click="deleteConsultant(consultant.sport_consultant_id)"
               >Delete</a
             >
           </td>
@@ -44,33 +44,33 @@
 import axios from "axios";
  
 export default {
-  name: "CustomerList",
+  name: "ConsultantList",
   data() {
     return {
-      customers: [],
+      consultants: [],
     };
   },
  
   created() {
-    this.getCustomers();
+    this.getConsultants();
   },
  
   methods: {
-    // Get All Customers
-    async getCustomers() {
+    // Get All Consultants
+    async getConsultants() {
       try {
         const response = await axios.get("http://localhost:5000/Consultants");
-        this.customers = response.data;
+        this.consultants = response.data;
       } catch (err) {
         console.log(err);
       }
     },
  
-    // Delete Customer
-    async deleteCustomer(id) {
+    // Delete Consultant
+    async deleteConsultant(id) {
       try {
         await axios.delete(`http://localhost:5000/Consultants/${id}`);
-        this.getCustomers();
+        this.getConsultants();
       } catch (err) {
         console.log(err);
       }

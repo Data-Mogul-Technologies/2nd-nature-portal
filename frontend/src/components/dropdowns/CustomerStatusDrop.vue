@@ -1,8 +1,8 @@
 <template>
     <div class="field">
       <label class="label">Status:</label>
-      <select name ="customerStatusTypeSelect" v-model="selectedCustomerStatus">
-          <option v-for="statusType in CustomerStatusTypes" v-bind:key="statusType._id" v-bind:value="statusType.name">{{statusType.name}}</option>
+      <select name ="customerStatusTypeSelect" v-model="selectedCustomerStatus" @change="changeStatusType()">
+          <option v-for="statusType in CustomerStatusTypes" v-bind:key="statusType.customer_status_id" :value="statusType.customer_status_id">{{statusType.name}}</option>
       </select>
       
     </div>
@@ -17,14 +17,21 @@ export default {
   name: "CustomerStatusDrop",
   data: function(){
     return {
-        selectedCustomerStatus: '',
+        selectedCustomerStatus: 0,
         CustomerStatusTypes: [],
+    }
+
+  },
+  methods:{
+    changeStatusType(){
+      this.$emit('changeStatusType', this.selectedCustomerStatus)
     }
 
   },
   mounted(){
       axios.get('http://localhost:5000/StatusTypes').then(response =>{
           this.CustomerStatusTypes = response.data;
+          console.log(response.data);
       }).catch(e =>{
 
       })

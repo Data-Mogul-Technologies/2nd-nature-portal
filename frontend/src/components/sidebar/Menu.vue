@@ -31,7 +31,7 @@
         @click.prevent="updateMenu('profiles')"
         :class="highlightSection('profiles')"
         >
-          <i class="fa fa-tag menu__icon" aria-hidden="true"></i>
+          <i class="fas fa-sort-amount-up context-menu__title-icon" aria-hidden="true"></i>
           Profiles
           <i class="fa fa-chevron-right menu__arrow-icon" aria-hidden="true"></i>
         </a>
@@ -110,7 +110,7 @@
 </template>
 
 <script>
-import menuData from './support/menu-data';
+import menuData from '../sidebar/support/menu-data.js';
 import kebabCase from 'lodash/kebabCase';
 
 export default {

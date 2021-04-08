@@ -10,11 +10,13 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import moment from 'moment'
+import bootstrapvue from 'bootstrap-vue'
+
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 
 window.bus = new Vue();
- 
+Vue.use(bootstrapvue); 
 Vue.config.productionTip = false
 
 new Vue({
@@ -26,6 +28,6 @@ new Vue({
 
 Vue.filter('formatDate', function(value) {
   if (value) {
-    return moment().format('YYYY-MM-DD')
+    return moment(value).format('YYYY-MM-DD')
   }
 })

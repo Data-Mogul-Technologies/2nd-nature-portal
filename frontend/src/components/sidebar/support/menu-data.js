@@ -8,19 +8,20 @@ export default {
     {
       type: 'title',
       txt: 'Profiles',
-      icon: 'fa fa-tag context-menu__title-icon',
+      icon: 'fas fa-sort-amount-up context-menu__title-icon',
     },
 
+    
     {
       type: 'link',
-      txt: 'List profiles',
-      link: '/page',
+      txt: 'All profiles',
+      link: '/profile',
     },
 
     {
       type: 'link',
       txt: 'Add New profile',
-      link: '/page',
+      link: '/profile',
     },
 
     {

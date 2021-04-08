@@ -1,0 +1,59 @@
+<template>
+  <div>
+    <div class="field">
+      <label class="label">Business Name</label>
+      <div class="control">
+        <input
+          class="input"
+          type="text"
+          placeholder="Business Name"
+          v-model="BusinessName"
+        />
+      </div>
+    </div>
+    <div class="control">
+      <button class="button is-success" @click="saveBusiness">Add</button>
+      <router-link :to="{name:'BusinessList'}"><button class="button is-danger">Cancel</button></router-link>
+    </div>
+  
+  </div>
+  
+
+    
+</template>
+<script>
+// import axios
+import axios from "axios";
+
+
+export default {
+  name: "AddBusiness",
+ 
+  data() {
+    
+    return {
+        BusinessName : ""
+    };
+  },
+  
+  methods: {
+    // Create New Business
+    async saveBusiness() {
+      try { 
+        await axios.post("http://localhost:5000/Businesses", {
+            name: this.BusinessName
+        });
+        this.BusinessName = "";
+        
+        this.$router.push("/BusinessList");
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  },
+};
+</script>
+
+
+<style>
+</style>

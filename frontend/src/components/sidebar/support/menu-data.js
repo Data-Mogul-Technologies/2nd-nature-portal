@@ -11,7 +11,6 @@ export default {
       icon: 'fas fa-sort-amount-up context-menu__title-icon',
     },
 
-    
     {
       type: 'link',
       txt: 'All profiles',
@@ -27,7 +26,7 @@ export default {
     {
       type: 'link',
       txt: 'Manage DMD profile types',
-      link: '/page',
+      link: '/profile',
     },
 
   ],
@@ -43,7 +42,7 @@ export default {
     {
       type: 'link',
       txt: 'List Customers',
-      link: '/create',
+      link: '/view',
     },
 
     {

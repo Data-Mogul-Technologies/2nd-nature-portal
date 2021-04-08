@@ -133,7 +133,7 @@
 import axios from "axios";
  
 export default {
-  name: "EditConsultant",
+  name: "ViewConsultant",
   data() {
     return {
         ConsultantFName : "",

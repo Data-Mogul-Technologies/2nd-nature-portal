@@ -29,7 +29,7 @@ export default {
 
   },
   mounted(){
-      axios.get('http://localhost:5000/Business').then(response =>{
+      axios.get('http://localhost:5000/Businesses').then(response =>{
           this.BusinessTypes = response.data;
       }).catch(e =>{
 

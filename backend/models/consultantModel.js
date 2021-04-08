@@ -63,9 +63,61 @@ export const deleteConsultantById = (id, result) => {
     });   
 }
  
+
+
+/*--------------Consultant Status------------*/
 //Get Consultant Status Types
 export const getConsultantStatusTypes = (result) => {
     db.query("SELECT * FROM sport_consultant_status", (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });   
+}
+
+// Get Single ConsultantStatus
+export const getConsultantStatusById = (id, result) => {
+    db.query("SELECT * FROM sport_consultant_status WHERE sport_consultant_status_id = ?", [id], (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results[0]);
+        }
+    });   
+}
+ 
+// Insert ConsultantStatus to Database
+export const insertConsultantStatus = (data, result) => {
+    db.query("INSERT INTO sport_consultant_status SET ?", [data], (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });   
+}
+ 
+// Update ConsultantStatus to Database
+export const updateConsultantStatusById = (data, id, result) => {
+    db.query("UPDATE sport_consultant_status SET name = ? WHERE sport_consultant_status_id = ?",
+     [data.name,  id], (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });   
+}
+ 
+// Delete ConsultantStatus to Database
+export const deleteConsultantStatusById = (id, result) => {
+    db.query("DELETE FROM sport_consultant_status WHERE sport_consultant_status_id = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

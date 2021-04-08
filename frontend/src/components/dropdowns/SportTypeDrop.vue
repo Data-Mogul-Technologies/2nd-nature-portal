@@ -30,7 +30,7 @@ export default {
 
   },
   mounted(){
-      axios.get('http://localhost:5000/SportTypes').then(response =>{
+      axios.get('http://localhost:5000/Sports').then(response =>{
           this.SportTypes = response.data;
           console.log(response.data);
       }).catch(e =>{

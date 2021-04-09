@@ -263,7 +263,7 @@ export default {
         this.CustomerPDate="";
         this.CustomerADate="";
         this.CustomerComment="";
-        this.$router.push("/create/CustomerList");
+        this.$router.push("/view/list-customers");
       } catch (err) {
         console.log(err);
       }

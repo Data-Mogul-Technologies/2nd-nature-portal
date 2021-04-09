@@ -48,10 +48,12 @@ import ViewEventStatus from '../components/event/ViewEventStatus.vue'
 import EventTypeList from '../components/event/EventTypeList.vue'
 import AddEventType from '../components/event/AddEventType.vue'
 import ViewEventType from '../components/event/ViewEventType.vue'
+import UpcomingEvents from '../components/event/UpcomingEvents.vue'
 
 import CustomerStatusList from '../components/customer/CustomerStatusList.vue'
 import AddCustomerStatus from '../components/customer/AddCustomerStatus.vue'
 import ViewCustomerStatus from '../components/customer/ViewCustomerStatus.vue'
+import NewestCustomers from '../components/customer/NewestCustomers.vue'
 
 import CustomerTypeList from '../components/customer/CustomerTypeList.vue'
 import AddCustomerType from '../components/customer/AddCustomerType.vue'
@@ -68,6 +70,7 @@ import ViewServiceStatus from '../components/service/ViewServiceStatus.vue'
 import PaymentStatusList from '../components/payment/PaymentStatusList.vue'
 import AddPaymentStatus from '../components/payment/AddPaymentStatus.vue'
 import ViewPaymentStatus from '../components/payment/ViewPaymentStatus.vue'
+import PendingPayments from '../components/payment/PendingPayments.vue'
 
 import PaymentSourceList from '../components/payment/PaymentSourceList.vue'
 import AddPaymentSource from '../components/payment/AddPaymentSource.vue'
@@ -101,7 +104,7 @@ const routes = [
   },
   {
     name: 'CustomerList',
-    path: '/create/list-customers',
+    path: '/view/list-customers',
     component: CustomerList
   },
   {
@@ -471,9 +474,29 @@ const routes = [
 
 {
   name: 'AddProfile',
-  path: '/profile/add-new-profile',
+  path: '/profile/Add-New-Action-Type-Profile',
   component: () => import('../components/profiles/AddProfile.vue')
+},
+
+
+{
+  name: 'PendingPayments',
+  path: '/pendingpayments',
+  component: PendingPayments
+},
+
+{
+  name: 'NewestCustomers',
+  path: '/newestcustomers',
+  component: NewestCustomers
+},
+
+{
+  name: 'UpcomingEvents',
+  path: '/upcomingevents',
+  component: UpcomingEvents
 }
+
 ]
 
 const router = new VueRouter({ mode: 'history', routes: routes })

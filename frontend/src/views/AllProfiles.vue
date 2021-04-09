@@ -52,32 +52,32 @@ export default {
             pagination: { page: 1, perPage: perPageOptions[0] },
             profiles: [],
             config: [
-            {
-                key: 'first_name',
-                title: 'First Name',
-                type: 'text'
-            },
-            {
-                key: 'last_name',
-                title: 'last Name',
-                type: 'text'
-            },
-            {
-                key: 'profile_type',
-                title: 'Profile Type',
-                type: 'text'
-            },
-            {
-                key: 'sport',
-                title: 'Sport',
-                type: 'text'
-            },
-            {
-                key: 'profile_status',
-                title: 'Profile Status',
-                type: 'text'
-            }
-        ]
+                {
+                    key: 'first_name',
+                    title: 'First Name',
+                    type: 'text'
+                },
+                {
+                    key: 'last_name',
+                    title: 'last Name',
+                    type: 'text'
+                },
+                {
+                    key: 'profile_type',
+                    title: 'Profile Type',
+                    type: 'text'
+                },
+                {
+                    key: 'sport',
+                    title: 'Sport',
+                    type: 'text'
+                },
+                {
+                    key: 'profile_status',
+                    title: 'Profile Status',
+                    type: 'text'
+                }
+            ]
         };
     },
     created() {

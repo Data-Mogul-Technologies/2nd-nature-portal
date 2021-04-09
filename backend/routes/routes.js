@@ -12,12 +12,12 @@ allConsultantStatusTypes, showConsultantStatusById, createConsultantStatus, upda
 import {showPaymentStatus, showPaymentStatusById, createPaymentStatus, updatePaymentStatus,deletePaymentStatus,
 showPaymentSource, showPaymentSourceById, createPaymentSource, updatePaymentSource, deletePaymentSource,
 showCustPayment, showCustPaymentById, createCustPayment, updateCustPayment, deleteCustPayment,
-showRegistrationPayment, showRegistrationPaymentById, createRegistrationPayment, updateRegistrationPayment, deleteRegistrationPayment} from "../controllers/payment.js"
+showRegistrationPayment, showRegistrationPaymentById, createRegistrationPayment, updateRegistrationPayment, deleteRegistrationPayment, showPendingPayment} from "../controllers/payment.js"
 
 
 import {showEvents, showEventById, createEvent, updateEvent,deleteEvent,
 showEventStatus,showEventStatusById,createEventStatus,updateEventStatus,deleteEventStatus,
-showEventType, showEventTypeById, createEventType, updateEventType,deleteEventType} from "../controllers/event.js"
+showEventType, showEventTypeById, createEventType, updateEventType,deleteEventType, showUpcoming} from "../controllers/event.js"
 
 import {allBusiness, showBusinessById, createBusiness, updateBusiness, deleteBusiness} from "../controllers/business.js"
 
@@ -179,6 +179,12 @@ router.put('/Events/:id', updateEvent);
  
 // Delete Events by id
 router.delete('/Events/:id', deleteEvent);
+
+//Upcoming Events
+
+router.get('/UpcomingEvents',showUpcoming); 
+
+
 /*--------------------------------Event Routers End-----------------------------*/
 
 /*--------------------------------Event Status Routers-----------------------------*/
@@ -196,6 +202,7 @@ router.put('/EventStatus/:id', updateEventStatus);
  
 // Delete EEvent Status by id
 router.delete('/EventStatus/:id', deleteEventStatus);
+
 /*--------------------------------Event Status Routers End-----------------------------*/
 
 /*--------------------------------Event Type Routers-----------------------------*/
@@ -371,6 +378,10 @@ router.put('/Feedback/:id', updateFeedback);
  
 // Delete Customer by id
 router.delete('/Feedback/:id', deleteFeedback);
+
+/*-----payments----*/
+//pending payment
+router.get('/PendingPayment', showPendingPayment);
 /*----------------------------Feedback Routers End------------------------- */
 //export default router
 export default router;

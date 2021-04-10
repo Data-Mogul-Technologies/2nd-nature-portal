@@ -311,3 +311,36 @@ export const deletePaymentSourceById = (id, result) => {
         }
     });   
 }
+
+
+
+//Pending Payments
+export const getPendingPayment = (result) => {
+    db.query("select customer.first_name as `FirstName`, customer.last_name as `LastName`, business.name as `BusinessName`," +
+    "service_type.name as Service, payment_status.name as Status from customer" +
+    " join customer_service_type on customer.customer_id = customer_service_type.customer_id" +
+    " join service_type on customer_service_type.service_type_id = service_type.service_type_id" +
+    " join customer_service_type_payment on customer_service_type.customer_service_type_id = customer_service_type_payment.customer_service_type_id" +
+    " join business on business.business_id = customer.business_id join payment_status " +
+    " on customer_service_type_payment.payment_status_id = payment_status.payment_status_id join payment_source" +
+    " on customer_service_type_payment.payment_source_id = payment_source.payment_source_id where payment_status.payment_status_id =3" +
+    " Union" +
+    " select customer.first_name as `FirstName`, customer.last_name as `LastName`, business.name as `BusinessName`," +
+    " event_type.name as `Event Type`, payment_status.name as Status" +
+    " from customer" +
+    " join registration on registration.customer_id = customer.customer_id" +
+    " join registration_payment on registration_payment.registration_id = registration.registration_id" +
+    " join business on business.business_id = customer.business_id" +
+    " join payment_status on registration_payment.payment_status_id = payment_status.payment_status_id" +
+    " join payment_source on registration_payment.payment_source_id = payment_source.payment_source_id" +
+    " join event on registration.event_id = event.event_id" +
+    " join event_type on event.event_type_id = event_type.event_type_id" +
+    " where payment_status.payment_status_id = 3", (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });   
+}

@@ -126,7 +126,6 @@ export const getATProfileTypes = (result) => {
     });
 }
 
-
 // Insert at_customer_report to Database
 export const insertProfile = (data, result) => {
     db.query("INSERT INTO at_customer_report SET ?", [data], (err, results) => {             
@@ -138,8 +137,6 @@ export const insertProfile = (data, result) => {
         }
     });   
 }
-
-
 
 // Get all dmd_profile_types
 export const getDMD_profile_types = (result) => {

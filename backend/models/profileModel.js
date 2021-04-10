@@ -152,3 +152,58 @@ export const getDMD_profile_types = (result) => {
         }
     });
 }
+
+
+/*---------AT Update and Get -----------------*/
+// Get Single  Profile status
+export const getATProfileById = (id, result) => {
+    db.query("SELECT * FROM at_profile WHERE at_profile_id = ?", [id], (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results[0]);
+        }
+    });   
+}
+ 
+ 
+// Update Profile_status to Database
+export const updateATProfileById = (data, id, result) => {
+    db.query("UPDATE at_profile SET name = ? WHERE at_profile_id = ?",
+     [data.name,  id], (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });   
+}
+
+/*------------- DMD update and Get ----------------*/
+// Get Single  Profile status
+export const getDmdProfileById = (id, result) => {
+    db.query("SELECT * FROM dmd_profile WHERE dmd_profile_id = ?", [id], (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results[0]);
+        }
+    });   
+}
+ 
+ 
+// Update Profile_status to Database
+export const updateDmdProfileById = (data, id, result) => {
+    db.query("UPDATE dmd_profile SET name = ? WHERE dmd_profile_id = ?",
+     [data.name,  id], (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });   
+}

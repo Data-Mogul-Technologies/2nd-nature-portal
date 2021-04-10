@@ -3,15 +3,16 @@
 
 <template>
   <div>
-    <router-link :to="{ name: 'CustServPayList' }" class="button is-success mt-5"
+    <router-link :to="{ name: 'RegPayList' }" class="button is-success mt-5"
       >Add New</router-link>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">
       <thead>
         <tr>
-          <th>First Name</th>
+          <th>ID</th>
           <th>First Name</th>
           <th>Last Name</th>
-          <th>Service</th>
+          <th>eventName</th>
+          <th>eventType</th>
           <th>Date</th>
           <th>Amount</th>
           <th>Payment Source</th>
@@ -22,11 +23,12 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="payment in custPayment" :key="payment.customer_id">
+        <tr v-for="payment in regPayment" :key="payment.customer_id">
           <td>{{ payment.customer_id }}</td>
           <td>{{ payment.first_name }}</td>
           <td>{{ payment.last_name }}</td>
-          <td>{{ payment.serviceName  }}</td>
+          <td>{{ payment.eventName  }}</td>
+          <td>{{ payment.eventType }}</td>
           <td>{{ payment.date | formatDate }}</td>
           <td>{{ payment.amount }}</td>
           <td>{{ payment.paymentSource }}</td>
@@ -36,13 +38,13 @@
           
           <td class="has-text-centered">
             <router-link
-              :to="{ name: 'ViewCustServPay', params: { id: payment.customer_id } }"
+              :to="{ name: 'ViewRegPay', params: { id: payment.customer_id }}"
               class="button is-info is-small"
               >View</router-link
             >
             <a
               class="button is-danger is-small"
-              @click="deleteCustPayment(payment.customer_id)"
+              @click="deleteRegPayment(payment.customer_id)"
               >Delete</a
             >
           </td>
@@ -57,23 +59,23 @@
 import axios from "axios";
  
 export default {
-  name: "CustServPayList",
+  name: "RegPayList",
   data() {
     return {
-      custPayment: [],
+      regPayment: [],
     };
   },
  
   created() {
-    this.getCustPayment();
+    this.getRegPayment();
   },
  
   methods: {
     // Get All payments
-    async getCustPayment() {
+    async getRegPayment() {
       try {
-        const response = await axios.get("http://localhost:5000/CustPayment");
-        this.custPayment = response.data;
+        const response = await axios.get("http://localhost:5000/RegistrationPayment");
+        this.regPayment = response.data;
 
       } catch (err) {
         console.log(err);
@@ -81,10 +83,10 @@ export default {
     },
 
     // Delete payment
-    async deleteCustPayment(id) {
+    async deleteRegPayment(id) {
       try {
-        await axios.delete(`http://localhost:5000/CustPayment/${id}`);
-        this.getCustPayment();
+        await axios.delete(`http://localhost:5000/RegistrationPayment/${id}`);
+        this.getRegPayment();
       } catch (err) {
         console.log(err);
       }

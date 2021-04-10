@@ -5,7 +5,22 @@ import db from "../config/database.js";
 /*--------------------------------Customer Service Type Payment-----------------------------*/
 // Get All CustPayment
 export const getCustPayment = (result) => {
-    db.query("SELECT * FROM customer_service_type_payment", (err, results) => {             
+    db.query("select customer.first_name," +
+    " customer.customer_id,"+
+    " customer.last_name," +
+    " service_type.name as 'serviceName',"+
+    " customer_service_type_payment.date,"+
+    " customer_service_type_payment.amount,"+
+    " payment_source.name as 'paymentSource',"+
+    " customer_service_type_payment.confirmation_num,"+
+    " payment_status.name as 'PaymentStatus'"+
+    " from customer_service_type"+
+    " join customer on customer.customer_id = customer_service_type.customer_id"+
+    " join service_type on service_type.service_type_id = customer_service_type.service_type_id"+
+    " join customer_service_type_payment on customer_service_type_payment.customer_service_type_id = customer_service_type.customer_service_type_id"+
+    " join payment_source on payment_source.payment_source_id = customer_service_type_payment.payment_source_id"+
+    " join payment_status on payment_status.payment_status_id = customer_service_type_payment.payment_status_id"
+    , (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -17,7 +32,21 @@ export const getCustPayment = (result) => {
 
 // Get Single CustPayment
 export const getCustPaymentById = (id, result) => {
-    db.query("SELECT * FROM customer_service_type_payment WHERE customer_service_type_payment_id = ?", [id], (err, results) => {             
+    db.query("select customer.first_name," +
+    " customer.customer_id,"+
+    " customer.last_name," +
+    " service_type.name as 'serviceName',"+
+    " customer_service_type_payment.date,"+
+    " customer_service_type_payment.amount,"+
+    " payment_source.name as 'paymentSource',"+
+    " customer_service_type_payment.confirmation_num,"+
+    " payment_status.name as 'PaymentStatus'"+
+    " from customer_service_type"+
+    " join customer on customer.customer_id = customer_service_type.customer_id"+
+    " join service_type on service_type.service_type_id = customer_service_type.service_type_id"+
+    " join customer_service_type_payment on customer_service_type_payment.customer_service_type_id = customer_service_type.customer_service_type_id"+
+    " join payment_source on payment_source.payment_source_id = customer_service_type_payment.payment_source_id"+
+    " join payment_status on payment_status.payment_status_id = customer_service_type_payment.payment_status_id where customer.customer_id = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -67,7 +96,23 @@ export const deleteCustPaymentById = (id, result) => {
 
 // Get All Registration Payment
 export const getRegistrationPayment = (result) => {
-    db.query("SELECT * FROM registration_payment", (err, results) => {             
+    db.query("select customer.first_name, "+
+    " customer.customer_id,"+
+    " customer.last_name,"+
+    " event.name as 'eventName',"+
+    " event_type.name as 'eventType',"+
+    " registration_payment.date,"+
+    " registration_payment.amount,"+
+    " payment_source.name as 'paymentSource',"+
+    " registration_payment.confirmation_num,"+
+    " payment_status.name as 'PaymentStatus'"+
+    " from registration"+
+    " join customer on customer.customer_id = registration.customer_id"+
+    " join registration_payment on registration_payment.registration_id = registration.registration_id"+
+    " join event on event.event_id = registration.event_id"+
+    " join event_type on event_type.event_type_id = event.event_type_id"+
+    " join payment_source on payment_source.payment_source_id = registration_payment.payment_source_id"+
+    " join payment_status on payment_status.payment_status_id = registration_payment.payment_status_id", (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -79,7 +124,23 @@ export const getRegistrationPayment = (result) => {
 
 // Get Single Registration Payment
 export const getRegistrationPaymentById = (id, result) => {
-    db.query("SELECT * FROM registration_payment WHERE registration_payment_id = ?", [id], (err, results) => {             
+    db.query("select customer.first_name, "+
+    " customer.customer_id,"+
+    " customer.last_name,"+
+    " event.name as 'eventName',"+
+    " event_type.name as 'eventType',"+
+    " registration_payment.date,"+
+    " registration_payment.amount,"+
+    " payment_source.name as 'paymentSource',"+
+    " registration_payment.confirmation_num,"+
+    " payment_status.name as 'PaymentStatus'"+
+    " from registration"+
+    " join customer on customer.customer_id = registration.customer_id"+
+    " join registration_payment on registration_payment.registration_id = registration.registration_id"+
+    " join event on event.event_id = registration.event_id"+
+    " join event_type on event_type.event_type_id = event.event_type_id"+
+    " join payment_source on payment_source.payment_source_id = registration_payment.payment_source_id"+
+    " join payment_status on payment_status.payment_status_id = registration_payment.payment_status_id where customer.customer_id = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

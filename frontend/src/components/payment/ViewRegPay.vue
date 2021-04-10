@@ -24,13 +24,25 @@
     </div>
 
  <div class="field">
-      <label class="label">Service Type</label>
+      <label class="label">Event Name</label>
       <div class="control">
         <input
           class="input"
           type="text"
-          placeholder="Service Type"
-          v-model="ServiceName"
+          placeholder="Event Name"
+          v-model="EventName"
+        />
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="label">Event Type</label>
+      <div class="control">
+        <input
+          class="input"
+          type="text"
+          placeholder="Event Type"
+          v-model="EventType"
         />
       </div>
     </div>
@@ -66,7 +78,7 @@
         <input
           class="input"
           type="text"
-          placeholder="Mobile Phone"
+          placeholder="Confirmation #"
           v-model="ConfirmNum"
         />
       </div>
@@ -78,7 +90,7 @@
         <input
           class="input"
           type="text"
-          placeholder="Office Phone"
+          placeholder="Payment Status"
           v-model="PayStat"
         />
       </div>
@@ -110,12 +122,14 @@ export default {
     return {
         CustomerFName : "",
         CustomerLName : "",
-        ServiceName:"",
+        EventName:"",
+        EventType:"",
         DateMade:"",
         PayAmount:"",
         PaySource : "",
         ConfirmNum:"",
         PayStat:"",
+        
         
     };
   },
@@ -127,11 +141,12 @@ export default {
     async getCustomerById() {
       try {
         const response = await axios.get(
-          `http://localhost:5000/CustPayment/${this.$route.params.id}`
+          `http://localhost:5000/RegistrationPayment/${this.$route.params.id}`
         );
         this.CustomerFName = response.data.first_name;
         this.CustomerLName = response.data.last_name;
-        this.ServiceName = response.data.serviceName;
+        this.EventName = response.data.eventName;
+        this.EventType = response.data.eventType;
         this.DateMade = response.data.date;
         this.PayAmount = response.data.amount;
         this.PaySource = response.data.paymentSource;
@@ -148,11 +163,12 @@ export default {
     async updateCustomer() {
       try {
         await axios.put(
-          `http://localhost:5000/CustPayment/${this.$route.params.id}`,
+          `http://localhost:5000/RegistrationPayment/${this.$route.params.id}`,
           {
             first_name: this.CustomerFName,
             last_name: this.CustomerLName,
-            serviceName: this.ServiceName,
+            eventName: this.EventName,
+            eventType: this.EventType,
             date: this.DateMade,
             amount: this.PayAmount,
             paymentSource: this.PaySource,
@@ -164,7 +180,8 @@ export default {
         );
         this.CustomerFName = "";
         this.CustomerLName = "";
-        this.ServiceName="";
+        this.EventName="";
+        this.EventType="";
         this.DateMade="";
         this.PayAmount="";
         this.PaySource= "";
@@ -172,7 +189,7 @@ export default {
         this.PayStat="";
         
         
-        this.$router.push("/");
+        this.$router.push("/RegPayList");
       } catch (err) {
         console.log(err);
       }

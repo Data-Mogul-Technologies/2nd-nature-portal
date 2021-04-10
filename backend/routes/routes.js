@@ -27,7 +27,7 @@ import {allServiceType, showServiceTypeById, createServiceType, updateServiceTyp
 allServiceStatus, showServiceStatusById, createServiceStatus, updateServiceStatus, deleteServiceStatus} from "../controllers/service.js"
 
 import {allProfileStatus, showProfileStatusById, createProfileStatus, updateProfileStatus, deleteProfileStatus, 
-createProfile,showProfiles, showATProfileTypes, showDMD_profile_types} from "../controllers/profile.js"
+createProfile,showProfiles, showATProfileTypes, showDMD_profile_types, showATProfileById, updateATProfile, showDmdProfileById, updateDmdProfile} from "../controllers/profile.js"
 
 import {showFeedback,showFeedbackById, createFeedback, updateFeedback, deleteFeedback} from "../controllers/feedback.js"
 // init express router
@@ -372,5 +372,19 @@ router.put('/Feedback/:id', updateFeedback);
 // Delete Customer by id
 router.delete('/Feedback/:id', deleteFeedback);
 /*----------------------------Feedback Routers End------------------------- */
+
+/*--------------AT---------------------*/
+// Get Single ATProfile Status
+router.get('/ATProfile/:id', showATProfileById);
+
+// Update ATProfile Status
+router.put('/ATProfile/:id', updateATProfile);
+/*--------------DMD---------------------*/
+
+// Get Single DmdProfile Status
+router.get('/DmdProfile/:id', showDmdProfileById);
+
+// Update DmdProfile Status
+router.put('/DmdProfile/:id', updateDmdProfile);
 //export default router
 export default router;

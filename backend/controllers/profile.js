@@ -1,5 +1,6 @@
 import {getProfileStatus, getProfileStatusById, insertProfileStatus, updateProfileStatusById, deleteProfileStatusById,
- getProfiles, getATProfileTypes, getDMD_profile_types, insertProfile} from "../models/profileModel.js"
+ getProfiles, getATProfileTypes, getDMD_profile_types, insertProfile,
+getATProfileById, updateATProfileById, getDmdProfileById,updateDmdProfileById} from "../models/profileModel.js"
     
     //Get All Profile Status 
     export const allProfileStatus = (req, res) => {
@@ -84,6 +85,10 @@ export const showProfiles = (req, res) => {
     });
 }
 
+
+
+
+/*-------------AT Profile-----------*/
 export const showATProfileTypes = (req, res) => {
     getATProfileTypes((err, results) => {
         if (err){
@@ -94,6 +99,35 @@ export const showATProfileTypes = (req, res) => {
     });
 }
 
+    //get single ProfileStatus
+    export const showATProfileById = (req, res) => {
+        getATProfileById(req.params.id, (err, results) => {
+            if (err){
+                res.send(err);
+            }else{
+                res.json(results);
+            }
+        });
+    }
+     
+    
+    // Update ProfileStatus
+    export const updateATProfile = (req, res) => {
+        const data  = req.body;
+        const id    = req.params.id;
+        updateATProfileById(data, id, (err, results) => {
+            if (err){
+                res.send(err);
+            }else{
+                res.json(results);
+            }
+        });
+    }
+    
+/*------------DMD Profile----------*/
+    
+    
+    
 export const showDMD_profile_types = (req, res) => {
     getDMD_profile_types((err, results) => {
         if (err){
@@ -104,8 +138,29 @@ export const showDMD_profile_types = (req, res) => {
     });
 }
 
-
+    //get single DmdProfile
+    export const showDmdProfileById = (req, res) => {
+        getDmdProfileById(req.params.id, (err, results) => {
+            if (err){
+                res.send(err);
+            }else{
+                res.json(results);
+            }
+        });
+    }
+     
     
-    
-    
+ 
+    // Update DmdProfile
+    export const updateDmdProfile = (req, res) => {
+        const data  = req.body;
+        const id    = req.params.id;
+        updateDmdProfileById(data, id, (err, results) => {
+            if (err){
+                res.send(err);
+            }else{
+                res.json(results);
+            }
+        });
+    }
     

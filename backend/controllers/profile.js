@@ -1,5 +1,5 @@
 import {getProfileStatus, getProfileStatusById, insertProfileStatus, updateProfileStatusById, deleteProfileStatusById,
- getProfiles, getATProfileTypes, getDMD_profile_types, insertProfile} from "../models/profileModel.js"
+ getProfiles, getATProfileTypes, getDMD_profile_types, insertProfile, getPendingProfiles} from "../models/profileModel.js"
     
     //Get All Profile Status 
     export const allProfileStatus = (req, res) => {
@@ -96,6 +96,16 @@ export const showATProfileTypes = (req, res) => {
 
 export const showDMD_profile_types = (req, res) => {
     getDMD_profile_types((err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+
+export const showPendingProfiles = (req, res) => {
+    getPendingProfiles((err, results) => {
         if (err){
             res.send(err);
         }else{

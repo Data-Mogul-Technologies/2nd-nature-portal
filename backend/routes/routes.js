@@ -27,7 +27,7 @@ import {allServiceType, showServiceTypeById, createServiceType, updateServiceTyp
 allServiceStatus, showServiceStatusById, createServiceStatus, updateServiceStatus, deleteServiceStatus} from "../controllers/service.js"
 
 import {allProfileStatus, showProfileStatusById, createProfileStatus, updateProfileStatus, deleteProfileStatus, 
-createProfile,showProfiles, showATProfileTypes, showDMD_profile_types} from "../controllers/profile.js"
+createProfile,showProfiles, showATProfileTypes, showDMD_profile_types, showPendingProfiles} from "../controllers/profile.js"
 
 import {showFeedback,showFeedbackById, createFeedback, updateFeedback, deleteFeedback} from "../controllers/feedback.js"
 // init express router
@@ -342,6 +342,10 @@ router.get('/ATProfileTypes', showATProfileTypes)
 
 //Get all dmd profile types
 router.get('/dmdProfileTypes', showDMD_profile_types)
+
+//Get all PendingProfiles
+router.get('/PendingProfiles', showPendingProfiles)
+
 
 
 /*----------------------------Profile Routers End------------------------- */

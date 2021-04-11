@@ -24,10 +24,10 @@
       </div>
     </div>
 
-<CustomerStatusDrop @changeStatusType="selectedCustomerStatus=$event"/>
-<CustomerTypeDrop @changeCustomerType="selectedCustomerType=$event"/>
-<BusinessDrop @changeBusiness="selectedBusiness=$event"/>
-<SportTypeDrop @changeSportType="selectedSportType=$event"/>
+    <CustomerStatusDrop @changeStatusType="selectedCustomerStatus=$event"/>
+    <CustomerTypeDrop @changeCustomerType="selectedCustomerType=$event"/>
+    <BusinessDrop @changeBusiness="selectedBusiness=$event"/>
+    <SportTypeDrop @changeSportType="selectedSportType=$event"/>
 
 
  <div class="field">
@@ -54,7 +54,7 @@
       </div>
     </div>
 
-<StateDrop @changeState="selectedState=$event"/>    
+    <StateDrop @changeState="selectedState=$event"/>    
 
     <div class="field">
       <label class="label">Zip Code</label>
@@ -263,7 +263,7 @@ export default {
         this.CustomerPDate="";
         this.CustomerADate="";
         this.CustomerComment="";
-        this.$router.push("/create/CustomerList");
+        this.$router.push("/view/list-customers");
       } catch (err) {
         console.log(err);
       }

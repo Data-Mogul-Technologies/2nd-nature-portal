@@ -12,12 +12,12 @@ allConsultantStatusTypes, showConsultantStatusById, createConsultantStatus, upda
 import {showPaymentStatus, showPaymentStatusById, createPaymentStatus, updatePaymentStatus,deletePaymentStatus,
 showPaymentSource, showPaymentSourceById, createPaymentSource, updatePaymentSource, deletePaymentSource,
 showCustPayment, showCustPaymentById, createCustPayment, updateCustPayment, deleteCustPayment,
-showRegistrationPayment, showRegistrationPaymentById, createRegistrationPayment, updateRegistrationPayment, deleteRegistrationPayment} from "../controllers/payment.js"
+showRegistrationPayment, showRegistrationPaymentById, createRegistrationPayment, updateRegistrationPayment, deleteRegistrationPayment, showPendingPayment} from "../controllers/payment.js"
 
 
 import {showEvents, showEventById, createEvent, updateEvent,deleteEvent,
 showEventStatus,showEventStatusById,createEventStatus,updateEventStatus,deleteEventStatus,
-showEventType, showEventTypeById, createEventType, updateEventType,deleteEventType} from "../controllers/event.js"
+showEventType, showEventTypeById, createEventType, updateEventType,deleteEventType, showUpcoming} from "../controllers/event.js"
 
 import {allBusiness, showBusinessById, createBusiness, updateBusiness, deleteBusiness} from "../controllers/business.js"
 
@@ -27,7 +27,7 @@ import {allServiceType, showServiceTypeById, createServiceType, updateServiceTyp
 allServiceStatus, showServiceStatusById, createServiceStatus, updateServiceStatus, deleteServiceStatus} from "../controllers/service.js"
 
 import {allProfileStatus, showProfileStatusById, createProfileStatus, updateProfileStatus, deleteProfileStatus, 
-createProfile,showProfiles, showATProfileTypes, showDMD_profile_types} from "../controllers/profile.js"
+createProfile,showProfiles, showATProfileTypes, showDMD_profile_types, showPendingProfiles, showProfileById, updateProfile, updateProfileStatusCustomer} from "../controllers/profile.js"
 
 import {showFeedback,showFeedbackById, createFeedback, updateFeedback, deleteFeedback} from "../controllers/feedback.js"
 // init express router
@@ -179,6 +179,12 @@ router.put('/Events/:id', updateEvent);
  
 // Delete Events by id
 router.delete('/Events/:id', deleteEvent);
+
+//Upcoming Events
+
+router.get('/UpcomingEvents',showUpcoming); 
+
+
 /*--------------------------------Event Routers End-----------------------------*/
 
 /*--------------------------------Event Status Routers-----------------------------*/
@@ -196,6 +202,7 @@ router.put('/EventStatus/:id', updateEventStatus);
  
 // Delete EEvent Status by id
 router.delete('/EventStatus/:id', deleteEventStatus);
+
 /*--------------------------------Event Status Routers End-----------------------------*/
 
 /*--------------------------------Event Type Routers-----------------------------*/
@@ -322,6 +329,8 @@ router.put('/ServiceStatus/:id', updateServiceStatus);
 //Delete Service Status by id
 router.delete('/ServiceStatus/:id', deleteServiceStatus);
 /*-----------Service Status End ------------*/
+
+
 /*----------------------------Profile Routers ------------------------- */
 
 // Create New Profile
@@ -330,11 +339,27 @@ router.post('/Profiles', createProfile);
 //Get all profiles 
 router.get('/Profiles', showProfiles)
 
+// Get Single Profile
+router.get('/Profiles/:id', showProfileById);
+
 //Get all profile types
 router.get('/ATProfileTypes', showATProfileTypes)
 
 //Get all dmd profile types
 router.get('/dmdProfileTypes', showDMD_profile_types)
+
+//Get all PendingProfiles
+router.get('/PendingProfiles', showPendingProfiles)
+
+// Update Profile 
+router.put('/Profiles/:id', updateProfile)
+
+// Update Profile 
+router.put('/ProfileStatus4Customer/:id', updateProfileStatusCustomer)
+
+
+
+
 
 
 /*----------------------------Profile Routers End------------------------- */
@@ -371,6 +396,10 @@ router.put('/Feedback/:id', updateFeedback);
  
 // Delete Customer by id
 router.delete('/Feedback/:id', deleteFeedback);
+
+/*-----payments----*/
+//pending payment
+router.get('/PendingPayment', showPendingPayment);
 /*----------------------------Feedback Routers End------------------------- */
 //export default router
 export default router;

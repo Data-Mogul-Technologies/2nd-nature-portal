@@ -8,7 +8,7 @@
                 :key="index"
                 :name="profile.first_name" 
                 @click="setActiveProfile(profile, index)"
-            />
+        />
         </b-row> -->
 
         <nav />
@@ -36,7 +36,7 @@
 import axios from "axios";
 
 import Pagination from '../components/pagination.vue'
-import ProfileCard from "../components/profiles/profileCard.vue"
+import ProfileCard from "../components/profiles/profileTable.vue"
 
 const perPageOptions = [5, 10, 15]
 
@@ -51,33 +51,35 @@ export default {
             perPageOptions,
             pagination: { page: 1, perPage: perPageOptions[0] },
             profiles: [],
+            currentProfile: null,
+            currentIndex: -1,
             config: [
-            {
-                key: 'first_name',
-                title: 'First Name',
-                type: 'text'
-            },
-            {
-                key: 'last_name',
-                title: 'last Name',
-                type: 'text'
-            },
-            {
-                key: 'profile_type',
-                title: 'Profile Type',
-                type: 'text'
-            },
-            {
-                key: 'sport',
-                title: 'Sport',
-                type: 'text'
-            },
-            {
-                key: 'profile_status',
-                title: 'Profile Status',
-                type: 'text'
-            }
-        ]
+                {
+                    key: 'first_name',
+                    title: 'First Name',
+                    type: 'text'
+                },
+                {
+                    key: 'last_name',
+                    title: 'last Name',
+                    type: 'text'
+                },
+                {
+                    key: 'profile_type',
+                    title: 'Profile Type',
+                    type: 'text'
+                },
+                {
+                    key: 'sport',
+                    title: 'Sport',
+                    type: 'text'
+                },
+                {
+                    key: 'profile_status',
+                    title: 'Profile Status',
+                    type: 'text'
+                }
+            ]
         };
     },
     created() {
@@ -96,7 +98,13 @@ export default {
             } catch (err) {
                 console.log(err);
             }
-        } 
+        },
+        
+        setActiveProfile(row, index) {
+            this.selectedRow = row;
+            this.currentIndex = index;
+
+        }
     },
     computed: {
         computedProfileData () {

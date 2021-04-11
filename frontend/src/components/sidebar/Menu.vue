@@ -31,7 +31,7 @@
         @click.prevent="updateMenu('profiles')"
         :class="highlightSection('profiles')"
         >
-          <i class="fas fa-sort-amount-up context-menu__title-icon" aria-hidden="true"></i>
+          <i class="fas fa-list-alt context-menu__title-icon" aria-hidden="true"></i>
           Profiles
           <i class="fa fa-chevron-right menu__arrow-icon" aria-hidden="true"></i>
         </a>

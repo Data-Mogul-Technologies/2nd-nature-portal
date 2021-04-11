@@ -8,7 +8,7 @@ export default {
     {
       type: 'title',
       txt: 'Profiles',
-      icon: 'fas fa-sort-amount-up context-menu__title-icon',
+      icon: 'fas fa-list-alt context-menu__title-icon',
     },
 
     {
@@ -19,15 +19,27 @@ export default {
 
     {
       type: 'link',
-      txt: 'Add New profile',
+      txt: 'Add New Action Type Profile',
       link: '/profile',
     },
 
     {
       type: 'link',
-      txt: 'Manage DMD profile types',
+      txt: 'Add New DMD Profile',
       link: '/profile',
     },
+
+    {
+      type: 'link',
+      txt: "Manage DMD's",
+      link: '/profile',
+    },
+
+    {
+      type: 'link',
+      txt: 'Manage Action Types',
+      link: '/profile',
+    }
 
   ],
 

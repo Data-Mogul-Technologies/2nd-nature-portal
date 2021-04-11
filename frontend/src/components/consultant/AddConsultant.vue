@@ -175,7 +175,7 @@ export default {
             address: this.ConsultantAddress,
             city: this.ConsultantCity,
             state_id:this.selectedState,
-            zipcode: this.ConsultantZip,
+            zip_code: this.ConsultantZip,
             phone: this.ConsultantPhone,
             alt_phone: this.ConsultantAPhone,
             email: this.ConsultantEmail,

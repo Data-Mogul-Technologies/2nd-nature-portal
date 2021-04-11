@@ -215,7 +215,7 @@ export default {
         this.ConsultantEDate="";
         this.ConsultantComment="";
         
-        this.$router.push("/ConsultantList");
+        this.$router.push("/page/list-consultants");
       } catch (err) {
         console.log(err);
       }

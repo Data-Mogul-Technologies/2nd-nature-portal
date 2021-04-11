@@ -358,10 +358,6 @@ router.put('/Profiles/:id', updateProfile)
 router.put('/ProfileStatus4Customer/:id', updateProfileStatusCustomer)
 
 
-
-
-
-
 /*----------------------------Profile Routers End------------------------- */
 
 /*-----------Profile Status ------------*/

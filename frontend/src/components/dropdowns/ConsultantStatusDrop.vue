@@ -31,7 +31,7 @@ export default {
 
   },
   mounted(){
-      axios.get('http://localhost:5000/ConsultantStatusTypes').then(response =>{
+      axios.get('http://localhost:5000/ConsultantStatus').then(response =>{
           this.ConsultantStatusTypes = response.data;
           console.log(response.data);
       }).catch(e =>{

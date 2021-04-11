@@ -11,6 +11,7 @@
       </b-form-group>
 
       <b-form-group id="input-group" >
+        <label ><strong>Profile Status: </strong></label>
         <ProfileStatusDrop @changeProfileStatus="selectedProfileStatus=$event" v-model="selectedProfileStatus" />
       </b-form-group>
 

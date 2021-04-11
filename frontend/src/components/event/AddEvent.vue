@@ -61,6 +61,8 @@
         />
       </div>
     </div>
+<EventTypeDrop @changeEventType="selectedEventType=$event"/>   
+<EventStatusDrop @changeEventStatus="selectedEventStatus=$event"/>       
  
     <div class="field">
       <label class="label">Comments</label>
@@ -82,12 +84,16 @@ import axios from "axios";
 
 
 import StateDrop from '../dropdowns/StateDrop';
+import EventStatusDrop from '../dropdowns/EventStatusDrop';
+import EventTypeDrop from '../dropdowns/EventTypeDrop';
 
 export default {
   name: "AddEvent",
   components:{
     
-    StateDrop
+    StateDrop,
+    EventStatusDrop,
+    EventTypeDrop
   },
   data() {
     
@@ -98,8 +104,8 @@ export default {
         EventCity:"",
         selectedState:0,
         EventZip : 0,
-        // selectedEventType: 0,
-        // selectedEventStatus: 0,
+        selectedEventType: 0,
+        selectedEventStatus: 0,
         EventComment:"",
     };
   },
@@ -109,12 +115,14 @@ export default {
     async saveEvent() {
       try {
         await axios.post("http://localhost:5000/Events", {
-            name: this.EventFName,
+            name: this.EventName,
             date: this.EventDate,
             address: this.EventAddress,
             city: this.EventCity,
             state_id:this.selectedState,
             zip_code: this.EventZip,
+            event_type_id: this.selectedEventType,
+            event_status_id: this.selectedEventStatus,
             comments: this.EventComment
         });
         this.EventName = "";
@@ -123,6 +131,8 @@ export default {
         this.EventCity="";
         this.selectedState=0;
         this.EventZip= 0;
+        this.selectedEventType = 0;
+        this.selectedEventStatus = 0;
         this.EventComment="";
         this.$router.push("/EventList");
       } catch (err) {

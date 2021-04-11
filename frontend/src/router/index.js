@@ -85,6 +85,7 @@ import ViewATProfile from '../components/profiles/ViewATProfile.vue'
 import DmdProfileList from '../components/profiles/DmdProfileList.vue'
 import ViewDmdProfile from '../components/profiles/ViewDmdProfile.vue'
 
+import EditProfile from '../components/profiles/EditProfile.vue'
 
 Vue.use(VueRouter)
 
@@ -401,7 +402,6 @@ const routes = [
   path: '/profile/all-profiles',
   component: () => import('../views/AllProfiles.vue')
 },
-
 {
   name: 'AddProfile',
   path: '/profile/Add-New-Action-Type-Profile',
@@ -429,6 +429,12 @@ const routes = [
   path: '/ViewDmdProfile',
   component: ViewDmdProfile
 },
+{
+  name: 'EditProfile',
+  path: '/EditProfile',
+  component: EditProfile
+}
+
 ]
 
 const router = new VueRouter({ mode: 'history', routes: routes })

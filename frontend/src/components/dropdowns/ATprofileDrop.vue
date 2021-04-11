@@ -28,14 +28,12 @@ export default {
     changeAT(){
       this.$emit('changeAT', this.selectedAT)
     }
-
   },
 
   mounted(){
       axios.get('http://localhost:5000/ATProfileTypes').then(response =>{
           this.actionTypes = response.data;
       }).catch(e =>{
-
       })
   },
   

@@ -19,7 +19,7 @@
           
           <td class="has-text-centered">
             <router-link
-              :to="{ name: 'ViewATProfile', params: { id: ATprof.at_profile_id } }"
+              :to="{ name: 'EditProfile', params: { id: ATprof.at_profile_id } }"
               class="button is-info is-small"
               >View</router-link
             >

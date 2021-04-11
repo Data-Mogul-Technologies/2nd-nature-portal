@@ -2,7 +2,7 @@
   <div>
     <b-form v-if="show">
 
-      <b-form-group id="input-group">
+      <!-- <b-form-group id="input-group">
         <CustomerNameDrop @changeCustomerName="selectedCustomerName=$event" v-model="selectedCustomerName"/>
       </b-form-group>
 
@@ -11,26 +11,41 @@
       </b-form-group>
 
       <b-form-group id="input-group" >
-        <label ><strong>Profile Status: </strong></label>
-        <ProfileStatusDrop @changeProfileStatus="selectedProfileStatus=$event" v-model="selectedProfileStatus" />
+        <ProfileStatusDrop @changeProfileStatus="currentProfileStatus=$event" v-model="currentProfileStatus" />
       </b-form-group>
 
       <b-form-group id="input-group" >
         <SportTypeDrop @changeSportType="selectedSportType=$event" v-model="selectedSportType" />
+      </b-form-group> -->
+
+      <b-form-group id="input-group">
+        <label class="label-1">Customer name: </label>
+        <span> {{customerFirstName}} {{customerLastName}}</span>
+      </b-form-group>  
+
+      <b-form-group id="input-group">
+        <label class="label-1">Action Type: </label>
+        <span> {{selectedAT}}</span>
+      </b-form-group>  
+
+      <b-form-group id="input-group">
+        <label class="label-1">Sport Type: </label>
+        <span> {{selectedSportType}} </span>
       </b-form-group>
 
       <b-form-group id="input-group">
-        <label class="label">Choose Date:</label>
-        <b-form-input
-          v-model="date"
-          type="date"
-          placeholder="Enter date"
-          required
-        ></b-form-input>
-      </b-form-group>      
+        <label class="label-1">Date: </label>
+        <span> {{date | formatDate}}</span>
+      </b-form-group>  
+
+      <b-form-group id="input-group">
+        <label class="label-1">Current Profile Status: </label>
+        <span> {{currentProfileStatus}} </span>
+      </b-form-group>        
+
 
       <b-form-group>
-        <label class="label">Orientation:</label>
+        <label class="label">Orientation details:</label>
         <!-- <b-form-radio v-model="selectedOrientation" :aria-describedby="ariaDescribedby" name="some-radios2" value="Horizontal">Horizontal</b-form-radio>
         <b-form-radio v-model="selectedOrientation" :aria-describedby="ariaDescribedby" name="some-radios2" value="Vertical">Vertical</b-form-radio> -->
         <b-form-textarea
@@ -104,11 +119,11 @@
       </b-form-group>
 
       <b-form-group>
-        <label class="label">Movement details:</label>
+        <label class="label">Defense/Ball Control:</label>
         <!-- <b-form-radio v-model="selectedBall_Def" :aria-describedby="ariaDescribedby" name="some-radios" value="DEFENSE & SERVE RECEIVE MOVEMENT:">DEFENSE & SERVE RECEIVE MOVEMENT:</b-form-radio>
         <b-form-radio v-model="selectedBall_Def" :aria-describedby="ariaDescribedby" name="some-radios" value="BALL CONTROL/FIRST CONTACT">BALL CONTROL/FIRST CONTACT:</b-form-radio> -->
         <b-form-textarea
-          v-model="ball_def"
+          v-model="ball_defense"
           type="text"
           placeholder="Type in details"
           rows="10"
@@ -122,16 +137,16 @@
         <b-form-textarea
           v-model="physical_training"
           type="text"
-          placeholder="Type in details about Physical Training"
           rows="10"
           cols="25"
           required
         ></b-form-textarea>
       </b-form-group>
-      <b-button @click="saveProfile" variant="primary">Submit</b-button>
+      <b-button @click="updateProfile" variant="primary">Submit</b-button>
     </b-form>
   </div>
 </template>
+
 
 <script>
 import CustomerNameDrop from '../dropdowns/CustomerNamesDrop';
@@ -140,18 +155,15 @@ import ProfileStatusDrop from '../dropdowns/ProfileStatusDrop';
 import SportTypeDrop from '../dropdowns/SportTypeDrop';
 import axios from "axios";
 
-  export default {
-    name: "AddProfile",
-    components: {
-      CustomerNameDrop,
-      ATDrop,
-      ProfileStatusDrop,
-      SportTypeDrop
-    },
-    data() {
-      return {
-          selectedCustomerName: "",
+export default {
+    name: "EditProfile",
+    data () {
+        return {
+          customerFirstName: "",
+          customerLastName: "",
           selectedAT: "",
+          currentProfileStatus: "",
+          selectedProfileStatus: "",
           selectedProfileStatus: "",
           selectedSportType: "",
           date: "",
@@ -163,55 +175,85 @@ import axios from "axios";
           jump_style: "",
           approach_style: "",
           // selectedBall_Def: "",
-          ball_def: "",
+          ball_defense: "",
           physical_training: "",
         show: true,
         selectedBall_Def: '',
-        selectedOrientation: ''
+        selectedOrientation: '',
+        show: true
       }
     },
+    created: function () {
+        this.getProfileById();
+    },
     methods: {
-      async saveProfile() {
+        onSubmit(event) {
+            event.preventDefault()
+            alert(JSON.stringify(this.form))
+        },
+
+        // Get Profile By Id
+        async getProfileById() {
         try {
-          await axios.post("http://localhost:5000/Profiles", {
-            customer_id: this.selectedCustomerName,
-            action_type_id: this.selectedAT,
-            status_id: this.selectedProfileStatus,
-            sport_type_id: this.selectedSportType,
-            date: this.date,
-            orientation: this.orientation_details,
-            key_aspects_attacking: this.key_aspects_attacking,
-            vig_backswing: this.vig_backswing,
-            patience: this.patience,
-            jump_style: this.jump_style,
-            approach_style: this.approach_style,
-            ball_defense: this.ball_def,
-            physical_training: this.physical_training
-          });
-            this.selectedCustomerName = 0;
-            this.selectedAT = 0;
-            this.selectedProfileStatus = 0;
-            this.selectedSportType = 0;
-            this.date = "";
-            // this.selectedOrientation = "";
-            this.orientation_details = "";
-            this.key_aspects_attacking = "";
-            this.vig_backswing = "";
-            this.patience = "";
-            this.jump_style = "";
-            this.approach_style = "";
-            // this.selectedBall_Def = "";
-            this.ball_def = "";
-            this.physical_training = "";
-            this.$router.push("/profile/all-profiles")
-          } catch (err) {
-              console.log(err);
-          }
-      }
+            const response = await axios.get(
+            `http://localhost:5000/Profiles/${this.$route.params.id}`
+            );
+            this.customerFirstName = response.data.first_name;
+            this.customerLastName = response.data.last_name;
+            this.selectedAT = response.data.profile_type;
+            this.selectedSportType = response.data.sport;
+            this.date = response.data.date;
+            this.currentProfileStatus = response.data.profile_status;
+            this.orientation_details = response.data.orientation;
+            this.key_aspects_attacking = response.data.key_aspects_attacking;
+            this.vig_backswing = response.data.vig_backswing;
+            this.patience = response.data.patience;
+            this.jump_style = response.data.jump_style;
+            this.approach_style = response.data.approach_style;
+            this.ball_defense = response.data.ball_defense;
+            this.physical_training = response.data.physical_training;
+        } catch (err) {
+            console.log(err);
+            }
+        },
+        
+        // Update Profile
+        async updateProfile() {
+            try {
+                await axios.put(
+                    `http://localhost:5000/Profiles/${this.$route.params.id}`,
+                    {
+                    orientation: this.orientation_details,
+                    key_aspects_attacking: this.key_aspects_attacking,
+                    vig_backswing: this.vig_backswing,
+                    patience: this.patience,
+                    jump_style: this.jump_style,
+                    approach_style: this.approach_style,
+                    ball_defense: this.ball_defense,
+                    physical_training: this.physical_training
+                    }
+                );
+                this.orientation_details = "";
+                this.key_aspects_attacking = "";
+                this.vig_backswing="";
+                this.jump_style="";
+                this.approach_style= "";
+                this.ball_defense="";
+                this.physical_training="";
+
+                this.$router.push("/profile/all-profiles")
+            } catch (err) {
+                console.log(err);
+            }
+        }
     }
-  }
+}
 </script>
 
-<style lang="scss">
+<style lang = "scss">
+    .label-1 {
+        display: inline-block;
+        font-weight: 700;
+    }
 
 </style>

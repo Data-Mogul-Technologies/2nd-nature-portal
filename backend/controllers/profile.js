@@ -1,10 +1,22 @@
 import {getProfileStatus, getProfileStatusById, insertProfileStatus, updateProfileStatusById, deleteProfileStatusById,
  getProfiles, getATProfileTypes, getDMD_profile_types, insertProfile,
-getATProfileById, updateATProfileById, getDmdProfileById,updateDmdProfileById} from "../models/profileModel.js"
+getATProfileById, 
+updateATProfileById, getDmdProfileById,updateDmdProfileById, getProfileById, updateProfileById, updateProfileStatusForCustomer} from "../models/profileModel.js"
     
     //Get All Profile Status 
     export const allProfileStatus = (req, res) => {
         getProfileStatus((err, results) => {
+            if (err){
+                res.send(err);
+            }else{
+                res.json(results);
+            }
+        });
+    }
+
+    // Get Single Profile 
+    export const showProfileById = (req, res) => {
+        getProfileById(req.params.id, (err, results) => {
             if (err){
                 res.send(err);
             }else{
@@ -37,7 +49,7 @@ getATProfileById, updateATProfileById, getDmdProfileById,updateDmdProfileById} f
         });
     }
     
-    // Update ProfileStatus
+    // Update Profile status by id
     export const updateProfileStatus = (req, res) => {
         const data  = req.body;
         const id    = req.params.id;
@@ -49,6 +61,33 @@ getATProfileById, updateATProfileById, getDmdProfileById,updateDmdProfileById} f
             }
         });
     }
+
+    // Update Profile
+    export const updateProfile = (req, res) => {
+        const data  = req.body;
+        const id    = req.params.id;
+        updateProfileById(data, id, (err, results) => {
+            if (err){
+                res.send(err);
+            }else{
+                res.json(results);
+            }
+        });
+    }
+
+    // Update Profile status of prpfile for customer
+    export const updateProfileStatusCustomer = (req, res) => {
+        const data  = req.body;
+        const id    = req.params.id;
+        updateProfileStatusForCustomer(data, id, (err, results) => {
+            if (err){
+                res.send(err);
+            }else{
+                res.json(results);
+            }
+        });
+    }
+    
     
     // Delete ProfileStatus
     export const deleteProfileStatus = (req, res) => {

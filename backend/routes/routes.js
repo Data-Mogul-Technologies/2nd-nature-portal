@@ -27,7 +27,8 @@ import {allServiceType, showServiceTypeById, createServiceType, updateServiceTyp
 allServiceStatus, showServiceStatusById, createServiceStatus, updateServiceStatus, deleteServiceStatus} from "../controllers/service.js"
 
 import {allProfileStatus, showProfileStatusById, createProfileStatus, updateProfileStatus, deleteProfileStatus, 
-createProfile,showProfiles, showATProfileTypes, showDMD_profile_types, showATProfileById, updateATProfile, showDmdProfileById, updateDmdProfile} from "../controllers/profile.js"
+createProfile,showProfiles, showATProfileTypes, showDMD_profile_types, showATProfileById, updateATProfile, showDmdProfileById, updateDmdProfile,
+showProfileById, updateProfile, updateProfileStatusCustomer} from "../controllers/profile.js"
 
 import {showFeedback,showFeedbackById, createFeedback, updateFeedback, deleteFeedback} from "../controllers/feedback.js"
 
@@ -333,6 +334,8 @@ router.put('/ServiceStatus/:id', updateServiceStatus);
 //Delete Service Status by id
 router.delete('/ServiceStatus/:id', deleteServiceStatus);
 /*-----------Service Status End ------------*/
+
+
 /*----------------------------Profile Routers ------------------------- */
 
 // Create New Profile
@@ -340,6 +343,9 @@ router.post('/Profiles', createProfile);
 
 //Get all profiles 
 router.get('/Profiles', showProfiles)
+
+// Get Single Profile
+router.get('/Profiles/:id', showProfileById);
 
 //Get all profile types
 router.get('/ATProfileTypes', showATProfileTypes)
@@ -349,6 +355,15 @@ router.get('/dmdProfileTypes', showDMD_profile_types)
 
 // //Get all PendingProfiles
 // router.get('/PendingProfiles', showPendingProfiles)
+
+// Update Profile 
+router.put('/Profiles/:id', updateProfile)
+
+// Update Profile 
+router.put('/ProfileStatus4Customer/:id', updateProfileStatusCustomer)
+
+
+
 
 
 

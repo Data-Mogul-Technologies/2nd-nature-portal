@@ -30,9 +30,13 @@ import {allProfileStatus, showProfileStatusById, createProfileStatus, updateProf
 createProfile,showProfiles, showATProfileTypes, showDMD_profile_types, showATProfileById, updateATProfile, showDmdProfileById, updateDmdProfile} from "../controllers/profile.js"
 
 import {showFeedback,showFeedbackById, createFeedback, updateFeedback, deleteFeedback} from "../controllers/feedback.js"
+
+import {createRegistration, createCustServ} from '../controllers/registration.js'
 // init express router
 const router = express.Router();
 
+router.post('/Registration', createRegistration);
+router.post('/CustServ', createCustServ);
 
 /*----------------------------Customer and Associates Routers------------------------- */
 // Get All Customer
@@ -343,8 +347,8 @@ router.get('/ATProfileTypes', showATProfileTypes)
 //Get all dmd profile types
 router.get('/dmdProfileTypes', showDMD_profile_types)
 
-//Get all PendingProfiles
-router.get('/PendingProfiles', showPendingProfiles)
+// //Get all PendingProfiles
+// router.get('/PendingProfiles', showPendingProfiles)
 
 
 

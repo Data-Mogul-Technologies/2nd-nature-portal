@@ -141,7 +141,7 @@ export default {
         this.EventZip= 0;
         this.EventComment="";
         
-        this.$router.push("/");
+        this.$router.push("/EventList");
       } catch (err) {
         console.log(err);
       }

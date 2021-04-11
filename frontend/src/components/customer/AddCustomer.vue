@@ -164,7 +164,8 @@
         />   
       </div>
     </div>
- 
+ <ServiceStatusDrop @changeServiceStatusType="selectedServiceStatus=$event"/>
+    <ServiceTypeDrop @changeCustomerType="selectedServiceType=$event"/>
     <div class="field">
       <label class="label">Comments</label>
       <div class="control">
@@ -174,10 +175,14 @@
     </div>
     
     <div class="control">
-      <button class="button is-success" @click="saveCustomer">Add</button>
+      <button class="button is-success" @click="saveCustomer | saveCustomerService">Add</button>
       <router-link :to="{name:'Home'}"><button class="button is-danger">Cancel</button></router-link>
     </div>
+
+    
   </div>
+
+  
 </template>
 <script>
 // import axios
@@ -187,6 +192,8 @@ import CustomerTypeDrop from '../dropdowns/CustomerTypeDrop';
 import BusinessDrop from '../dropdowns/BusinessDrop';
 import SportTypeDrop from '../dropdowns/SportTypeDrop';
 import StateDrop from '../dropdowns/StateDrop';
+import ServiceStatusDrop from '../dropdowns/ServiceStatusDrop'
+import ServiceTypeDrop from '../dropdowns/ServiceTypeDrop'
 
 export default {
   name: "AddCustomer",
@@ -195,7 +202,10 @@ export default {
     CustomerTypeDrop,
     BusinessDrop,
     SportTypeDrop,
-    StateDrop
+    StateDrop,
+    ServiceStatusDrop,
+    ServiceTypeDrop,
+
   },
   data() {
     
@@ -218,6 +228,8 @@ export default {
         CustomerPDate:YYYY-MM-DD,
         CustomerADate:YYYY-MM-DD,
         CustomerComment:"",
+        selectedServiceType: 0,
+        selectedServiceStatus: 0
     };
   },
   
@@ -263,11 +275,24 @@ export default {
         this.CustomerPDate="";
         this.CustomerADate="";
         this.CustomerComment="";
-        this.$router.push("/view/list-customers");
+        // this.$router.push("/AddService");
       } catch (err) {
         console.log(err);
       }
     },
+    async saveCustomerService() {
+      try {
+        await axios.post("http://localhost:5000/CustServ", {
+            customer_id: this.customer_id,
+            service_type_id: this.selectedServiceType,
+            service_status_id: this.selectedServiceType
+        });
+        
+       this.$router.push("/view/list-customer");
+      } catch (err) {
+        console.log(err);
+      }}
+
   },
 };
 </script>

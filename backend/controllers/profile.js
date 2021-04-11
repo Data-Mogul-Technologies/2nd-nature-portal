@@ -1,10 +1,6 @@
 import {getProfileStatus, getProfileStatusById, insertProfileStatus, updateProfileStatusById, deleteProfileStatusById,
-<<<<<<< HEAD
  getProfiles, getATProfileTypes, getDMD_profile_types, insertProfile,
 getATProfileById, updateATProfileById, getDmdProfileById,updateDmdProfileById} from "../models/profileModel.js"
-=======
- getProfiles, getATProfileTypes, getDMD_profile_types, insertProfile, getPendingProfiles} from "../models/profileModel.js"
->>>>>>> 66d404699153ff1945820203735c8e1081dc5079
     
     //Get All Profile Status 
     export const allProfileStatus = (req, res) => {
@@ -142,7 +138,6 @@ export const showDMD_profile_types = (req, res) => {
     });
 }
 
-<<<<<<< HEAD
     //get single DmdProfile
     export const showDmdProfileById = (req, res) => {
         getDmdProfileById(req.params.id, (err, results) => {
@@ -154,20 +149,6 @@ export const showDMD_profile_types = (req, res) => {
         });
     }
      
-=======
-export const showPendingProfiles = (req, res) => {
-    getPendingProfiles((err, results) => {
-        if (err){
-            res.send(err);
-        }else{
-            res.json(results);
-        }
-    });
-}
-
-
-    
->>>>>>> 66d404699153ff1945820203735c8e1081dc5079
     
  
     // Update DmdProfile

@@ -53,7 +53,8 @@ export const insertCustomer = (data, result) => {
 // Update Customer to Database
 export const updateCustomerById = (data, id, result) => {
     db.query("UPDATE customer SET first_name = ?, last_name = ?, address = ?, city = ?, zip_code = ?, mobile_phone = ?,office_phone = ?,home_phone = ?,email = ?, hear_about_us = ?,how_can_help =?, prospect_date = ?, actual_date = ?, comments = ? WHERE customer_id = ?",
-     [data.first_name,data.last_name, data.address, data.city, data.zip_code, data.mobile_phone, data.office_phone, data.home_phone, data.email, data.hear_about_us, data.how_can_help, data.prospect_date, data.actual_date, data.comments,  id], (err, results) => {             
+     [data.first_name,data.last_name, data.address, data.city, data.zip_code, data.mobile_phone, data.office_phone, data.home_phone, data.email, data.hear_about_us, data.how_can_help, data.prospect_date, data.actual_date, data.comments,  id], 
+     (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

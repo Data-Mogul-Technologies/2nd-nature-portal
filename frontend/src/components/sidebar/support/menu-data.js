@@ -8,7 +8,7 @@ export default {
     {
       type: 'title',
       txt: 'Profiles',
-      icon: 'fas fa-sort-amount-up context-menu__title-icon',
+      icon: 'fas fa-list-alt context-menu__title-icon',
     },
 
     {

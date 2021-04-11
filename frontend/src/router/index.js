@@ -93,7 +93,6 @@ import AddProfileStatus from '../components/profiles/AddProfileStatus.vue'
 import ViewProfileStatus from '../components/profiles/ViewProfileStatus.vue'
 
 
-
 Vue.use(VueRouter)
 
 const routes = [
@@ -471,32 +470,31 @@ const routes = [
   path: '/profile/all-profiles',
   component: () => import('../views/AllProfiles.vue')
 },
-
 {
   name: 'AddProfile',
   path: '/profile/Add-New-Action-Type-Profile',
   component: () => import('../components/profiles/AddProfile.vue')
 },
-
-
 {
   name: 'PendingPayments',
   path: '/pendingpayments',
   component: PendingPayments
 },
-
 {
   name: 'NewestCustomers',
   path: '/newestcustomers',
   component: NewestCustomers
 },
-
 {
   name: 'UpcomingEvents',
   path: '/upcomingevents',
   component: UpcomingEvents
+},
+{
+  name: 'EditProfile',
+  path: '/editprofile/:id',
+  component: () => import ('../components/profiles/EditProfile.vue')
 }
-
 ]
 
 const router = new VueRouter({ mode: 'history', routes: routes })

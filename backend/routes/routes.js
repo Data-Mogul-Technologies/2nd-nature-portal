@@ -27,12 +27,17 @@ import {allServiceType, showServiceTypeById, createServiceType, updateServiceTyp
 allServiceStatus, showServiceStatusById, createServiceStatus, updateServiceStatus, deleteServiceStatus} from "../controllers/service.js"
 
 import {allProfileStatus, showProfileStatusById, createProfileStatus, updateProfileStatus, deleteProfileStatus, 
-createProfile,showProfiles, showATProfileTypes, showDMD_profile_types, showPendingProfiles, showProfileById, updateProfile, updateProfileStatusCustomer} from "../controllers/profile.js"
+createProfile,showProfiles, showATProfileTypes, showDMD_profile_types, showATProfileById, updateATProfile, showDmdProfileById, updateDmdProfile,
+showProfileById, updateProfile, updateProfileStatusCustomer} from "../controllers/profile.js"
 
 import {showFeedback,showFeedbackById, createFeedback, updateFeedback, deleteFeedback} from "../controllers/feedback.js"
+
+import {createRegistration, createCustServ} from '../controllers/registration.js'
 // init express router
 const router = express.Router();
 
+router.post('/Registration', createRegistration);
+router.post('/CustServ', createCustServ);
 
 /*----------------------------Customer and Associates Routers------------------------- */
 // Get All Customer
@@ -348,8 +353,8 @@ router.get('/ATProfileTypes', showATProfileTypes)
 //Get all dmd profile types
 router.get('/dmdProfileTypes', showDMD_profile_types)
 
-//Get all PendingProfiles
-router.get('/PendingProfiles', showPendingProfiles)
+// //Get all PendingProfiles
+// router.get('/PendingProfiles', showPendingProfiles)
 
 // Update Profile 
 router.put('/Profiles/:id', updateProfile)
@@ -397,5 +402,19 @@ router.delete('/Feedback/:id', deleteFeedback);
 //pending payment
 router.get('/PendingPayment', showPendingPayment);
 /*----------------------------Feedback Routers End------------------------- */
+
+/*--------------AT---------------------*/
+// Get Single ATProfile Status
+router.get('/ATProfile/:id', showATProfileById);
+
+// Update ATProfile Status
+router.put('/ATProfile/:id', updateATProfile);
+/*--------------DMD---------------------*/
+
+// Get Single DmdProfile Status
+router.get('/DmdProfile/:id', showDmdProfileById);
+
+// Update DmdProfile Status
+router.put('/DmdProfile/:id', updateDmdProfile);
 //export default router
 export default router;

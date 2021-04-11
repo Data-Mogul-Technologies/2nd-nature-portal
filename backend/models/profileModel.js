@@ -228,20 +228,57 @@ export const getDMD_profile_types = (result) => {
     });
 }
 
-//get all pending profiles
-export const getPendingProfiles = (result) => {
-    db.query("select customer.first_name, customer.last_name, status_at_dmd.name as profile_status," +
-    " at_customer_report.date as start_date, at_profile.at_profile, sport_type.name as sport" +
-    " from customer join at_customer_report on customer.customer_id = at_customer_report.customer_id " +
-    " join at_profile on at_customer_report.action_type_id = at_profile.at_profile_id " +
-    " join sport_type on at_customer_report.sport_type_id = sport_type.sport_type_id " +
-    " join status_at_dmd on at_customer_report.status_id = status_at_dmd.status_at_dmd_id " +
-    " and status_at_dmd.status_at_dmd_id = 2 order by first_name asc;" , (err, results) => {
+
+/*---------AT Update and Get -----------------*/
+// Get Single  Profile status
+export const getATProfileById = (id, result) => {
+    db.query("SELECT * FROM at_profile WHERE at_profile_id = ?", [id], (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results[0]);
+        }
+    });   
+}
+ 
+ 
+// Update Profile_status to Database
+export const updateATProfileById = (data, id, result) => {
+    db.query("UPDATE at_profile SET name = ? WHERE at_profile_id = ?",
+     [data.name,  id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
         } else {
             result(null, results);
         }
-    });
+    });   
+}
+
+/*------------- DMD update and Get ----------------*/
+// Get Single  Profile status
+export const getDmdProfileById = (id, result) => {
+    db.query("SELECT * FROM dmd_profile WHERE dmd_profile_id = ?", [id], (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results[0]);
+        }
+    });   
+}
+ 
+ 
+// Update Profile_status to Database
+export const updateDmdProfileById = (data, id, result) => {
+    db.query("UPDATE dmd_profile SET name = ? WHERE dmd_profile_id = ?",
+     [data.name,  id], (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });   
 }

@@ -1,31 +1,43 @@
 <template>
   <div>
-    <router-link :to="{ name: 'AddBusiness' }" class="button is-success mt-5"
+    <router-link :to="{ name: 'AddFeedback' }" class="button is-success mt-5"
       >Add New</router-link>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">
       <thead>
         <tr>
-          <th>ID</th>
-          <th>Name</th>
+          <th>Date      </th>
+          <th>How did they hear about us?</th>
+          <th>How helpful Rating</th>
+          <th>How helpful Comment</th>
+          <th>Recommendation Rating</th>
+          <th>Recommendation Comment</th>
+          <th>General Feedback</th>
+          
           
           <th class="has-text-centered">Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="business in businesses" :key="business.business_id">
-          <td>{{business.business_id}}
-          <td>{{ business.name }}</td>
+        <tr v-for="feedback in feedbacks" :key="feedback.feedback_id">
+  
+          <td>{{feedback.date | formatDate }}</td>
+          <td>{{feedback.how_hear }}</td>
+          <td>{{feedback.how_helpful_rate }}</td>
+          <td>{{feedback.how_helpful_comment }}</td>
+          <td>{{feedback.recommend_rate}}</td>
+          <td>{{feedback.recommend_comment}}</td>
+          <td>{{feedback.gen_feedback}}</td>
           
           
           <td class="has-text-centered">
             <router-link
-              :to="{ name: 'ViewBusiness', params: { id: business.business_id } }"
+              :to="{ name: 'ViewFeedback', params: { id: feedback.feedback_id } }"
               class="button is-info is-small"
               >View</router-link
             >
             <a
               class="button is-danger is-small"
-              @click="deleteBusiness(business.business_id)"
+              @click="deleteFeedback(feedback.feedback_id)"
               >Delete</a
             >
           </td>
@@ -40,33 +52,33 @@
 import axios from "axios";
  
 export default {
-  name: "BusinessList",
+  name: "FeedbackList",
   data() {
     return {
-      businesses: [],
+     feedbacks: [],
     };
   },
  
   created() {
-    this.getBusiness();
+    this.getFeedback();
   },
  
   methods: {
-    // Get All Businesses
-    async getBusiness() {
+    // Get All Feedback
+    async getFeedback() {
       try {
-        const response = await axios.get("http://localhost:5000/Businesses");
-        this.businesses = response.data;
+        const response = await axios.get("http://localhost:5000/Feedback");
+        this.feedbacks = response.data;
       } catch (err) {
         console.log(err);
       }
     },
  
-    // Delete Businesses
-    async deleteBusiness(id) {
+    // Delete Feedback
+    async deleteFeedback(id) {
       try {
-        await axios.delete(`http://localhost:5000/Business/${id}`);
-        this.getBusiness();
+        await axios.delete(`http://localhost:5000/Feedback/${id}`);
+        this.getFeedback();
       } catch (err) {
         console.log(err);
       }

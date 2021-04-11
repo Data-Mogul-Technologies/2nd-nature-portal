@@ -7,23 +7,10 @@ import Create from '../components/customer/AddCustomer.vue'
 import CustomerList from '../components/customer/CustomerList.vue'
 import View from '../components/customer/ViewCustomer.vue'
 
-import SportTypeDrop from '../components/dropdowns/SportTypeDrop.vue'
-import BusinessDrop from '../components/dropdowns/BusinessDrop.vue'
-import CustomerStatusDrop from '../components/dropdowns/CustomerStatusDrop.vue'
-import CustomerTypeDrop from '../components/dropdowns/CustomerTypeDrop.vue'
-import StateDrop from '../components/dropdowns/StateDrop.vue'
-import EventStatusDrop from '../components/dropdowns/EventStatusDrop.vue'
-import EventTypeDrop from '../components/dropdowns/EventTypeDrop.vue'
-import ServiceStatusDrop from '../components/dropdowns/ServiceStatusDrop.vue'
-import ServiceTypeDrop from '../components/dropdowns/ServiceTypeDrop.vue'
-import PaymentStatusDrop from '../components/dropdowns/PaymentStatusDrop.vue'
-import PaymentSourceDrop from '../components/dropdowns/PaymentSourceDrop.vue'
-import ProfileStatusDrop from '../components/dropdowns/ProfileStatusDrop.vue'
 
 import ConsultantList from '../components/consultant/ConsultantList.vue'
 import AddConsultant from '../components/consultant/AddConsultant.vue'
 import EditConsultant from '../components/consultant/ViewConsultant.vue'
-import ConsultantStatusDrop from '../components/dropdowns/ConsultantStatusDrop.vue'
 
 import ConsultantStatusList from '../components/consultant/ConsultantStatusList.vue'
 import AddConsultantStatus from '../components/consultant/AddConsultantStatus.vue'
@@ -76,22 +63,29 @@ import PaymentSourceList from '../components/payment/PaymentSourceList.vue'
 import AddPaymentSource from '../components/payment/AddPaymentSource.vue'
 import ViewPaymentSource from '../components/payment/ViewPaymentSource.vue'
 
-// import CustServPayList from '../components/payment/CustServPayList.vue'
+import CustServPayList from '../components/payment/CustServPayList.vue'
 // import AddCustServPay from '../components/payment/AddCustServPay.vue'
-// import ViewCustServPay from '../components/payment/ViewCustServPay.vue'
+import ViewCustServPay from '../components/payment/ViewCustServPay.vue'
 
-// import RegPayList from '../components/payment/RegPayList.vue'
+import RegPayList from '../components/payment/RegPayList.vue'
 // import AddRegPay from '../components/payment/AddRegPay.vue'
-// import ViewRegPay from '../components/payment/ViewRegPay.vue'
+import ViewRegPay from '../components/payment/ViewRegPay.vue'
 
-// import FeedbackList from '../components/feedback/FeedbackList.vue'
-// import AddFeedback from '../components/feedback/AddFeedback.vue'
-// import ViewFeedback from '../components/feedback/ViewFeedback.vue'
+import FeedbackList from '../components/feedback/FeedbackList.vue'
+import AddFeedback from '../components/feedback/AddFeedback.vue'
+import ViewFeedback from '../components/feedback/ViewFeedback.vue'
 
 import ProfileStatusList from '../components/profiles/ProfileStatusList.vue'
 import AddProfileStatus from '../components/profiles/AddProfileStatus.vue'
 import ViewProfileStatus from '../components/profiles/ViewProfileStatus.vue'
 
+import ATProfileList from '../components/profiles/ATProfileList.vue'
+import ViewATProfile from '../components/profiles/ViewATProfile.vue'
+
+import DmdProfileList from '../components/profiles/DmdProfileList.vue'
+import ViewDmdProfile from '../components/profiles/ViewDmdProfile.vue'
+
+import EditProfile from '../components/profiles/EditProfile.vue'
 
 Vue.use(VueRouter)
 
@@ -125,78 +119,14 @@ const routes = [
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
-  /*----------------Dropdowns-------------*/
-   {
-   name: 'SportTypeDrop',
-   path: '/SportTypeDrop',
-   component: SportTypeDrop
-},
-{
-  name: 'BusinessDrop',
-  path: '/BusinessDrop',
-  component: BusinessDrop
-},
-{
-  name: 'CustomerStatusDrop',
-  path: '/StatusDrop',
-  component: CustomerStatusDrop
-},
-{
-  name: 'CustomerTypeDrop',
-  path: '/CustomerTypeDrop',
-  component: CustomerTypeDrop
-},
-{
-  name: 'StateDrop',
-  path: '/StateDrop',
-  component: StateDrop
-},
-{
-  name: 'EventStatusDrop',
-  path: '/EventStatusDrop',
-  component: EventStatusDrop
-},
-{
-  name: 'EventTypeDrop',
-  path: '/EventTypeDrop',
-  component: EventTypeDrop
-},
-{
-  name: 'ServiceTypeDrop',
-  path: '/ServiceTypeDrop',
-  component: ServiceTypeDrop
-},
-{
-  name: 'ServiceStatusDrop',
-  path: '/ServiceStatusDrop',
-  component: ServiceStatusDrop
-},
-{
-  name: 'PaymentStatusDrop',
-  path: '/PaymentStatusDrop',
-  component: PaymentStatusDrop
-},
-{
-  name: 'PaymentSourceDrop',
-  path: '/PaymentSourceDrop',
-  component: PaymentSourceDrop
-},
-{
-  name: 'ProfileStatusDrop',
-  path: '/ProfileStatusDrop',
-  component: ProfileStatusDrop
-},
+  
 /*----------------Consultant Status-------------*/
 {
   name: 'ConsultantList',
   path: '/page/list-consultants',
   component: ConsultantList
 },
-{
-  name: 'ConsultantStatusDrop',
-  path: '/ConsultantStatusDrop',
-  component: ConsultantStatusDrop
-},
+
 {
   name: 'AddConsultant',
   path: '/page/add-new-consultant',
@@ -400,53 +330,53 @@ const routes = [
   component: ViewPaymentSource
 },
 /*----------------Customer Service Type Payment-------------*/
-// {
-//   name: 'CustServPayList',
-//   path: '/CustServPayList',
-//   component: CustServPayList
-// },
+{
+  name: 'CustServPayList',
+  path: '/CustServPayList',
+  component: CustServPayList
+},
 // {
 //   name: 'AddCustServPay',
 //   path: '/AddCustServPay',
 //   component: AddCustServPay
 // },
-// {
-//   name: 'ViewCustServPay',
-//   path: '/ViewCustServPay',
-//   component: ViewCustServPay
-// },
+{
+  name: 'ViewCustServPay',
+  path: '/ViewCustServPay',
+  component: ViewCustServPay
+},
 /*----------------Registration Payment-------------*/
-// {
-//   name: 'RegPayList',
-//   path: '/RegPayList',
-//   component: RegPayList
-// },
+{
+  name: 'RegPayList',
+  path: '/RegPayList',
+  component: RegPayList
+},
 // {
 //   name: 'AddRegPay',
 //   path: '/AddRegPay',
 //   component: AddRegPay
 // },
-// {
-//   name: 'ViewRegPay',
-//   path: '/ViewRegPay',
-//   component: ViewRegPay
-// },
+{
+  name: 'ViewRegPay',
+  path: '/ViewRegPay',
+  component: ViewRegPay
+},
 /*----------------Feedback Payment-------------*/
-// {
-//   name: 'FeedbackList',
-//   path: '/FeedbackList',
-//   component: FeedbackList
-// },
-// {
-//   name: 'AddFeedback',
-//   path: '/AddFeedback',
-//   component: AddFeedback
-// },
-// {
-//   name: 'ViewFeedback',
-//   path: '/ViewFeedback',
-//   component: ViewFeedback
-// },
+{
+  name: 'FeedbackList',
+  path: '/FeedbackList',
+  component: FeedbackList
+},
+{
+  name: 'AddFeedback',
+  path: '/AddFeedback',
+  component: AddFeedback
+},
+{
+  name: 'ViewFeedback',
+  path: '/ViewFeedback',
+  component: ViewFeedback
+},
 /*----------------Profile Status-------------*/
 {
   name: 'ProfileStatusList',
@@ -465,6 +395,8 @@ const routes = [
 },
 
 //***********Profile Routes***********//
+
+
 {
   name: 'profiles',
   path: '/profile/all-profiles',
@@ -475,26 +407,34 @@ const routes = [
   path: '/profile/Add-New-Action-Type-Profile',
   component: () => import('../components/profiles/AddProfile.vue')
 },
+/*----------- At Profile ------------*/
 {
-  name: 'PendingPayments',
-  path: '/pendingpayments',
-  component: PendingPayments
+  name: 'ATProfileList',
+  path: '/ATProfileList',
+  component: ATProfileList
 },
 {
-  name: 'NewestCustomers',
-  path: '/newestcustomers',
-  component: NewestCustomers
+  name: 'ViewATProfile',
+  path: '/ViewATProfile',
+  component: ViewATProfile
+},
+// /*----------- Dmd Profile ------------*/
+{
+  name: 'DmdProfileList',
+  path: '/DmdProfileList',
+  component: DmdProfileList
 },
 {
-  name: 'UpcomingEvents',
-  path: '/upcomingevents',
-  component: UpcomingEvents
+  name: 'ViewDmdProfile',
+  path: '/ViewDmdProfile',
+  component: ViewDmdProfile
 },
 {
   name: 'EditProfile',
-  path: '/editprofile/:id',
-  component: () => import ('../components/profiles/EditProfile.vue')
+  path: '/EditProfile',
+  component: EditProfile
 }
+
 ]
 
 const router = new VueRouter({ mode: 'history', routes: routes })

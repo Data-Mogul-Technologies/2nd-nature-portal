@@ -1,4 +1,4 @@
-import {getFeedback,getFeedbackById, insertFeedback, deleteFeedbackById, updateFeedbackById } from "../models/feedbackModel.js";
+import {getFeedback,getFeedbackById, insertFeedback, deleteFeedbackById, updateFeedbackById, getSomeFeedback } from "../models/feedbackModel.js";
 // Get All Feedback
 export const showFeedback = (req, res) => {
     getFeedback((err, results) => {
@@ -57,4 +57,15 @@ export const deleteFeedback = (req, res) => {
             res.json(results);
         }
     });
+}
+
+// Get Some Feedback
+export const showSomeFeedback = (req, res) => {
+    getSomeFeedback((err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    }); 
 }

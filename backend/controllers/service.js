@@ -1,5 +1,6 @@
 import {getServiceType, getServiceTypeById, insertServiceType, updateServiceTypeById, deleteServiceTypeById,
-getServiceStatus,getServiceStatusById,insertServiceStatus,updateServiceStatusById,deleteServiceStatusById} from "../models/serviceModel.js"
+getServiceStatus,getServiceStatusById,insertServiceStatus,updateServiceStatusById,deleteServiceStatusById,
+getCustServ, getCustServById} from "../models/serviceModel.js"
 
 //Get All Service
 export const allServiceType = (req, res) => {
@@ -123,3 +124,28 @@ export const deleteServiceStatus = (req, res) => {
         }
     });
 }
+
+//view Cust serv ALL
+//Get All Service
+export const allCustServ = (req, res) => {
+    getCustServ((err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+
+//get single Service
+export const showCustServById = (req, res) => {
+    getCustServById(req.params.id, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+
+

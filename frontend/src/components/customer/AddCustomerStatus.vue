@@ -45,7 +45,7 @@ export default {
         });
         this.CustomerStatusName = "";
         
-        this.$router.push("/CustomerStatusList");
+        this.$router.push("/page/customer-status");
       } catch (err) {
         console.log(err);
       }

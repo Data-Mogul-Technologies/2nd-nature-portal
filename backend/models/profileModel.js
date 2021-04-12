@@ -282,3 +282,21 @@ export const updateDmdProfileById = (data, id, result) => {
         }
     });   
 }
+
+//PendingProfiles
+export const getPendingProfiles = (result) => {
+    db.query("select customer.first_name, customer.last_name, status_at_dmd.name as profile_status," +
+    " at_customer_report.date as start_date, at_profile.at_profile, sport_type.name as sport" +
+    " from customer join at_customer_report on customer.customer_id = at_customer_report.customer_id " +
+    " join at_profile on at_customer_report.action_type_id = at_profile.at_profile_id " +
+    " join sport_type on at_customer_report.sport_type_id = sport_type.sport_type_id " +
+    " join status_at_dmd on at_customer_report.status_at_dmd_id = status_at_dmd.status_at_dmd_id " +
+    " and status_at_dmd.status_at_dmd_id = 2 order by first_name asc" , (err, results) => {
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });
+}

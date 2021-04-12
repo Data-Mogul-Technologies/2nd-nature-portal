@@ -45,7 +45,7 @@ export default {
         });
         this.EventStatusName = "";
         
-        this.$router.push("/EventStatusList");
+        this.$router.push("/page/event-status");
       } catch (err) {
         console.log(err);
       }

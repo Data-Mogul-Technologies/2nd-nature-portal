@@ -1,6 +1,9 @@
 <template>
   <div>
-    
+    <router-link :to="{ name: 'Create' }" class="button is-success mt-5"
+      >Add New</router-link>
+      <router-link :to="{ name: 'AllCustServ' }" class="button is-outline-primary mt-5"
+      >Service</router-link>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">
       <thead>
         <tr>
@@ -16,7 +19,6 @@
         <tr v-for="customer in customers" :key="customer.customer_id">
           <td>{{ customer.first_name }}</td>
           <td>{{ customer.last_name }}</td>
-          <td>{{ customer.email }}</td>
           <td>{{ customer.mobile_phone}}</td>
           <td>{{ customer.actual_date | formatDate }}</td>
           
@@ -26,10 +28,10 @@
               class="button is-info is-small"
               >View</router-link
             >
-            <a
-              class="button is-danger is-small"
-              @click="deleteCustomer(customer.customer_id)"
-              >Delete</a
+            <router-link
+              :to="{ name: 'AddService', params: { id: customer.customer_id } }"
+              class="button is-info is-small"
+              >Add Service</router-link
             >
           </td>
         </tr>
@@ -37,13 +39,12 @@
     </table>
   </div>
 </template>
- 
 <script>
 // import axios
 import axios from "axios";
  
 export default {
-  name: "NewestCustomers",
+  name: "ProspectDate",
   data() {
     return {
       customers: [],
@@ -53,34 +54,22 @@ export default {
   created() {
     this.getCustomers();
   },
-
-
  
   methods: {
     // Get All Customers
     async getCustomers() {
       try {
-        const response = await axios.get("http://localhost:5000/CustomerByDate");
+        const response = await axios.get("http://localhost:5000/ProspectDate");
         this.customers = response.data;
       } catch (err) {
         console.log(err);
       }
     },
-
-    
  
-    // Delete Customer
-    async deleteCustomer(id) {
-      try {
-        await axios.delete(`http://localhost:5000/Customers/${id}`);
-        this.getCustomers();
-      } catch (err) {
-        console.log(err);
-      }
-    },
   },
 };
 </script>
  
 <style>
+
 </style>

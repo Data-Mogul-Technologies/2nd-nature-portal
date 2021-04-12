@@ -157,7 +157,7 @@
     
     <div class="control">
       <button class="button is-success" @click="updateCustomer">UPDATE</button>
-      <router-link :to="{name:'Home'}"><button class="button is-danger">Cancel</button></router-link>
+      <router-link :to="{name:'CustomerList'}"><button class="button is-danger">Cancel</button></router-link>
     </div>
   </div>
 </template>

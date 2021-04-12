@@ -27,11 +27,7 @@
               class="button is-info is-small"
               >View</router-link
             >
-            <a
-              class="button is-danger is-small"
-              @click="deleteConsultant(consultant.sport_consultant_id)"
-              >Delete</a
-            >
+          
           </td>
         </tr>
       </tbody>

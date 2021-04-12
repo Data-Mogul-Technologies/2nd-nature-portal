@@ -64,7 +64,7 @@ export default {
         this.ConsultantStatusName = "";
        
         
-        this.$router.push("/");
+        this.$router.push("/page/consultant-status");
       } catch (err) {
         console.log(err);
       }

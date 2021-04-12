@@ -45,7 +45,7 @@ export default {
         });
         this.ServiceStatusName = "";
         
-        this.$router.push("/ServiceStatusList");
+        this.$router.push("/page/service-status");
       } catch (err) {
         console.log(err);
       }

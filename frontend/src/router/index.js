@@ -86,6 +86,13 @@ import DmdProfileList from '../components/profiles/DmdProfileList.vue'
 import ViewDmdProfile from '../components/profiles/ViewDmdProfile.vue'
 
 import EditProfile from '../components/profiles/EditProfile.vue'
+import PendingProfiles from '../components/profiles/PendingProfiles.vue'
+
+import AddService from '../components/service/AddService.vue'
+import AddCustServ from '../components/service/AddCustServ.vue'
+import AllCustServ from '../components/service/AllCustServ.vue'
+
+import ProspectDate from '../components/reports/ProspectDate.vue'
 
 Vue.use(VueRouter)
 
@@ -120,7 +127,7 @@ const routes = [
     component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
   },
   
-/*----------------Consultant Status-------------*/
+/*----------------Consultant-------------*/
 {
   name: 'ConsultantList',
   path: '/page/list-consultants',
@@ -140,7 +147,7 @@ const routes = [
 /*----------------Business-------------*/
 {
   name: 'BusinessList',
-  path: '/BusinessList',
+  path: '/page/list-businesses',
   component: BusinessList
 },
 {
@@ -156,7 +163,7 @@ const routes = [
 /*----------------Sport Type-------------*/
 {
   name: 'SportList',
-  path: '/SportList',
+  path: '/page/sport-type',
   component: SportList
 },
 {
@@ -172,7 +179,7 @@ const routes = [
 /*----------------Event-------------*/
 {
   name: 'EventList',
-  path: '/EventList',
+  path: '/event/list-event',
   component: EventList
 },
 {
@@ -188,7 +195,7 @@ const routes = [
 /*----------------Customer Status-------------*/
 {
   name: 'CustomerStatusList',
-  path: '/CustomerStatusList',
+  path: '/page/customer-status',
   component: CustomerStatusList
 },
 {
@@ -204,7 +211,7 @@ const routes = [
 /*----------------Consultant Status-------------*/
 {
   name: 'ConsultantStatusList',
-  path: '/ConsultantStatusList',
+  path: '/page/consultant-status',
   component: ConsultantStatusList
 },
 {
@@ -220,7 +227,7 @@ const routes = [
 /*----------------Event Status-------------*/
 {
   name: 'EventStatusList',
-  path: '/EventStatusList',
+  path: '/page/event-status',
   component: EventStatusList
 },
 {
@@ -236,7 +243,7 @@ const routes = [
 /*----------------Event Type-------------*/
 {
   name: 'EventTypeList',
-  path: '/EventTypeList',
+  path: '/page/event-type',
   component: EventTypeList
 },
 {
@@ -252,7 +259,7 @@ const routes = [
 /*----------------Customer Type-------------*/
 {
   name: 'CustomerTypeList',
-  path: '/CustomerTypeList',
+  path: '/page/customer-type',
   component: CustomerTypeList
 },
 {
@@ -268,7 +275,7 @@ const routes = [
 /*----------------Service Type-------------*/
 {
   name: 'ServiceTypeList',
-  path: '/ServiceTypeList',
+  path: '/page/service-type',
   component: ServiceTypeList
 },
 {
@@ -284,7 +291,7 @@ const routes = [
 /*----------------Service Status-------------*/
 {
   name: 'ServiceStatusList',
-  path: '/ServiceStatusList',
+  path: '/page/service-status',
   component: ServiceStatusList
 },
 {
@@ -300,7 +307,7 @@ const routes = [
 /*----------------Payment Status-------------*/
 {
   name: 'PaymentStatusList',
-  path: '/PaymentStatusList',
+  path: '/page/payment-status',
   component: PaymentStatusList
 },
 {
@@ -316,7 +323,7 @@ const routes = [
 /*----------------Payment Source-------------*/
 {
   name: 'PaymentSourceList',
-  path: '/PaymentSourceList',
+  path: '/page/payment-source',
   component: PaymentSourceList
 },
 {
@@ -332,7 +339,7 @@ const routes = [
 /*----------------Customer Service Type Payment-------------*/
 {
   name: 'CustServPayList',
-  path: '/CustServPayList',
+  path: '/payment/service-payment',
   component: CustServPayList
 },
 // {
@@ -348,7 +355,7 @@ const routes = [
 /*----------------Registration Payment-------------*/
 {
   name: 'RegPayList',
-  path: '/RegPayList',
+  path: '/payment/event-payment',
   component: RegPayList
 },
 // {
@@ -380,7 +387,7 @@ const routes = [
 /*----------------Profile Status-------------*/
 {
   name: 'ProfileStatusList',
-  path: '/ProfileStatusList',
+  path: '/page/profile-status',
   component: ProfileStatusList
 },
 {
@@ -410,7 +417,7 @@ const routes = [
 /*----------- At Profile ------------*/
 {
   name: 'ATProfileList',
-  path: '/ATProfileList',
+  path: '/profile/manage-action-types',
   component: ATProfileList
 },
 {
@@ -421,7 +428,7 @@ const routes = [
 // /*----------- Dmd Profile ------------*/
 {
   name: 'DmdProfileList',
-  path: '/DmdProfileList',
+  path: '/profile/manage-dm-ds',
   component: DmdProfileList
 },
 {
@@ -434,6 +441,57 @@ const routes = [
   path: '/EditProfile',
   component: EditProfile
 }
+,
+{
+  name: 'PendingPayments',
+  path: '/PendingPayments',
+  component: PendingPayments
+}
+,
+{
+  name: 'UpcomingEvents',
+  path: '/UpcomingEvents',
+  component: UpcomingEvents
+}
+,
+{
+  name: 'NewestCustomers',
+  path: '/NewestCustomers',
+  component: NewestCustomers
+}
+,
+{
+  name: 'PendingProfiles',
+  path: '/PendingProfiles',
+  component: PendingProfiles
+}
+,
+{
+  name: 'AddService',
+  path: '/AddService',
+  component: AddService
+}
+,
+
+{
+  name: 'AddCustServ',
+  path: '/AddCustServ/:id',
+  component: AddCustServ
+}
+,
+
+{
+  name: 'AllCustServ',
+  path: '/AllCustServ',
+  component: AllCustServ
+},
+
+{
+  name: 'ProspectDate',
+  path: '/ProspectDate',
+  component: ProspectDate
+}
+
 
 ]
 

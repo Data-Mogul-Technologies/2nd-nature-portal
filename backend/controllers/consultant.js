@@ -1,5 +1,6 @@
 import {getConsultants, getConsultantById, insertConsultant,  updateConsultantById, deleteConsultantById, 
-    getConsultantStatusTypes, getConsultantStatusById, insertConsultantStatus, updateConsultantStatusById, deleteConsultantStatusById} from "../models/consultantModel.js"
+    getConsultantStatusTypes, getConsultantStatusById, insertConsultantStatus, updateConsultantStatusById, deleteConsultantStatusById
+} from "../models/consultantModel.js"
 
 // Get All Consultants
 export const showConsultants = (req, res) => {
@@ -122,3 +123,4 @@ export const deleteConsultantStatus = (req, res) => {
         }
     });
 }
+

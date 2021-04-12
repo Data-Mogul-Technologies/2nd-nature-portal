@@ -4,7 +4,8 @@ import express from "express";
 // import function from controller
 import {showCustomers, showCustomerById, allState, createCustomer, updateCustomer, deleteCustomer, 
 allCustomerStatusTypes, showCustomerStatusById, createCustomerStatus, updateCustomerStatus, deleteCustomerStatus,
-allCustomerTypes, showCustomerTypeById, createCustomerType, updateCustomerType, deleteCustomerType} from "../controllers/Customer.js";
+allCustomerTypes, showCustomerTypeById, createCustomerType, updateCustomerType, deleteCustomerType,
+sortingCustomer} from "../controllers/Customer.js";
 
 import {showConsultants, showConsultantById, createConsultant,updateConsultant,deleteConsultant, 
 allConsultantStatusTypes, showConsultantStatusById, createConsultantStatus, updateConsultantStatus, deleteConsultantStatus} from "../controllers/consultant.js" 
@@ -24,15 +25,21 @@ import {allBusiness, showBusinessById, createBusiness, updateBusiness, deleteBus
 import {allSportTypes, showSportTypesId, createSportTypes, updateSportTypes, deleteSportTypes} from "../controllers/sportType.js"
 
 import {allServiceType, showServiceTypeById, createServiceType, updateServiceType, deleteServiceType,
-allServiceStatus, showServiceStatusById, createServiceStatus, updateServiceStatus, deleteServiceStatus} from "../controllers/service.js"
+allServiceStatus, showServiceStatusById, createServiceStatus, updateServiceStatus, deleteServiceStatus,
+allCustServ, showCustServById} from "../controllers/service.js"
 
 import {allProfileStatus, showProfileStatusById, createProfileStatus, updateProfileStatus, deleteProfileStatus, 
 createProfile,showProfiles, showATProfileTypes, showDMD_profile_types, showATProfileById, updateATProfile, showDmdProfileById, updateDmdProfile,
-showProfileById, updateProfile, updateProfileStatusCustomer} from "../controllers/profile.js"
+showProfileById, updateProfile, updateProfileStatusCustomer, showPendingProfiles} from "../controllers/profile.js"
 
 import {showFeedback,showFeedbackById, createFeedback, updateFeedback, deleteFeedback} from "../controllers/feedback.js"
 
 import {createRegistration, createCustServ} from '../controllers/registration.js'
+
+import {allProspectDate, allYrRetRateConsult, allLastYrRetRateConsult, allCurrYrRetRateConsult,
+allRetRateCompany, allEventAttendeesById, allAnnualPaymentCust, allATReportResult,
+allDMDReportResult, allCountBusSport, allCountATReport, allCountHowHear, allCountRecHelp,
+allCustFeedback, allConsultantCust} from '../controllers/report.js'
 // init express router
 const router = express.Router();
 
@@ -57,6 +64,9 @@ router.put('/Customers/:id', updateCustomer);
  
 // Delete Customer by id
 router.delete('/Customers/:id', deleteCustomer);
+
+//sort Customer
+router.get('/CustomerByDate', sortingCustomer);
 
 
 
@@ -416,5 +426,32 @@ router.get('/DmdProfile/:id', showDmdProfileById);
 
 // Update DmdProfile Status
 router.put('/DmdProfile/:id', updateDmdProfile);
+
+/*-----Pending Profles----*/
+router.get('/PendingProfiles', showPendingProfiles);
+
+/* -------Cust Serv ---------*/
+router.get('/CustServ/', allCustServ)
+router.get('/CustServ/:id', showCustServById)
+
+
+/*------------------Report Routes----------*/
+router.get('/ProspectDate', allProspectDate )
+router.get('/YrRetRateConsult', allYrRetRateConsult)
+router.get('/LastYrRetRateConsult', allLastYrRetRateConsult)
+router.get('/CurrYrRetRateConsult', allCurrYrRetRateConsult )
+router.get('/RetRateCompany', allRetRateCompany )
+router.get('/EventAttendees/:id', allEventAttendeesById )
+router.get('/AnnualPaymentCust', allAnnualPaymentCust )
+router.get('/ATReportResult',allATReportResult )
+router.get('/DMDReportResult', allDMDReportResult )
+router.get('/CountBusSport', allCountBusSport )
+router.get('/CountATReport', allCountATReport )
+router.get('/CountHowHear', allCountHowHear )
+router.get('/CountRecHelp', allCountRecHelp )
+router.get('/CustFeedback', allCustFeedback )
+router.get('/ConsultantCust/:id', allConsultantCust )
+
+
 //export default router
 export default router;

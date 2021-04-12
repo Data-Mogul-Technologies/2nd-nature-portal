@@ -102,7 +102,7 @@ export const getProfiles = (result) => {
                 "join sport_type "+
                     "on at_customer_report.sport_type_id = sport_type.sport_type_id "+
                 "join status_at_dmd "+
-                    "on at_customer_report.status_id = status_at_dmd.status_at_dmd_id "+
+                    "on at_customer_report.status_at_dmd_id = status_at_dmd.status_at_dmd_id "+
                 "order by first_name asc", 
     (err, results) => {             
         if(err) {
@@ -152,7 +152,7 @@ export const getProfileById = (id, result) => {
             "join sport_type "+
                 "on at_customer_report.sport_type_id = sport_type.sport_type_id "+
             "join status_at_dmd "+
-                "on at_customer_report.status_id = status_at_dmd.status_at_dmd_id "+
+                "on at_customer_report.status_at_dmd_id = status_at_dmd.status_at_dmd_id "+
             "order by first_name asc", [id], (err, results) => {             
         if(err) {
             console.log(err);
@@ -179,8 +179,8 @@ export const updateProfileById = (data, id, result) => {
 
 // Update ProfileStatus of profile to Database
 export const updateProfileStatusForCustomer = (data, id, result) => {
-    db.query("UPDATE at_customer_report SET status_id = ? WHERE at_customer_report_id = ?" ,
-     [data.status_id,  id], 
+    db.query("UPDATE at_customer_report SET status_at_dmd_id = ? WHERE at_customer_report_id = ?" ,
+     [data.status_at_dmd_id,  id], 
      (err, results) => {             
         if(err) {
             console.log(err);
@@ -282,7 +282,6 @@ export const updateDmdProfileById = (data, id, result) => {
         }
     });   
 }
-
 
 //PendingProfiles
 export const getPendingProfiles = (result) => {

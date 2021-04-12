@@ -108,7 +108,7 @@
     
     <div class="control">
       <button class="button is-success" @click="updateCustomer">UPDATE</button>
-      <router-link :to="{name:'Home'}"><button class="button is-danger">Cancel</button></router-link>
+      <router-link :to="{name:'RegPayList'}"><button class="button is-danger">Cancel</button></router-link>
     </div>
   </div>
 </template>
@@ -189,7 +189,7 @@ export default {
         this.PayStat="";
         
         
-        this.$router.push("/RegPayList");
+        this.$router.push("/payment/event-payment");
       } catch (err) {
         console.log(err);
       }

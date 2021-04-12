@@ -39,18 +39,17 @@
                 <router-link
                     :to="{ name: 'EditProfile', params: { id: currentProfile.at_customer_report_id } }"
                         class="button is-info is-small"
-                >Edit
+                >Edit profile
                 </router-link></h4>
                 <div>
                     <label><strong>Name: </strong></label> 
                     {{ currentProfile.first_name }} {{ currentProfile.last_name }}
                     <label ><strong>Profile Status: </strong>
                     {{ currentProfile.profile_status }}  </label>
-                    </div> 
+                </div> 
                     <ProfileStatusDrop  @changeProfileStatus="selectedProfileStatus=$event" v-model="selectedProfileStatus" /> 
                     <b-button variant="primary" size="sm" @click="updateProfileStatus">Update profile status</b-button>
                    
-
                <div>
                     <label><strong>Action Type:</strong></label>
                     {{ currentProfile.profile_type }}
@@ -128,7 +127,7 @@
                 </div>
                 
                  </div>
-                 <div v-else>
+            <div v-else>
                 <br />
                 <p>Please click on a Profile...</p>
             </div>
@@ -147,6 +146,7 @@
 
 <script>
 import ProfileStatusDrop from '../dropdowns/ProfileStatusDrop';
+
 import axios from "axios";
 export default {
     name:"ProfileCard",
@@ -156,22 +156,15 @@ export default {
     props: ['allProfiles', 'config'],
     data() {
         return {
-            allprofiles: [],
+            // allprofiles: [],
             currentProfile: null,
             currentIndex: -1,
+
+            //for hte b-card to update status
             selectedProfileStatus: 0
         }
     },
     methods: {
-        //Get all profiles 
-        async getProfiles() {
-            try {
-                const response = await axios.get("http://localhost:5000/Profiles");
-                this.allprofiles = response.data;
-            } catch (err) {
-                console.log(err);
-            }
-        },
 
         setSelectedRow(profile, index) {
             this.currentProfile = profile;

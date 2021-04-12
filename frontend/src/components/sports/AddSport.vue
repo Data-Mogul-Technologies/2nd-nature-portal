@@ -45,7 +45,7 @@ export default {
         });
         this.SportName = "";
         
-        this.$router.push("/SportList");
+        this.$router.push("/page/sport-type");
       } catch (err) {
         console.log(err);
       }

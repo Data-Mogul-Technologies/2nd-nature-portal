@@ -1,7 +1,8 @@
 import {getPaymentStatus, insertPaymentStatus, updatePaymentStatusById, deletePaymentStatusById,getPaymentStatusById,
 getPaymentSource, insertPaymentSource, updatePaymentSourceById, deletePaymentSourceById, getPaymentSourceById,
 getCustPayment, getCustPaymentById, insertCustPayment, updateCustPaymentById, deleteCustPaymentById,
-getRegistrationPayment, getRegistrationPaymentById, insertRegistrationPayment, updateRegistrationPaymentById, deleteRegistrationPaymentById, getPendingPayment, getTotalPendingPayment} from "../models/paymentModel.js"
+getRegistrationPayment, getRegistrationPaymentById, insertRegistrationPayment, updateRegistrationPaymentById, deleteRegistrationPaymentById, getPendingPayment,
+getTotalPendingPayment} from "../models/paymentModel.js"
 
 
 /*--------------------------------Customer Service Type Payment-----------------------------*/

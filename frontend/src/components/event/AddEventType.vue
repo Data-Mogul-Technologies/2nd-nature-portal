@@ -45,7 +45,7 @@ export default {
         });
         this.EventTypeName = "";
         
-        this.$router.push("/EventTypeList");
+        this.$router.push("/page/event-type");
       } catch (err) {
         console.log(err);
       }

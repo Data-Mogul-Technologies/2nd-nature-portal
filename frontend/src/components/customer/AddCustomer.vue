@@ -164,8 +164,8 @@
         />   
       </div>
     </div>
- <ServiceStatusDrop @changeServiceStatusType="selectedServiceStatus=$event"/>
-    <ServiceTypeDrop @changeCustomerType="selectedServiceType=$event"/>
+ <!-- <ServiceStatusDrop @changeServiceStatusType="selectedServiceStatus=$event"/>
+    <ServiceTypeDrop @changeCustomerType="selectedServiceType=$event"/> -->
     <div class="field">
       <label class="label">Comments</label>
       <div class="control">
@@ -175,8 +175,8 @@
     </div>
     
     <div class="control">
-      <button class="button is-success" @click="saveCustomer | saveCustomerService">Add</button>
-      <router-link :to="{name:'Home'}"><button class="button is-danger">Cancel</button></router-link>
+      <button class="button is-success" @click="saveCustomer ">Add</button>
+      <router-link :to="{name:'CustomerList'}"><button class="button is-danger">Cancel</button></router-link>
     </div>
 
     
@@ -192,8 +192,8 @@ import CustomerTypeDrop from '../dropdowns/CustomerTypeDrop';
 import BusinessDrop from '../dropdowns/BusinessDrop';
 import SportTypeDrop from '../dropdowns/SportTypeDrop';
 import StateDrop from '../dropdowns/StateDrop';
-import ServiceStatusDrop from '../dropdowns/ServiceStatusDrop'
-import ServiceTypeDrop from '../dropdowns/ServiceTypeDrop'
+// import ServiceStatusDrop from '../dropdowns/ServiceStatusDrop'
+// import ServiceTypeDrop from '../dropdowns/ServiceTypeDrop'
 
 export default {
   name: "AddCustomer",
@@ -203,8 +203,8 @@ export default {
     BusinessDrop,
     SportTypeDrop,
     StateDrop,
-    ServiceStatusDrop,
-    ServiceTypeDrop,
+    // ServiceStatusDrop,
+    // ServiceTypeDrop,
 
   },
   data() {
@@ -225,11 +225,12 @@ export default {
         CustomerHPhone:"",
         CustomerEmail :"",
         CustomerHeard:"",
-        CustomerPDate:YYYY-MM-DD,
-        CustomerADate:YYYY-MM-DD,
+        CustomerHelp:"",
+        CustomerPDate:"",
+        CustomerADate:"",
         CustomerComment:"",
-        selectedServiceType: 0,
-        selectedServiceStatus: 0
+        // selectedServiceType: 0,
+        // selectedServiceStatus: 0
     };
   },
   
@@ -253,6 +254,7 @@ export default {
             home_phone: this.CustomerHPhone,
             email: this.CustomerEmail,
             hear_about_us: this.CustomerHeard,
+            how_can_help: this.CustomerHelp,
             prospect_date: this.CustomerPDate,
             actual_date: this.CustomerADate,
             comments: this.CustomerComment
@@ -272,27 +274,16 @@ export default {
         this.CustomerHPhone="";
         this.CustomerEmail = "";
         this.CustomerHeard="";
+        this.CustomerHelp="";
         this.CustomerPDate="";
         this.CustomerADate="";
         this.CustomerComment="";
-        // this.$router.push("/AddService");
+        this.$router.push("/view/list-customers")
       } catch (err) {
         console.log(err);
       }
     },
-    async saveCustomerService() {
-      try {
-        await axios.post("http://localhost:5000/CustServ", {
-            customer_id: this.customer_id,
-            service_type_id: this.selectedServiceType,
-            service_status_id: this.selectedServiceType
-        });
-        
-       this.$router.push("/view/list-customer");
-      } catch (err) {
-        console.log(err);
-      }}
-
+    
   },
 };
 </script>

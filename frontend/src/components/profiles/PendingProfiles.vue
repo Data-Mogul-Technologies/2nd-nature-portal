@@ -1,6 +1,6 @@
 <template>
   <div>
-
+    
     <table class="table is-striped is-bordered mt-2 is-fullwidth">
       <thead>
         <tr>
@@ -9,7 +9,7 @@
           <th>Sport Type</th>
           <th>Profile Status</th>
           <th>Start Date</th> 
-
+         
         </tr>
       </thead>
       <tbody>
@@ -19,8 +19,8 @@
           <td>{{ customer.sport }}</td>
           <td>{{ customer.profile_status }}</td>
           <td>{{ customer.start_date | formatDate }}</td>
-
-
+      
+      
         </tr>
       </tbody>
     </table>

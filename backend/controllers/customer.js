@@ -1,7 +1,8 @@
 // Import function from Customer Model
 import { getCustomers, getState, getCustomerById, insertCustomer, updateCustomerById, deleteCustomerById,
     getStatusTypes, getCustomerStatusById,insertCustomerStatus,updateCustomerStatusById,deleteCustomerStatusById,
-    getCustomerType, getCustomerTypeById, insertCustomerType, updateCustomerTypeById, deleteCustomerTypeById, sortCustomers, threeCustomers } from "../models/CustomerModel.js";
+    getCustomerType, getCustomerTypeById, insertCustomerType, updateCustomerTypeById, deleteCustomerTypeById,sortCustomers, threeCustomers } from "../models/CustomerModel.js";
+
  
 // Get All Customers
 export const showCustomers = (req, res) => {
@@ -76,7 +77,6 @@ export const deleteCustomer = (req, res) => {
 }
 
 /*---------------- Customer Status ---------------------*/
-
 
 //Get All Customer Status Types
 export const allCustomerStatusTypes = (req, res) => {
@@ -209,6 +209,7 @@ export const sortingCustomer = (req, res) => {
     });
 }
 
+//showing 3 newest customers
 export const sortingThreeCustomer = (req, res) => {
     threeCustomers((err, results) => {
         if (err){

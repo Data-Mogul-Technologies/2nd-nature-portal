@@ -122,3 +122,51 @@ export const deleteServiceStatusById = (id, result) => {
         }
     });   
 }
+
+
+export const getCustServ = (result) => {
+    db.query(  "select customer.customer_id," +
+    " customer.first_name,"+
+    " customer.last_name,"+
+    " customer_service_type.customer_service_type_id,"+
+    " customer_service_type.service_type_id,"+
+    " service_type.service_type_id,"+
+    " service_type.name as 'ServiceName'," +
+    " service_status.service_status_id,"+
+    " service_status.name as 'StatusName'"+
+    " from customer_service_type"+
+    " join customer on  customer.customer_id = customer_service_type.customer_id"+
+    " join service_type on service_type.service_type_id = customer_service_type.service_type_id"+
+     " join service_status on service_status.service_status_id = customer_service_type.service_status_id", (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });   
+}
+
+// Get Single ServiceType
+export const getCustServById = (id, result) => {
+    db.query("select customer.customer_id," +
+    " customer.first_name,"+
+    " customer.last_name,"+
+    " customer_service_type.customer_service_type_id,"+
+    " customer_service_type.service_type_id,"+
+    " service_type.service_type_id,"+
+    " service_type.name as 'ServiceName'," +
+    " service_status.service_status_id,"+
+    " service_status.name as 'StatusName'"+
+    " from customer_service_type"+
+    " join customer on  customer.customer_id = customer_service_type.customer_id"+
+    " join service_type on service_type.service_type_id = customer_service_type.service_type_id"+
+     " join service_status on service_status.service_status_id = customer_service_type.service_status_id where customer_service_type.customer_service_type_id = ?", [id], (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results[0]);
+        }
+    });   
+}

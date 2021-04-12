@@ -19,7 +19,7 @@ export const getCustPayment = (result) => {
     " join service_type on service_type.service_type_id = customer_service_type.service_type_id"+
     " join customer_service_type_payment on customer_service_type_payment.customer_service_type_id = customer_service_type.customer_service_type_id"+
     " join payment_source on payment_source.payment_source_id = customer_service_type_payment.payment_source_id"+
-    " join payment_status on payment_status.payment_status_id = customer_service_type_payment.payment_status_id"
+    " join payment_status on payment_status.payment_status_id = customer_service_type_payment.payment_status_id order by actual_date desc"
     , (err, results) => {             
         if(err) {
             console.log(err);

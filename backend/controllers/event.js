@@ -23,6 +23,19 @@ export const showEventById = (req, res) => {
         }
     });
 }
+
+// //get all customers for a single event
+// export const showEventCustomers = (req, res) => {
+//     getEventCustomers(req.params.id, (err, results) => {
+//         if (err){
+//             res.send(err);
+//         }else{
+//             res.json(results);
+//         }
+//     });
+// }
+
+
  
 // Create New Event
 export const createEvent = (req, res) => {

@@ -2,7 +2,7 @@
 import db from "../config/database.js";
 //Get Registration
  
-// Insert Registration to Database
+ //Insert into registration table with customer ID for an event 
 export const insertRegistration = (data, result) => {
     db.query("INSERT INTO Registration SET ?", [data], (err, results) => {             
         if(err) {
@@ -26,4 +26,4 @@ export const insertCustServ = (data, result) => {
     });   
 }
  
- 
+

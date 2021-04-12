@@ -179,12 +179,12 @@ const routes = [
 /*----------------Event-------------*/
 {
   name: 'EventList',
-  path: '/event/list-event',
-  component: EventList
+  path: '/event/list-events',
+  component: () => import ('../views/AllEvents.vue')
 },
 {
   name: 'AddEvent',
-  path: '/AddEvent',
+  path: '/event/add-new-event',
   component: AddEvent
 },
 {
@@ -256,6 +256,25 @@ const routes = [
   path: '/ViewEventType',
   component: ViewEventType
 },
+
+{
+  name: 'PendingPayments',
+  path: '/PendingPayments',
+  component: PendingPayments
+}
+,
+{
+  name: 'UpcomingEvents',
+  path: '/UpcomingEvents',
+  component: UpcomingEvents
+}
+,
+{
+  name: 'NewestCustomers',
+  path: '/NewestCustomers',
+  component: NewestCustomers
+},
+
 /*----------------Customer Type-------------*/
 {
   name: 'CustomerTypeList',

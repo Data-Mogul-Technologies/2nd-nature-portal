@@ -69,13 +69,6 @@ export default {
       link: '/create',
     },
 
-    ,
-
-    {
-      type: 'link',
-      txt: 'List Event',
-      link: '/event',
-    },
 
   ],
 
@@ -194,6 +187,33 @@ export default {
       txt: 'Event Payment',
       link: '/payment',
     }
+  ],
+  Events: [
+
+    {
+      type: 'title',
+      txt: 'Events',
+      icon: 'fas fa-calendar-alt context-menu__title-icon',
+    },
+
+    {
+      type: 'link',
+      txt: 'List Events',
+      link: '/event',
+    },
+
+    {
+      type: 'link',
+      txt: 'Add new event',
+      link: '/event',
+    },
+
+    {
+      type: 'link',
+      txt: 'Manage event types',
+      link: '/event',
+    }
+
   ],
 
 };

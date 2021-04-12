@@ -2,6 +2,7 @@
 import { getCustomers, getState, getCustomerById, insertCustomer, updateCustomerById, deleteCustomerById,
     getStatusTypes, getCustomerStatusById,insertCustomerStatus,updateCustomerStatusById,deleteCustomerStatusById,
     getCustomerType, getCustomerTypeById, insertCustomerType, updateCustomerTypeById, deleteCustomerTypeById,sortCustomers } from "../models/CustomerModel.js";
+
  
 // Get All Customers
 export const showCustomers = (req, res) => {
@@ -76,7 +77,6 @@ export const deleteCustomer = (req, res) => {
 }
 
 /*---------------- Customer Status ---------------------*/
-
 
 //Get All Customer Status Types
 export const allCustomerStatusTypes = (req, res) => {

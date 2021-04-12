@@ -3,7 +3,7 @@ import {insertRegistration, insertCustServ} from '../models/registrationModel.js
 
 
 
-// Create New Registration
+// Create New Registration for an event
 export const createRegistration = (req, res) => {
     const data = req.body;
     insertRegistration(data, (err, results) => {
@@ -26,4 +26,5 @@ export const createCustServ = (req, res) => {
         }
     });
 }
+
 

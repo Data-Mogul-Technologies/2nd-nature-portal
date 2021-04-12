@@ -7,6 +7,7 @@ allCustomerStatusTypes, showCustomerStatusById, createCustomerStatus, updateCust
 allCustomerTypes, showCustomerTypeById, createCustomerType, updateCustomerType, deleteCustomerType,
 sortingCustomer} from "../controllers/Customer.js";
 
+
 import {showConsultants, showConsultantById, createConsultant,updateConsultant,deleteConsultant, 
 allConsultantStatusTypes, showConsultantStatusById, createConsultantStatus, updateConsultantStatus, deleteConsultantStatus} from "../controllers/consultant.js" 
 
@@ -40,11 +41,31 @@ import {allProspectDate, allYrRetRateConsult, allLastYrRetRateConsult, allCurrYr
 allRetRateCompany, allEventAttendeesById, allAnnualPaymentCust, allATReportResult,
 allDMDReportResult, allCountBusSport, allCountATReport, allCountHowHear, allCountRecHelp,
 allCustFeedback, allConsultantCust} from '../controllers/report.js'
+
 // init express router
 const router = express.Router();
 
 router.post('/Registration', createRegistration);
 router.post('/CustServ', createCustServ);
+
+// /------------------Report Routes----------/
+router.get('/ProspectDate', allProspectDate )
+router.get('/YrRetRateConsult', allYrRetRateConsult)
+router.get('/LastYrRetRateConsult', allLastYrRetRateConsult)
+router.get('/CurrYrRetRateConsult', allCurrYrRetRateConsult )
+router.get('/RetRateCompany', allRetRateCompany )
+router.get('/EventAttendees/:id', allEventAttendeesById )
+router.get('/AnnualPaymentCust', allAnnualPaymentCust )
+router.get('/ATReportResult',allATReportResult )
+router.get('/DMDReportResult', allDMDReportResult )
+router.get('/CountBusSport', allCountBusSport )
+router.get('/CountATReport', allCountATReport )
+router.get('/CountHowHear', allCountHowHear )
+router.get('/CountRecHelp', allCountRecHelp )
+router.get('/CustFeedback', allCustFeedback )
+router.get('/ConsultantCust', allConsultantCust )
+
+// /------------------End Report Routes----------/
 
 /*----------------------------Customer and Associates Routers------------------------- */
 // Get All Customer
@@ -67,8 +88,6 @@ router.delete('/Customers/:id', deleteCustomer);
 
 //sort Customer
 router.get('/CustomerByDate', sortingCustomer);
-
-
 
 /*--------------------------------End Customer Routers--------------------------*/
 /*--------------------------------Consultant Routers-----------------------------*/
@@ -126,6 +145,8 @@ router.put('/CustPayment/:id', updateCustPayment);
 router.delete('/CustPayment/:id', deleteCustPayment);
 /*--------------------------------Customer Servie Type Routers End-----------------------------*/
 
+
+
 /*--------------------------------Registration Payment Routers-----------------------------*/
 //Get All Registration Payment
 router.get('/RegistrationPayment',showRegistrationPayment);
@@ -142,6 +163,8 @@ router.put('/RegistrationPayment/:id', updateRegistrationPayment);
 // Delete Registration Payment by id
 router.delete('/RegistrationPayment/:id', deleteRegistrationPayment);
 /*--------------------------------Registration Payment Routers End-----------------------------*/
+
+
 
 /*--------------------------------Payment Status Routers-----------------------------*/
 //Get All Payment Status
@@ -185,6 +208,9 @@ router.get('/Events',showEvents);
 
 // Get Single Events
 router.get('/Events/:id', showEventById);
+
+// // Get Customers for a Single Events
+// router.get('/EventCustomers/:id', showEventCustomers);
  
 // Create New Events
 router.post('/Events', createEvent);
@@ -196,7 +222,6 @@ router.put('/Events/:id', updateEvent);
 router.delete('/Events/:id', deleteEvent);
 
 //Upcoming Events
-
 router.get('/UpcomingEvents',showUpcoming); 
 
 

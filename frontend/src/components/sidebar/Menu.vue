@@ -85,6 +85,18 @@
         </a>
       </li>
 
+      <li>
+        <a
+        href="#"
+        @click.prevent="updateMenu('Events')"
+        :class="highlightSection('Events')"
+        >
+          <i class= "fas fa-calendar-alt context-menutitle-icon" aria-hidden="true"></i>
+          Events
+          <i class="fa fa-chevron-right menuarrow-icon" aria-hidden="true"></i>
+        </a>
+      </li>
+
 
     </ul>
 

@@ -113,9 +113,12 @@ export const getRetRateCompany = (result) => {
 
 export const getEventAttendeesByID = (id, result) => {
     db.query("select customer.first_name as FirstName," +
-    " customer.last_name LastName," +
-    " business.name Business,"+ 
-    " payment_status.name as PaymentStatus"+
+    " customer.last_name as LastName," +
+    " customer.customer_id,"+
+    " business.name as Business,"+ 
+    " payment_status.name as PaymentStatus,"+
+    " registration.event_id," +
+    " registration.registration_id" +
     " from registration"+
     " join event" +
     " on registration.event_id=event.event_id"+
@@ -295,6 +298,4 @@ export const getConsultantCust = (id,result) => {
         }
     });   
 }
-
-
 

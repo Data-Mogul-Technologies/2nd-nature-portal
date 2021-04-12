@@ -1,7 +1,8 @@
 // Import function from Customer Model
 import { getCustomers, getState, getCustomerById, insertCustomer, updateCustomerById, deleteCustomerById,
     getStatusTypes, getCustomerStatusById,insertCustomerStatus,updateCustomerStatusById,deleteCustomerStatusById,
-    getCustomerType, getCustomerTypeById, insertCustomerType, updateCustomerTypeById, deleteCustomerTypeById, sortCustomers } from "../models/CustomerModel.js";
+    getCustomerType, getCustomerTypeById, insertCustomerType, updateCustomerTypeById, deleteCustomerTypeById,sortCustomers } from "../models/CustomerModel.js";
+
  
 // Get All Customers
 export const showCustomers = (req, res) => {

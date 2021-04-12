@@ -130,7 +130,8 @@ export const getEventAttendeesByID = (id, result) => {
     " on customer.business_id=business.business_id"+
     " join payment_status"+
     " on registration_payment.payment_status_id= payment_status.payment_status_id"+
-    " where event.event_id = ?", [id], (err, results) => {             
+    " where event.event_id = ?"
+    ,[id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -142,10 +143,8 @@ export const getEventAttendeesByID = (id, result) => {
 
 //Test this one for sure
 export const getAnnualPaymentCust = (result) => {
-    db.query("SET @solo := (SELECT sum(amount) FROM customer_service_type_payment) "+
-    " SET @event := (SELECT sum(amount) FROM registration_payment)"+
-    " SELECT CONCAT('$',@solo) as Services,  CONCAT('$',@event) as Events, CONCAT('$',Round(COALESCE(SUM(@solo),0)+COALESCE(SUM(@event),0),2)) AS Total" 
-   , (err, results) => {             
+    db.query( "SELECT CONCAT('$',(SELECT sum(amount) FROM customer_service_type_payment)) as Services,  CONCAT('$',(SELECT sum(amount) FROM registration_payment)) as Events, CONCAT('$',Round(COALESCE(SUM((SELECT sum(amount) FROM customer_service_type_payment)),0)+COALESCE(SUM((SELECT sum(amount) FROM registration_payment)),0),2)) AS Total"   
+    , (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -265,13 +264,13 @@ export const getCountRecHelp = (result) => {
 
 export const getCustFeedback = (result) => {
     db.query("select customer.first_name As 'First Name', customer.last_name As 'Last Name', sport_type.name as 'Sport type',"+
-    "at_profile.at_profile AS 'AT Profile Result', how_hear As 'How Hear Response', how_helpful_comment as 'How helpful Comments',"+
-    "recommend_comment as 'Recommend Comments', gen_feedback As 'General Feedback'"+
-    "FROM feedback"+
-    "INNER JOIN customer ON feedback.customer_id = customer.customer_id"+
-    "INNER JOIN sport_type ON customer.sport_type_id = sport_type.sport_type_id"+
-    "INNER JOIN at_customer_report ON customer.customer_id = at_customer_report.customer_id"+
-    "INNER JOIN at_profile ON at_customer_report.action_type_id = at_profile.at_profile_id"
+    " at_profile.at_profile AS 'AT Profile Result', how_hear As 'How Hear Response', how_helpful_comment as 'How helpful Comments',"+
+    " recommend_comment as 'Recommend Comments', gen_feedback As 'General Feedback'"+
+    " FROM feedback"+
+    " INNER JOIN customer ON feedback.customer_id = customer.customer_id"+
+    " INNER JOIN sport_type ON customer.sport_type_id = sport_type.sport_type_id"+
+    " INNER JOIN at_customer_report ON customer.customer_id = at_customer_report.customer_id"+
+    " INNER JOIN at_profile ON at_customer_report.action_type_id = at_profile.at_profile_id"
    , (err, results) => {             
         if(err) {
             console.log(err);
@@ -282,7 +281,7 @@ export const getCustFeedback = (result) => {
     });   
 }
 
-export const getConsultantCust = (result) => {
+export const getConsultantCust = (id,result) => {
     db.query("SELECT sport_consultant.last_name AS 'Consultant', customer.last_name AS 'Customer Last Name',"+
     " customer.first_name AS 'Customer First Name', customer.email AS 'Email', customer.mobile_phone AS 'Mobile Phone', business.name AS 'Business'"+
     " FROM sport_consultant_customer"+
@@ -290,15 +289,13 @@ export const getConsultantCust = (result) => {
     " INNER JOIN customer ON sport_consultant_customer.customer_id = customer.customer_id"+
     " INNER JOIN business ON customer.business_id = business.business_id"+
     " WHERE sport_consultant.sport_consultant_id = ?"+
-    " ORDER By customer.last_name"
-   , (err, results) => {             
+    " ORDER By customer.last_name" ,[id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
         } else {
-            result(null, results);
+            result(null, results[0]);
         }
     });   
 }
-
 

@@ -45,7 +45,7 @@ export default {
         });
         this.BusinessName = "";
         
-        this.$router.push("/BusinessList");
+        this.$router.push("/page/list-businesses");
       } catch (err) {
         console.log(err);
       }

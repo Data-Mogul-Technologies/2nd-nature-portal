@@ -45,7 +45,7 @@ export default {
         });
         this.ServiceTypeName = "";
         
-        this.$router.push("/ServiceTypeList");
+        this.$router.push("/page/service-type");
       } catch (err) {
         console.log(err);
       }

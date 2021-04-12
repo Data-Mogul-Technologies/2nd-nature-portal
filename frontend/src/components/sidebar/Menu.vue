@@ -19,10 +19,7 @@
       </li>
 
       <li>
-        <a 
-        href="#" 
-        @click.prevent="updateMenu('home')" 
-        :class="highlightSection('home')" >
+        <a href="#" @click.prevent="updateMenu('home')" :class="highlightSection('home')" >
             <i class="fa fa-home menu__icon" aria-hidden="true"></i>
             Dashboard
         </a>
@@ -67,18 +64,41 @@
       <li>
         <a
         href="#"
-        @click.prevent="updateMenu('Events')"
-        :class="highlightSection('Events')"
+        @click.prevent="updateMenu('payment')"
+        :class="highlightSection('payment')"
         >
-          <i class= "fas fa-calendar-alt context-menu__title-icon" aria-hidden="true"></i>
-          Events
+          <i class="fa fa-user menu__icon" aria-hidden="true"></i>
+          Payment
           <i class="fa fa-chevron-right menu__arrow-icon" aria-hidden="true"></i>
         </a>
       </li>
 
+      <li>
+        <a
+        href="#"
+        @click.prevent="updateMenu('manage')"
+        :class="highlightSection('manage')"
+        >
+          <i class="fa fa-user menu__icon" aria-hidden="true"></i>
+          Manage Status/Types
+          <i class="fa fa-chevron-right menu__arrow-icon" aria-hidden="true"></i>
+        </a>
+      </li>
+
+      <li>
+        <a
+        href="#"
+        @click.prevent="updateMenu('Events')"
+        :class="highlightSection('Events')"
+        >
+          <i class= "fas fa-calendar-alt context-menutitle-icon" aria-hidden="true"></i>
+          Events
+          <i class="fa fa-chevron-right menuarrow-icon" aria-hidden="true"></i>
+        </a>
+      </li>
+
+
     </ul>
-
-
 
     <!-- context menu: childs of root level itens -->
     <transition name="slide-fade">

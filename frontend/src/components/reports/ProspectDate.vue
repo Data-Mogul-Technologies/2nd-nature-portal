@@ -19,7 +19,6 @@
         <tr v-for="customer in customers" :key="customer.customer_id">
           <td>{{ customer.first_name }}</td>
           <td>{{ customer.last_name }}</td>
-          <td>{{ customer.email }}</td>
           <td>{{ customer.mobile_phone}}</td>
           <td>{{ customer.actual_date | formatDate }}</td>
           
@@ -40,13 +39,12 @@
     </table>
   </div>
 </template>
- 
 <script>
 // import axios
 import axios from "axios";
  
 export default {
-  name: "CustomerList",
+  name: "ProspectDate",
   data() {
     return {
       customers: [],
@@ -61,25 +59,17 @@ export default {
     // Get All Customers
     async getCustomers() {
       try {
-        const response = await axios.get("http://localhost:5000/Customers");
+        const response = await axios.get("http://localhost:5000/ProspectDate");
         this.customers = response.data;
       } catch (err) {
         console.log(err);
       }
     },
  
-    // Delete Customer
-    async deleteCustomer(id) {
-      try {
-        await axios.delete(`http://localhost:5000/Customers/${id}`);
-        this.getCustomers();
-      } catch (err) {
-        console.log(err);
-      }
-    },
   },
 };
 </script>
  
 <style>
+
 </style>

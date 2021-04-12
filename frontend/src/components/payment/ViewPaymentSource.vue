@@ -64,7 +64,7 @@ export default {
         this.PaymentSourceName = "";
        
         
-        this.$router.push("/PaymentSourceList");
+        this.$router.push("/page/payment-source");
       } catch (err) {
         console.log(err);
       }

@@ -64,7 +64,7 @@ export default {
         this.PaymentStatusName = "";
        
         
-        this.$router.push("/PaymentStatusList");
+        this.$router.push("/page/payment-status");
       } catch (err) {
         console.log(err);
       }

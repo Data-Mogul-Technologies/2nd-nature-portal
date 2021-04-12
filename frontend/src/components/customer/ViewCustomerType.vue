@@ -64,7 +64,7 @@ export default {
         this.CustomerTypeName = "";
        
         
-        this.$router.push("/CustomerTypeList");
+        this.$router.push("/page/customer-type");
       } catch (err) {
         console.log(err);
       }

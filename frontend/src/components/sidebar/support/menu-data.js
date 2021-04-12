@@ -69,6 +69,7 @@ export default {
       link: '/create',
     },
 
+
   ],
 
   account: [
@@ -90,9 +91,103 @@ export default {
       txt: 'Add new consultant',
       link: '/page',
     }
-
   ],
 
+  manage: [
+
+    {
+      type: 'title',
+      txt: 'Manage Status/Types',
+      icon: 'fa fa-user context-menu__title-icon',
+    },
+
+    {
+      type: 'link',
+      txt: 'Sport type',
+      link: '/page',
+    },
+
+    {
+      type: 'link',
+      txt: 'Customer status',
+      link: '/page',
+    },
+
+    {
+      type: 'link',
+      txt: 'Customer type',
+      link: '/page',
+    },
+
+    {
+      type: 'link',
+      txt: 'Event status',
+      link: '/page',
+    },
+
+    {
+      type: 'link',
+      txt: 'Event type',
+      link: '/page',
+    },
+    
+
+    {
+      type: 'link',
+      txt: 'Service status',
+      link: '/page',
+    },
+
+    {
+      type: 'link',
+      txt: 'Service type',
+      link: '/page',
+    },
+
+    {
+      type: 'link',
+      txt: 'Payment status',
+      link: '/page',
+    },
+
+    {
+      type: 'link',
+      txt: 'Payment source',
+      link: '/page',
+    },
+
+    {
+      type: 'link',
+      txt: 'Profile status',
+      link: '/page',
+    },
+    {
+      type: 'link',
+      txt: 'Consultant Status',
+      link: '/page',
+    }
+
+  ],
+  payment: [
+
+    {
+      type: 'title',
+      txt: 'Payment',
+      icon: 'fa fa-user context-menu__title-icon',
+    },
+
+    {
+      type: 'link',
+      txt: 'Service Payment',
+      link: '/payment',
+    },
+
+    {
+      type: 'link',
+      txt: 'Event Payment',
+      link: '/payment',
+    }
+  ],
   Events: [
 
     {
@@ -120,33 +215,5 @@ export default {
     }
 
   ],
-
-  // reports: [
-
-  //   {
-  //     type: 'title',
-  //     txt: 'Insights',
-  //     icon: 'fa fa-user context-menu__title-icon',
-  //   },
-
-  //   {
-  //     type: 'link',
-  //     txt: 'List consultants',
-  //     link: '/page',
-  //   },
-
-  //   {
-  //     type: 'link',
-  //     txt: 'Add new consultant',
-  //     link: '/page',
-  //   },
-
-  //   {
-  //     type: 'link',
-  //     txt: 'Logout',
-  //     link: '/page',
-  //   }
-
-  // ],
 
 };

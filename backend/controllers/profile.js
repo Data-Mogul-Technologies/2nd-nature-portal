@@ -1,6 +1,5 @@
 import {getProfileStatus, getProfileStatusById, insertProfileStatus, updateProfileStatusById, deleteProfileStatusById,
- getProfiles, getATProfileTypes, getDMD_profile_types, insertProfile,
-getATProfileById, 
+ getProfiles, getATProfileTypes, getDMD_profile_types, insertProfile,getATProfileById, 
 updateATProfileById, getDmdProfileById,updateDmdProfileById, getProfileById, updateProfileById, updateProfileStatusForCustomer, getPendingProfiles} from "../models/profileModel.js"
     
     //Get All Profile Status 
@@ -163,6 +162,7 @@ export const showATProfileTypes = (req, res) => {
         });
     }
     
+
 /*------------DMD Profile----------*/
     
     
@@ -213,3 +213,4 @@ export const showPendingProfiles = (req, res) => {
         }
     });
 }
+

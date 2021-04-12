@@ -5,7 +5,7 @@ import express from "express";
 import {showCustomers, showCustomerById, allState, createCustomer, updateCustomer, deleteCustomer, 
 allCustomerStatusTypes, showCustomerStatusById, createCustomerStatus, updateCustomerStatus, deleteCustomerStatus,
 allCustomerTypes, showCustomerTypeById, createCustomerType, updateCustomerType, deleteCustomerType,
-sortingCustomer} from "../controllers/Customer.js";
+sortingCustomer, sortingThreeCustomer} from "../controllers/Customer.js";
 
 
 import {showConsultants, showConsultantById, createConsultant,updateConsultant,deleteConsultant, 
@@ -14,12 +14,13 @@ allConsultantStatusTypes, showConsultantStatusById, createConsultantStatus, upda
 import {showPaymentStatus, showPaymentStatusById, createPaymentStatus, updatePaymentStatus,deletePaymentStatus,
 showPaymentSource, showPaymentSourceById, createPaymentSource, updatePaymentSource, deletePaymentSource,
 showCustPayment, showCustPaymentById, createCustPayment, updateCustPayment, deleteCustPayment,
-showRegistrationPayment, showRegistrationPaymentById, createRegistrationPayment, updateRegistrationPayment, deleteRegistrationPayment, showPendingPayment} from "../controllers/payment.js"
+showRegistrationPayment, showRegistrationPaymentById, createRegistrationPayment, updateRegistrationPayment, deleteRegistrationPayment, showPendingPayment,
+ showTotalPendingPayment} from "../controllers/payment.js"
 
 
 import {showEvents, showEventById, createEvent, updateEvent,deleteEvent,
 showEventStatus,showEventStatusById,createEventStatus,updateEventStatus,deleteEventStatus,
-showEventType, showEventTypeById, createEventType, updateEventType,deleteEventType, showUpcoming} from "../controllers/event.js"
+showEventType, showEventTypeById, createEventType, updateEventType,deleteEventType, showUpcoming, showTotalEvents} from "../controllers/event.js"
 
 import {allBusiness, showBusinessById, createBusiness, updateBusiness, deleteBusiness} from "../controllers/business.js"
 
@@ -469,6 +470,8 @@ router.get('/RetRateCompany', allRetRateCompany )
 router.get('/EventAttendees/:id', allEventAttendeesById )
 router.get('/AnnualPaymentCust', allAnnualPaymentCust )
 router.get('/ATReportResult',allATReportResult )
+
+
 router.get('/DMDReportResult', allDMDReportResult )
 router.get('/CountBusSport', allCountBusSport )
 router.get('/CountATReport', allCountATReport )
@@ -477,6 +480,23 @@ router.get('/CountRecHelp', allCountRecHelp )
 router.get('/CustFeedback', allCustFeedback )
 router.get('/ConsultantCust/:id', allConsultantCust )
 
+//pending payments
+//pending profiles
+//upcoming events
+//total upcoming events
+
+/*--------Counts for events/payments and some other stuff-------- */
+router.get('/TotalEvents', showTotalEvents);
+
+//total upcoming events
+router.get('/TotalPendingPayments', showTotalPendingPayment);
+
+
+//show 3 customers
+router.get('/threeCustomers', sortingThreeCustomer);
+
+//pending profiles
+router.get('/PendingProfiles', showPendingProfiles);
 
 //export default router
 export default router;

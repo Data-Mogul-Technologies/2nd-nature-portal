@@ -6,14 +6,9 @@
         <tr>
           <th>First Name</th>
           <th>Last Name</th>
-          <th>Email</th>
           <th>Business</th>
-          <th>Customer Type</th>
-          <th>Sport Type</th>
-          <th>Mobile Phone</th>
-          <th>Office Phone</th>
-          <th>Prospect Date:</th>
-          <th>Actual Date:</th>
+          <th>Payment Status</th>
+          
           
         </tr>
       </thead>
@@ -21,14 +16,8 @@
         <tr v-for="customer in customers" :key="customer.customer_id">
           <td>{{ customer.FirstName }}</td>
           <td>{{ customer.LastName }}</td>
-          <td>{{ customer.Email}}</td>
-          <td>{{ customer.BusinessName}}</td>
-          <td>{{ customer.CustomerType}}</td>
-          <td>{{ customer.SportType}}</td>
-          <td>{{ customer.MobilePhone}}</td>
-          <td>{{ customer.OfficePhone}}</td>
-          <td>{{ customer.ProspectDate | formatDate }}</td>
-          <td>{{ customer.ActualDate | formatDate }}</td>
+          <td>{{ customer.Business}}</td>
+          <td>{{ customer.PaymentStatus}}</td>
           
           
         </tr>
@@ -41,7 +30,7 @@
 import axios from "axios";
  
 export default {
-  name: "ProspectDate",
+  name: "EventAttendees",
   data() {
     return {
       customers: [],
@@ -56,7 +45,7 @@ export default {
     // Get All Customers
     async getCustomers() {
       try {
-        const response = await axios.get("http://localhost:5000/ProspectDate");
+        const response = await axios.get("http://localhost:5000/EventAttendees/1");
         this.customers = response.data;
       } catch (err) {
         console.log(err);

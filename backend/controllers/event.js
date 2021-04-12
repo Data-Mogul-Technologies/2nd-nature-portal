@@ -1,6 +1,6 @@
 import {getEvents, insertEvent, updateEventById, deleteEventById,getEventById,
 getEventStatus,getEventStatusById,insertEventStatus,updateEventStatusById,deleteEventStatusById,
-getEventType,getEventTypeById,insertEventType,updateEventTypeById,deleteEventTypeById, getUpcoming} from "../models/eventModel.js"
+getEventType,getEventTypeById,insertEventType,updateEventTypeById,deleteEventTypeById, getUpcoming, getTotalEvents} from "../models/eventModel.js"
 
 // Get All Events
 export const showEvents = (req, res) => {
@@ -199,6 +199,17 @@ export const deleteEventType = (req, res) => {
 //Upcoming Events
 export const showUpcoming = (req, res) => {
     getUpcoming((err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+
+//Total Upcoming Events
+export const showTotalEvents = (req, res) => {
+    getTotalEvents((err, results) => {
         if (err){
             res.send(err);
         }else{

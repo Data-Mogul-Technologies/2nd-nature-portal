@@ -10,8 +10,6 @@
                 @click="setActiveProfile(profile, index)"
         />
         </b-row> -->
-
-        <nav />
         <main>
             <Pagination 
                 v-if="profiles"
@@ -50,6 +48,7 @@ export default {
         return {
             perPageOptions,
             pagination: { page: 1, perPage: perPageOptions[0] },
+
             profiles: [],
             currentProfile: null,
             currentIndex: -1,
@@ -85,8 +84,8 @@ export default {
     created() {
         this.getProfiles();
     },
+    
     methods: {
-
         //Get all profiles 
         async getProfiles() {
             try {
@@ -103,7 +102,6 @@ export default {
         setActiveProfile(row, index) {
             this.selectedRow = row;
             this.currentIndex = index;
-
         }
     },
     computed: {

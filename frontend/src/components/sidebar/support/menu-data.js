@@ -89,14 +89,64 @@ export default {
       type: 'link',
       txt: 'Add new consultant',
       link: '/page',
+    }
+
+  ],
+
+  Events: [
+
+    {
+      type: 'title',
+      txt: 'Events',
+      icon: 'fas fa-calendar-alt context-menu__title-icon',
     },
 
     {
       type: 'link',
-      txt: 'Logout',
-      link: '/page',
+      txt: 'List Events',
+      link: '/event',
+    },
+
+    {
+      type: 'link',
+      txt: 'Add new event',
+      link: '/event',
+    },
+
+    {
+      type: 'link',
+      txt: 'Manage event types',
+      link: '/event',
     }
 
   ],
+
+  // reports: [
+
+  //   {
+  //     type: 'title',
+  //     txt: 'Insights',
+  //     icon: 'fa fa-user context-menu__title-icon',
+  //   },
+
+  //   {
+  //     type: 'link',
+  //     txt: 'List consultants',
+  //     link: '/page',
+  //   },
+
+  //   {
+  //     type: 'link',
+  //     txt: 'Add new consultant',
+  //     link: '/page',
+  //   },
+
+  //   {
+  //     type: 'link',
+  //     txt: 'Logout',
+  //     link: '/page',
+  //   }
+
+  // ],
 
 };

@@ -175,9 +175,9 @@ export const getATReportResult = (result) => {
 }
 
 export const getDMDReportResult = (result) => {
-    db.query("Select customer.first_name AS 'First Name', customer.last_name AS 'Last Name', customer.email AS 'Email Address',"+
-    " business.name AS 'Business Name', sport_type.name AS 'Sport Type',dmd_profile.dom_driver AS 'DMD Dominant Driver',"+
-    " dmd_profile.sec_driver AS 'Secondary Driver', status_at_dmd.name AS 'DMD Report Status', date AS 'Report Date' from dmd_customer_report"+
+    db.query("Select customer.first_name AS 'FirstName', customer.last_name AS 'LastName', customer.email AS 'EmailAddress',"+
+    " business.name AS 'BusinessName', sport_type.name AS 'SportType',dmd_profile.dom_driver AS 'DMDDominantDriver',"+
+    " dmd_profile.sec_driver AS 'SecondaryDriver', status_at_dmd.name AS 'DMDReportStatus', date AS 'ReportDate' from dmd_customer_report"+
     " INNER JOIN customer ON dmd_customer_report.customer_id = customer.customer_id"+
     " INNER JOIN dmd_profile ON dmd_customer_report.dmd_action_type_id = dmd_profile.dmd_profile_id"+
     " INNER JOIN sport_type ON customer.sport_type_id = sport_type.sport_type_id"+
@@ -196,8 +196,8 @@ export const getDMDReportResult = (result) => {
 
 
 export const getCountBusSport = (result) => {
-    db.query("Select business.name AS 'Business Name', sport_type.name AS 'Sport Type', at_profile.at_profile AS 'AT Profile Type',"+
-    " COUNT(at_profile.at_profile) AS 'AT Profile Trend' from at_customer_report"+
+    db.query("Select business.name AS 'BusinessName', sport_type.name AS 'SportType', at_profile.at_profile AS 'ATProfileType',"+
+    " COUNT(at_profile.at_profile) AS 'ATProfileTrend' from at_customer_report"+
     " INNER JOIN customer ON at_customer_report.customer_id = customer.customer_id"+
     " INNER JOIN at_profile ON at_customer_report.action_type_id = at_profile.at_profile_id"+
     " INNER JOIN sport_type ON at_customer_report.sport_type_id = sport_type.sport_type_id"+
@@ -215,7 +215,7 @@ export const getCountBusSport = (result) => {
 }
 
 export const getCountATReport = (result) => {
-    db.query("Select at_profile.at_profile AS 'Action Types',COUNT(at_profile.at_profile) AS 'AT Profile Trend' from at_customer_report"+
+    db.query("Select at_profile.at_profile AS 'ActionTypes',COUNT(at_profile.at_profile) AS 'ATProfileTrend' from at_customer_report"+
     " INNER JOIN at_profile ON at_customer_report.action_type_id = at_profile.at_profile_id"+
     " Group By at_profile.at_profile"+
     " Order By at_profile.at_profile"
@@ -230,7 +230,7 @@ export const getCountATReport = (result) => {
 }
 
 export const getCountHowHear = (result) => {
-    db.query("Select how_hear AS 'How customers hear of 2NP', CONCAT(round(COUNT(how_hear) *100 / totalhear.ct_hear),'%') as '% Results' from feedback"+
+    db.query("Select how_hear AS 'Howcustomershearof2NP', CONCAT(round(COUNT(how_hear) *100 / totalhear.ct_hear),'%') as 'percentResults' from feedback"+
     " CROSS JOIN (SELECT COUNT(how_hear) AS ct_hear FROM feedback) totalhear"+
     " Group By how_hear"+
     " Order By how_hear"
@@ -245,8 +245,8 @@ export const getCountHowHear = (result) => {
 }
 
 export const getCountRecHelp = (result) => {
-    db.query("select how_helpful_rate AS 'Rating', CONCAT(round(COUNT(how_helpful_rate) *100 / totalhelp.ct_helpful),'%') AS 'How Helpful was 2NP',"+
-    " CONCAT(round(COUNT(recommend_rate) *100 / totalrec.ct_recommend),'%') AS 'How likely Recommend 2NP'"+
+    db.query("select how_helpful_rate AS 'Rating', CONCAT(round(COUNT(how_helpful_rate) *100 / totalhelp.ct_helpful),'%') AS 'HowHelpfulwas2NP',"+
+    " CONCAT(round(COUNT(recommend_rate) *100 / totalrec.ct_recommend),'%') AS 'HowlikelyRecommend2NP'"+
     " FROM feedback"+
     " CROSS JOIN (SELECT COUNT(how_helpful_rate) AS ct_helpful FROM feedback) totalhelp"+
     " CROSS JOIN (SELECT COUNT(recommend_rate) AS ct_recommend FROM feedback) totalrec"+
@@ -263,14 +263,15 @@ export const getCountRecHelp = (result) => {
 }
 
 export const getCustFeedback = (result) => {
-    db.query("select customer.first_name As 'First Name', customer.last_name As 'Last Name', sport_type.name as 'Sport type',"+
-    " at_profile.at_profile AS 'AT Profile Result', how_hear As 'How Hear Response', how_helpful_comment as 'How helpful Comments',"+
-    " recommend_comment as 'Recommend Comments', gen_feedback As 'General Feedback'"+
+    db.query("select customer.first_name As 'FirstName', customer.last_name As 'LastName', sport_type.name as 'Sporttype',"+
+    " at_profile.at_profile AS 'ATProfileResult', how_hear As 'HowHearResponse', how_helpful_comment as 'HowhelpfulComments',"+
+    " recommend_comment as 'RecommendComments', gen_feedback As 'GeneralFeedback'"+
     " FROM feedback"+
     " INNER JOIN customer ON feedback.customer_id = customer.customer_id"+
     " INNER JOIN sport_type ON customer.sport_type_id = sport_type.sport_type_id"+
     " INNER JOIN at_customer_report ON customer.customer_id = at_customer_report.customer_id"+
-    " INNER JOIN at_profile ON at_customer_report.action_type_id = at_profile.at_profile_id"
+    " INNER JOIN at_profile ON at_customer_report.action_type_id = at_profile.at_profile_id" +
+    " order by customer.first_name"
    , (err, results) => {             
         if(err) {
             console.log(err);
@@ -282,19 +283,13 @@ export const getCustFeedback = (result) => {
 }
 
 export const getConsultantCust = (id,result) => {
-    db.query("SELECT sport_consultant.last_name AS 'Consultant', customer.last_name AS 'Customer Last Name',"+
-    " customer.first_name AS 'Customer First Name', customer.email AS 'Email', customer.mobile_phone AS 'Mobile Phone', business.name AS 'Business'"+
-    " FROM sport_consultant_customer"+
-    " INNER JOIN sport_consultant ON sport_consultant_customer.sport_consultant_id = sport_consultant.sport_consultant_id"+
-    " INNER JOIN customer ON sport_consultant_customer.customer_id = customer.customer_id"+
-    " INNER JOIN business ON customer.business_id = business.business_id"+
-    " WHERE sport_consultant.sport_consultant_id = ?"+
-    " ORDER By customer.last_name" ,[id], (err, results) => {             
+    db.query("SELECT sport_consultant.first_name, sport_consultant.last_name AS 'Consultant', customer.last_name AS 'CustomerLastName', customer.first_name AS 'CustomerFirstName', customer.email AS 'Email', customer.mobile_phone AS 'MobilePhone', business.name AS 'Business' FROM sport_consultant_customer INNER JOIN sport_consultant ON sport_consultant_customer.sport_consultant_id = sport_consultant.sport_consultant_id INNER JOIN customer ON sport_consultant_customer.customer_id = customer.customer_id INNER JOIN business ON customer.business_id = business.business_id WHERE sport_consultant.sport_consultant_id = ? ORDER By customer.last_name"
+     ,[id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
         } else {
-            result(null, results[0]);
+            result(null, results);
         }
     });   
 }

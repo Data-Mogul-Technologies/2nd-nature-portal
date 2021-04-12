@@ -57,14 +57,16 @@ router.get('/RetRateCompany', allRetRateCompany )
 router.get('/EventAttendees/:id', allEventAttendeesById )
 router.get('/AnnualPaymentCust', allAnnualPaymentCust )
 router.get('/ATReportResult',allATReportResult )
+
+
+////
 router.get('/DMDReportResult', allDMDReportResult )
 router.get('/CountBusSport', allCountBusSport )
 router.get('/CountATReport', allCountATReport )
 router.get('/CountHowHear', allCountHowHear )
 router.get('/CountRecHelp', allCountRecHelp )
 router.get('/CustFeedback', allCustFeedback )
-router.get('/ConsultantCust', allConsultantCust )
-
+router.get('/ConsultantCust/:id', allConsultantCust)
 // /------------------End Report Routes----------/
 
 /*----------------------------Customer and Associates Routers------------------------- */

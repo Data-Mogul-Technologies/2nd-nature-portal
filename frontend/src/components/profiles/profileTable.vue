@@ -27,7 +27,6 @@
         
         <b-col>
             <b-card
-                :title = "name"
                 tag = "article"
                 style="max-width:100rem"
                 class = "mb-2"

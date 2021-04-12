@@ -509,7 +509,50 @@ const routes = [
   name: 'ProspectDate',
   path: '/ProspectDate',
   component: ProspectDate
+},
+
+/*----------- Reports ------------*/
+{
+  name: 'DMDProfileReport',
+  path: '/DMDProfileReport',
+  component: () => import('../components/reports/DmdProfileReport.vue')
+},
+{
+  name: 'ATProfileTrend',
+  path: '/ATProfileTrend',
+  component: () => import('../components/reports/ATProfileTrendReport.vue')
+},
+{
+  name: 'CountATReport',
+  path: '/CountATReport',
+  component: () => import('../components/reports/ATProfileCountReport.vue')
+},
+{
+  name: 'ReferralSourceReport',
+  path: '/ReferralSourceReport',
+  component: () => import('../components/reports/ReferalSourceReport.vue')
+},
+{
+  name: 'FeedbackReport',
+  path: '/FeedbackReport',
+  component: () => import('../components/reports/FeedbackReport.vue')
+},
+{
+  name: 'CustomerFeedback',
+  path: '/CustomerFeedback',
+  component: () => import('../components/reports/CustomerFeedback.vue')
+},
+{
+  name: 'CustomerFeedback',
+  path: '/CustomerFeedback',
+  component: () => import('../components/reports/CustomerFeedback.vue')
+},
+{
+  name: 'CustomersPerConsultant',
+  path: '/CustomersPerConsultant',
+  component: () => import('../components/reports/CustomersPerConsultant.vue')
 }
+
 
 
 ]

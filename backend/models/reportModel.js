@@ -143,7 +143,10 @@ export const getEventAttendeesByID = (id, result) => {
 
 //Test this one for sure
 export const getAnnualPaymentCust = (result) => {
-    db.query( "SELECT CONCAT('$',(SELECT sum(amount) FROM customer_service_type_payment)) as Services,  CONCAT('$',(SELECT sum(amount) FROM registration_payment)) as Events, CONCAT('$',Round(COALESCE(SUM((SELECT sum(amount) FROM customer_service_type_payment)),0)+COALESCE(SUM((SELECT sum(amount) FROM registration_payment)),0),2)) AS Total"   
+    db.query( "SELECT CONCAT('$',format((SELECT sum(amount) FROM customer_service_type_payment),2)) as Services," +
+    " CONCAT('$',format((SELECT sum(amount) FROM registration_payment),2)) as Events," +
+    " CONCAT('$',format(COALESCE(SUM((SELECT sum(amount) FROM customer_service_type_payment)),0)+COALESCE(SUM((SELECT sum(amount)"+
+    " FROM registration_payment)),0),2)) AS Total"   
     , (err, results) => {             
         if(err) {
             console.log(err);

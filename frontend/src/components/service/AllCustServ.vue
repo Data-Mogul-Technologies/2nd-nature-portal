@@ -23,7 +23,7 @@
           
           <td class="has-text-centered">
             <router-link
-              :to="{ name: 'ViewCustServ', params: { id: customer.customer_service_type_id } }"
+              :to="{ name: 'ViewCustServPay', params: { id: customer.customer_service_type_id } }"
               class="button is-info is-small"
               >Add Payment</router-link
             >

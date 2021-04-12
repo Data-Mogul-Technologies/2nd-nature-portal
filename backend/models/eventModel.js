@@ -221,7 +221,6 @@ export const getUpcoming = (result) => {
 }
 
 
-
 //Get Total Number of Upcoming Events
 export const getTotalEvents = (result) => {
     db.query("select count(*) total from (select  event.name as Name, event.date as Date, event.city as City," +

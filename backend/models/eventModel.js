@@ -203,3 +203,24 @@ export const getUpcoming = (result) => {
         }
     });   
 }
+
+
+//Get Total Number of Upcoming Events
+export const getTotalEvents = (result) => {
+    db.query("select count(*) total from (select  event.name as Name, event.date as Date, event.city as City," +
+" state.name as State, event_status.name as Status, event_type.name as Type," +
+" count(registration.event_id) as `HowManyAttendees`" +
+" from event" +
+" join event_status on event.event_status_id = event_status.event_status_id" +
+" join event_type on event.event_type_id= event_type.event_type_id" +
+" join state on event.state_id= state.state_id" +
+" join registration on event.event_id=registration.event_id" +
+" group by registration.event_id order by event.date desc)Total;" , (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });   
+}

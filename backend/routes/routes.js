@@ -4,7 +4,7 @@ import express from "express";
 // import function from controller
 import {showCustomers, showCustomerById, allState, createCustomer, updateCustomer, deleteCustomer, 
 allCustomerStatusTypes, showCustomerStatusById, createCustomerStatus, updateCustomerStatus, deleteCustomerStatus,
-allCustomerTypes, showCustomerTypeById, createCustomerType, updateCustomerType, deleteCustomerType} from "../controllers/Customer.js";
+allCustomerTypes, showCustomerTypeById, createCustomerType, updateCustomerType, deleteCustomerType, sortingCustomer, sortingThreeCustomer} from "../controllers/Customer.js";
 
 import {showConsultants, showConsultantById, createConsultant,updateConsultant,deleteConsultant, 
 allConsultantStatusTypes, showConsultantStatusById, createConsultantStatus, updateConsultantStatus, deleteConsultantStatus} from "../controllers/consultant.js" 
@@ -12,12 +12,12 @@ allConsultantStatusTypes, showConsultantStatusById, createConsultantStatus, upda
 import {showPaymentStatus, showPaymentStatusById, createPaymentStatus, updatePaymentStatus,deletePaymentStatus,
 showPaymentSource, showPaymentSourceById, createPaymentSource, updatePaymentSource, deletePaymentSource,
 showCustPayment, showCustPaymentById, createCustPayment, updateCustPayment, deleteCustPayment,
-showRegistrationPayment, showRegistrationPaymentById, createRegistrationPayment, updateRegistrationPayment, deleteRegistrationPayment, showPendingPayment} from "../controllers/payment.js"
+showRegistrationPayment, showRegistrationPaymentById, createRegistrationPayment, updateRegistrationPayment, deleteRegistrationPayment, showPendingPayment, showTotalPendingPayment} from "../controllers/payment.js"
 
 
 import {showEvents, showEventById, createEvent, updateEvent,deleteEvent,
 showEventStatus,showEventStatusById,createEventStatus,updateEventStatus,deleteEventStatus,
-showEventType, showEventTypeById, createEventType, updateEventType,deleteEventType, showUpcoming} from "../controllers/event.js"
+showEventType, showEventTypeById, createEventType, updateEventType,deleteEventType, showUpcoming, showTotalEvents} from "../controllers/event.js"
 
 import {allBusiness, showBusinessById, createBusiness, updateBusiness, deleteBusiness} from "../controllers/business.js"
 
@@ -28,7 +28,7 @@ allServiceStatus, showServiceStatusById, createServiceStatus, updateServiceStatu
 
 import {allProfileStatus, showProfileStatusById, createProfileStatus, updateProfileStatus, deleteProfileStatus, 
 createProfile,showProfiles, showATProfileTypes, showDMD_profile_types, showATProfileById, updateATProfile, showDmdProfileById, updateDmdProfile,
-showProfileById, updateProfile, updateProfileStatusCustomer} from "../controllers/profile.js"
+showProfileById, updateProfile, updateProfileStatusCustomer,showPendingProfiles} from "../controllers/profile.js"
 
 import {showFeedback,showFeedbackById, createFeedback, updateFeedback, deleteFeedback} from "../controllers/feedback.js"
 
@@ -416,5 +416,22 @@ router.get('/DmdProfile/:id', showDmdProfileById);
 
 // Update DmdProfile Status
 router.put('/DmdProfile/:id', updateDmdProfile);
+
+//sort Customer
+router.get('/CustomerByDate', sortingCustomer);
+
+//total upcoming events
+router.get('/TotalEvents', showTotalEvents);
+
+//total upcoming events
+router.get('/TotalPendingPayments', showTotalPendingPayment);
+
+
+//show 3 customers
+router.get('/threeCustomers', sortingThreeCustomer);
+
+//pending profiles
+router.get('/PendingProfiles', showPendingProfiles);
+
 //export default router
 export default router;

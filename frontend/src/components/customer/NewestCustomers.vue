@@ -60,7 +60,7 @@ export default {
     // Get All Customers
     async getCustomers() {
       try {
-        const response = await axios.get("http://localhost:5000/Customers");
+        const response = await axios.get("http://localhost:5000/CustomerByDate");
         this.customers = response.data;
       } catch (err) {
         console.log(err);

@@ -1,7 +1,7 @@
 // Import function from Customer Model
 import { getCustomers, getState, getCustomerById, insertCustomer, updateCustomerById, deleteCustomerById,
     getStatusTypes, getCustomerStatusById,insertCustomerStatus,updateCustomerStatusById,deleteCustomerStatusById,
-    getCustomerType, getCustomerTypeById, insertCustomerType, updateCustomerTypeById, deleteCustomerTypeById } from "../models/CustomerModel.js";
+    getCustomerType, getCustomerTypeById, insertCustomerType, updateCustomerTypeById, deleteCustomerTypeById, sortCustomers, threeCustomers } from "../models/CustomerModel.js";
  
 // Get All Customers
 export const showCustomers = (req, res) => {
@@ -190,6 +190,27 @@ export const updateCustomerType = (req, res) => {
 export const deleteCustomerType = (req, res) => {
     const id = req.params.id;
     deleteCustomerTypeById(id, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+
+//Sorting customers by date
+export const sortingCustomer = (req, res) => {
+    sortCustomers((err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+
+export const sortingThreeCustomer = (req, res) => {
+    threeCustomers((err, results) => {
         if (err){
             res.send(err);
         }else{

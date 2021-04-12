@@ -201,3 +201,28 @@ export const deleteCustomerTypeById = (id, result) => {
         }
     });   
 }
+
+//sorting customers by date
+export const sortCustomers = (result) => {
+    db.query("select * from customer order by actual_date desc limit 10", (err, results) => {
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });
+}
+
+//showing 3 customers
+
+export const threeCustomers = (result) => {
+    db.query("select * from customer order by actual_date desc limit 3", (err, results) => {
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });
+}

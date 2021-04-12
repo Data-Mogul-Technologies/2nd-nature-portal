@@ -1,21 +1,5 @@
 <template>
-    <!-- <div>
-        <b-col>
-            <b-card
-                :title = "name"
-                tag = "article"
-                style="max-width:20rem"
-                class = "mb-2"
-            >
-                <b-card-text>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Obcaecati, autem.
-                </b-card-text>
-                <b-button variant = "primary">View</b-button>
-            </b-card>
-        </b-col>
-    </div> -->
-
-    <div>
+   <div> 
         <section class="profileTable">
             <table>
                 <thead>
@@ -40,90 +24,89 @@
                 </tbody>
             </table>
         </section>
-
-        <div class="col-md-6">
+        
+        <b-col>
+            <b-card
+                :title = "name"
+                tag = "article"
+                style="max-width:100rem"
+                class = "mb-2"
+            >
+                <b-card-text> 
+                    <div class="col-md-20">
             <div v-if="currentProfile">
-                <h4>Profile Details</h4>
+                <h4>Profile Details
+                <router-link
+                    :to="{ name: 'EditProfile', params: { id: currentProfile.at_customer_report_id } }"
+                        class="button is-info is-small"
+                >Edit
+                </router-link></h4>
                 <div>
                     <label><strong>Name: </strong></label> 
                     {{ currentProfile.first_name }} {{ currentProfile.last_name }}
-                </div>
-                <div >
-                    <label ><strong>Profile Status: </strong></label>
-                    {{ currentProfile.profile_status }}
-                    <ProfileStatusDrop  @changeProfileStatus="selectedProfileStatus=$event" v-model="selectedProfileStatus" />
+                    <label ><strong>Profile Status: </strong>
+                    {{ currentProfile.profile_status }}  </label>
+                    </div> 
+                    <ProfileStatusDrop  @changeProfileStatus="selectedProfileStatus=$event" v-model="selectedProfileStatus" /> 
                     <b-button variant="primary" size="sm" @click="updateProfileStatus">Update profile status</b-button>
-                </div>
+                   
 
-                <div>
+               <div>
                     <label><strong>Action Type:</strong></label>
                     {{ currentProfile.profile_type }}
-                </div>
-                <div>
+
                     <label><strong>Motor Eye:</strong></label>
                     {{ currentProfile.motor_eye }}
-                </div>
-                <div>
+
                     <label><strong>Directionality:</strong></label>
                     {{ currentProfile.directionality }}
-                </div>
-                <div>
+                
                     <label><strong>Vision Frequency:</strong></label>
                     {{ currentProfile.vision_freq }}
-                </div>
-                <div>
+
                     <label><strong>Weight Distribution/Stance:</strong></label>
                     {{ currentProfile.weight_distribution_stance }}
                 </div>
-                <div>
+                <div> 
                     <label><strong>Ready Posture:</strong></label>
                     {{ currentProfile.ready_posture }}
-                </div>
-                <div>
+
                     <label><strong>Learning Style:</strong></label>
                     {{ currentProfile.learning_style }}
-                </div>
-                <div>
+                
                     <label><strong>Internal Tempo:</strong></label>
                     {{ currentProfile.internal_tempo }}
-                </div>
-                <div>
+
                     <label><strong>Smooth/Percussive:</strong></label>
                     {{ currentProfile.smooth_percussive }}
                 </div>
                 <div>
                     <label><strong>Horizontal/Vertical:</strong></label>
                     {{ currentProfile.horizontal_vertical }}
-                </div>
-                <div>
+                
                     <label><strong>Concentric/plyometric:</strong></label>
                     {{ currentProfile.concentric_polymetric }}
-                </div>
-                <div>
+                
                     <label><strong>Torso Movement:</strong></label>
                     {{ currentProfile.torso_movement }}
-                </div>
-                <div>
+              
                     <label><strong>Sport: </strong></label>
                     {{ currentProfile.sport }}
-                </div>
-                <div>
+               
                     <label><strong>Date: </strong></label>
                     {{ currentProfile.date|formatDate }}
+               
+                   
                 </div>
                 <div>
                     <label><strong>Orientation: </strong></label>
                     {{ currentProfile.orientation }}
-                </div>
-                <div>
                     <label><strong>Key Aspects Attacking: </strong></label>
                     {{ currentProfile.key_aspects_attacking }}
-                </div>
-                <div>
+                
                     <label><strong>Vigorous Backswing: </strong></label>
                     {{ currentProfile.vig_backswing }}
-                </div>
-                <div>
+               
                     <label><strong>Patience: </strong></label>
                     {{ currentProfile.patience }}
                 </div>
@@ -144,18 +127,20 @@
                     {{ currentProfile.physical_training }}
                 </div>
                 
-                <router-link
-                    :to="{ name: 'EditProfile', params: { id: currentProfile.at_customer_report_id } }"
-                        class="button is-info is-small"
-                >Edit
-                </router-link>
-                
-            </div>
-            <div v-else>
+                 </div>
+                 <div v-else>
                 <br />
                 <p>Please click on a Profile...</p>
             </div>
-        </div>
+       
+            </div>
+                </b-card-text>
+              
+            </b-card>
+        </b-col>
+
+       
+            
     </div>
 
 </template>
@@ -247,8 +232,4 @@ export default {
     }
 }
 
-/* .label-1 {
-    display: inline-block;
-    font-weight: 700;
-} */
 </style>

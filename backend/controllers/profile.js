@@ -1,7 +1,7 @@
 import {getProfileStatus, getProfileStatusById, insertProfileStatus, updateProfileStatusById, deleteProfileStatusById,
  getProfiles, getATProfileTypes, getDMD_profile_types, insertProfile,
 getATProfileById, 
-updateATProfileById, getDmdProfileById,updateDmdProfileById, getProfileById, updateProfileById, updateProfileStatusForCustomer} from "../models/profileModel.js"
+updateATProfileById, getDmdProfileById,updateDmdProfileById, getProfileById, updateProfileById, updateProfileStatusForCustomer, getPendingProfiles} from "../models/profileModel.js"
     
     //Get All Profile Status 
     export const allProfileStatus = (req, res) => {
@@ -203,3 +203,13 @@ export const showDMD_profile_types = (req, res) => {
         });
     }
     
+//pending profiles
+export const showPendingProfiles = (req, res) => {
+    getPendingProfiles((err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}

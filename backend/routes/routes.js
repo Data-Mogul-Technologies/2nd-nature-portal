@@ -5,7 +5,7 @@ import express from "express";
 import {showCustomers, showCustomerById, allState, createCustomer, updateCustomer, deleteCustomer, 
 allCustomerStatusTypes, showCustomerStatusById, createCustomerStatus, updateCustomerStatus, deleteCustomerStatus,
 allCustomerTypes, showCustomerTypeById, createCustomerType, updateCustomerType, deleteCustomerType,
-sortingCustomer} from "../controllers/Customer.js";
+sortingCustomer, sortingThreeCustomer} from "../controllers/Customer.js";
 
 
 import {showConsultants, showConsultantById, createConsultant,updateConsultant,deleteConsultant, 
@@ -14,12 +14,13 @@ allConsultantStatusTypes, showConsultantStatusById, createConsultantStatus, upda
 import {showPaymentStatus, showPaymentStatusById, createPaymentStatus, updatePaymentStatus,deletePaymentStatus,
 showPaymentSource, showPaymentSourceById, createPaymentSource, updatePaymentSource, deletePaymentSource,
 showCustPayment, showCustPaymentById, createCustPayment, updateCustPayment, deleteCustPayment,
-showRegistrationPayment, showRegistrationPaymentById, createRegistrationPayment, updateRegistrationPayment, deleteRegistrationPayment, showPendingPayment} from "../controllers/payment.js"
+showRegistrationPayment, showRegistrationPaymentById, createRegistrationPayment, updateRegistrationPayment, deleteRegistrationPayment, showPendingPayment,
+ showTotalPendingPayment} from "../controllers/payment.js"
 
 
 import {showEvents, showEventById, createEvent, updateEvent,deleteEvent,
 showEventStatus,showEventStatusById,createEventStatus,updateEventStatus,deleteEventStatus,
-showEventType, showEventTypeById, createEventType, updateEventType,deleteEventType, showUpcoming} from "../controllers/event.js"
+showEventType, showEventTypeById, createEventType, updateEventType,deleteEventType, showUpcoming, showTotalEvents} from "../controllers/event.js"
 
 import {allBusiness, showBusinessById, createBusiness, updateBusiness, deleteBusiness} from "../controllers/business.js"
 
@@ -31,9 +32,9 @@ allCustServ, showCustServById} from "../controllers/service.js"
 
 import {allProfileStatus, showProfileStatusById, createProfileStatus, updateProfileStatus, deleteProfileStatus, 
 createProfile,showProfiles, showATProfileTypes, showDMD_profile_types, showATProfileById, updateATProfile, showDmdProfileById, updateDmdProfile,
-showProfileById, updateProfile, updateProfileStatusCustomer, showPendingProfiles} from "../controllers/profile.js"
+showProfileById, updateProfile, updateProfileStatusCustomer, showPendingProfiles, showTotalPendingProfiles} from "../controllers/profile.js"
 
-import {showFeedback,showFeedbackById, createFeedback, updateFeedback, deleteFeedback} from "../controllers/feedback.js"
+import {showFeedback,showFeedbackById, createFeedback, updateFeedback, deleteFeedback, showSomeFeedback} from "../controllers/feedback.js"
 
 import {createRegistration, createCustServ} from '../controllers/registration.js'
 
@@ -422,6 +423,10 @@ router.delete('/ProfileStatus/:id', deleteProfileStatus);
 /*----------------------------Feedback Routers------------------------- */
 // Get All Feedback
 router.get('/Feedback', showFeedback);
+
+
+//Get Some Feedback
+router.get('/SomeFeedback', showSomeFeedback);
  
 // Get Single Customer
 router.get('/Feedback/:id', showFeedbackById);
@@ -471,6 +476,8 @@ router.get('/RetRateCompany', allRetRateCompany )
 router.get('/EventAttendees/:id', allEventAttendeesById )
 router.get('/AnnualPaymentCust', allAnnualPaymentCust )
 router.get('/ATReportResult',allATReportResult )
+
+
 router.get('/DMDReportResult', allDMDReportResult )
 router.get('/CountBusSport', allCountBusSport )
 router.get('/CountATReport', allCountATReport )
@@ -479,6 +486,26 @@ router.get('/CountRecHelp', allCountRecHelp )
 router.get('/CustFeedback', allCustFeedback )
 router.get('/ConsultantCust/:id', allConsultantCust )
 
+//pending payments
+//pending profiles
+//upcoming events
+//total upcoming events
+
+/*--------Counts for events/payments and some other stuff-------- */
+router.get('/TotalEvents', showTotalEvents);
+
+//total upcoming events
+router.get('/TotalPendingPayments', showTotalPendingPayment);
+
+
+//show 3 customers
+router.get('/threeCustomers', sortingThreeCustomer);
+
+//pending profiles
+router.get('/PendingProfiles', showPendingProfiles);
+
+//total pending profiles
+router.get('/TotalPendingProfiles', showTotalPendingProfiles);
 
 //export default router
 export default router;

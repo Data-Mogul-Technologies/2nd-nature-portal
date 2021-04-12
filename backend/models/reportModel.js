@@ -143,7 +143,10 @@ export const getEventAttendeesByID = (id, result) => {
 
 //Test this one for sure
 export const getAnnualPaymentCust = (result) => {
-    db.query( "SELECT CONCAT('$',(SELECT sum(amount) FROM customer_service_type_payment)) as Services,  CONCAT('$',(SELECT sum(amount) FROM registration_payment)) as Events, CONCAT('$',Round(COALESCE(SUM((SELECT sum(amount) FROM customer_service_type_payment)),0)+COALESCE(SUM((SELECT sum(amount) FROM registration_payment)),0),2)) AS Total"   
+    db.query( "SELECT CONCAT('$',format((SELECT sum(amount) FROM customer_service_type_payment),2)) as Services," +
+    " CONCAT('$',format((SELECT sum(amount) FROM registration_payment),2)) as Events," +
+    " CONCAT('$',format(COALESCE(SUM((SELECT sum(amount) FROM customer_service_type_payment)),0)+COALESCE(SUM((SELECT sum(amount)"+
+    " FROM registration_payment)),0),2)) AS Total"   
     , (err, results) => {             
         if(err) {
             console.log(err);
@@ -155,13 +158,13 @@ export const getAnnualPaymentCust = (result) => {
 }
 
 export const getATReportResult = (result) => {
-    db.query("Select customer.first_name AS 'First Name', customer.last_name AS 'Last Name', customer.email AS 'Email Address',"+
-    " business.name AS 'Business Name', sport_type.name AS 'Sport Type',at_profile.at_profile AS 'AT Profile Result',status_at_dmd.name AS 'Report Status',"+
-    " date AS 'Report Date' from at_customer_report"+
+    db.query("Select customer.first_name AS 'FirstName', customer.last_name AS 'LastName', customer.email AS 'EmailAddress',"+
+    " business.name AS 'BusinessName', sport_type.name AS 'SportType',at_profile.at_profile AS 'ATProfileResult',status_at_dmd.name AS 'ReportStatus',"+
+    " date AS 'ReportDate' from at_customer_report"+
     " INNER JOIN customer ON at_customer_report.customer_id = customer.customer_id"+
     " INNER JOIN at_profile ON at_customer_report.action_type_id = at_profile.at_profile_id"+
     " INNER JOIN sport_type ON at_customer_report.sport_type_id = sport_type.sport_type_id"+
-    " INNER JOIN status_at_dmd ON at_customer_report.status_id = status_at_dmd.status_at_dmd_id"+
+    " INNER JOIN status_at_dmd ON at_customer_report.status_at_dmd_id = status_at_dmd.status_at_dmd_id"+
     " INNER JOIN business ON customer.business_id = business.business_id"+
     " Order By date DESC"
    , (err, results) => {             

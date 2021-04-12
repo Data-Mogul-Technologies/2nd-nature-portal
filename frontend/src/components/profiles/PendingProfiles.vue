@@ -3,6 +3,7 @@
     
     <table class="table is-striped is-bordered mt-2 is-fullwidth">
       <thead>
+         <h1>Pending Profiles</h1>
         <tr>
           <th>First Name</th>
           <th>Last Name</th>
@@ -61,4 +62,9 @@ export default {
 </script>
  
 <style>
+
+th{
+    background: rgb(157, 199, 253);
+   
+}
 </style>

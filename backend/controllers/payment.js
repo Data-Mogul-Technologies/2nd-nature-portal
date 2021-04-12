@@ -1,7 +1,8 @@
 import {getPaymentStatus, insertPaymentStatus, updatePaymentStatusById, deletePaymentStatusById,getPaymentStatusById,
 getPaymentSource, insertPaymentSource, updatePaymentSourceById, deletePaymentSourceById, getPaymentSourceById,
 getCustPayment, getCustPaymentById, insertCustPayment, updateCustPaymentById, deleteCustPaymentById,
-getRegistrationPayment, getRegistrationPaymentById, insertRegistrationPayment, updateRegistrationPaymentById, deleteRegistrationPaymentById, getPendingPayment} from "../models/paymentModel.js"
+getRegistrationPayment, getRegistrationPaymentById, insertRegistrationPayment, updateRegistrationPaymentById, deleteRegistrationPaymentById, getPendingPayment,
+getTotalPendingPayment} from "../models/paymentModel.js"
 
 
 /*--------------------------------Customer Service Type Payment-----------------------------*/
@@ -249,6 +250,17 @@ export const deletePaymentSource = (req, res) => {
 /*-------------------Pending Payments -----------*/
 export const showPendingPayment = (req, res) => {
     getPendingPayment((err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+
+/*-------------------Total Pending Payments -----------*/
+export const showTotalPendingPayment = (req, res) => {
+    getTotalPendingPayment((err, results) => {
         if (err){
             res.send(err);
         }else{

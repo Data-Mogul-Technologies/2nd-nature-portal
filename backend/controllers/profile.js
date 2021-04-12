@@ -1,7 +1,6 @@
 import {getProfileStatus, getProfileStatusById, insertProfileStatus, updateProfileStatusById, deleteProfileStatusById,
- getProfiles, getATProfileTypes, getDMD_profile_types, insertProfile,
-getATProfileById, 
-updateATProfileById, getDmdProfileById,updateDmdProfileById, getProfileById, updateProfileById, updateProfileStatusForCustomer, getPendingProfiles} from "../models/profileModel.js"
+ getProfiles, getATProfileTypes, getDMD_profile_types, insertProfile,getATProfileById, 
+updateATProfileById, getDmdProfileById,updateDmdProfileById, getProfileById, updateProfileById, updateProfileStatusForCustomer, getPendingProfiles, getTotalPendingProfiles} from "../models/profileModel.js"
     
     //Get All Profile Status 
     export const allProfileStatus = (req, res) => {
@@ -163,6 +162,7 @@ export const showATProfileTypes = (req, res) => {
         });
     }
     
+
 /*------------DMD Profile----------*/
     
     
@@ -213,3 +213,16 @@ export const showPendingProfiles = (req, res) => {
         }
     });
 }
+
+
+//total pending profiles
+export const showTotalPendingProfiles = (req, res) => {
+    getTotalPendingProfiles((err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+

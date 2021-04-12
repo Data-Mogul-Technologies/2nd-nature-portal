@@ -64,11 +64,9 @@ import AddPaymentSource from '../components/payment/AddPaymentSource.vue'
 import ViewPaymentSource from '../components/payment/ViewPaymentSource.vue'
 
 import CustServPayList from '../components/payment/CustServPayList.vue'
-// import AddCustServPay from '../components/payment/AddCustServPay.vue'
 import ViewCustServPay from '../components/payment/ViewCustServPay.vue'
 
 import RegPayList from '../components/payment/RegPayList.vue'
-// import AddRegPay from '../components/payment/AddRegPay.vue'
 import ViewRegPay from '../components/payment/ViewRegPay.vue'
 
 import FeedbackList from '../components/feedback/FeedbackList.vue'
@@ -93,7 +91,14 @@ import AddCustServ from '../components/service/AddCustServ.vue'
 import AllCustServ from '../components/service/AllCustServ.vue'
 
 import ProspectDate from '../components/reports/ProspectDate.vue'
-
+import YrRetRateConsult from '../components/reports/YrRetRateConsult.vue'
+import LastYrRetRateConsult from '../components/reports/LastYrRetRateConsult.vue'
+import CurrYrRetRateConsult from '../components/reports/CurrYrRetRateConsult.vue'
+import RetRateCompany from '../components/reports/RetRateCompany.vue'
+import EventAttendees from '../components/reports/EventAttendees.vue'
+import AnnualPaymentCust from '../components/reports/AnnualPaymentCust'
+import ATReportResult from '../components/reports/ATReportResult.vue'
+ 
 Vue.use(VueRouter)
 
 const routes = [
@@ -504,12 +509,53 @@ const routes = [
   path: '/AllCustServ',
   component: AllCustServ
 },
-
+/*-----Reports---- */
 {
   name: 'ProspectDate',
   path: '/ProspectDate',
   component: ProspectDate
-}
+},
+{
+  name: 'YrRetRateConsult',
+  path: '/YrRetRateConsult',
+  component: YrRetRateConsult
+},
+{
+  name: 'LastYrRetRateConsult',
+  path: '/LastYrRetRateConsult',
+  component: LastYrRetRateConsult
+},
+
+{
+  name: 'CurrYrRetRateConsult',
+  path: '/CurrYrRetRateConsult',
+  component: CurrYrRetRateConsult
+},
+
+{
+  name: 'RetRateCompany',
+  path: '/RetRateCompany',
+  component: RetRateCompany
+},
+
+{
+  name: 'EventAttendees',
+  path: '/EventAttendees',
+  component: EventAttendees
+},
+
+{
+  name: 'AnnualPaymentCust',
+  path: '/AnnualPaymentCust',
+  component: AnnualPaymentCust
+},
+
+{
+  name: 'ATReportResult',
+  path: '/ATReportResult',
+  component: ATReportResult
+},
+
 
 
 ]

@@ -64,4 +64,9 @@ export default {
 @import 'styles/content-overlay.scss';
 @import 'styles/media-queries.scss';
 @import "~bulma/css/bulma.css";
+
+// #wrapper {
+//   background-color: #f1b2ca;
+// }
+
 </style>

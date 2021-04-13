@@ -14,7 +14,11 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="consultant in consultants" :key="consultant.sport_consultant_id">
+        <tr v-for="(consultant, index) in consultants" 
+            :key="index" 
+            @click="setSelectedConsultant(consultant, index)" 
+            :class="{'highlight': (index == currentIndex)}"
+        >
           <td>{{ consultant.first_name }}</td>
           <td>{{ consultant.last_name }}</td>
           <td>{{ consultant.email }}</td>
@@ -44,6 +48,8 @@ export default {
   data() {
     return {
       consultants: [],
+      currentConsultant: null,
+      currentIndex: -1,
     };
   },
  
@@ -52,6 +58,12 @@ export default {
   },
  
   methods: {
+    setSelectedConsultant(consultant, index) {
+            this.currentConsultant = consultant;
+            this.currentIndex = index;
+            console.log(this.currentConsultant.sport_consultant_id)
+        },
+
     // Get All Consultants
     async getConsultants() {
       try {
@@ -68,4 +80,16 @@ export default {
 </script>
  
 <style>
+.table{
+    border: 1px solid #888;
+    border-radius: 5px;
+    overflow: auto;   
+}
+.highlight {
+    background-color: #93b9d0;
+}
+tr:hover td {
+    background-color: #93b9d0;
+    cursor: pointer;
+}
 </style>

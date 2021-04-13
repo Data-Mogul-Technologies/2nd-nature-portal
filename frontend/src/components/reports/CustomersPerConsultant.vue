@@ -81,12 +81,12 @@ import axios from "axios";
 export default {
     name: "CustomersPerConsultant",
     data() {
-    return {
-        consultants: [],
-        report: [],
-        currentConsultant: null,
-        currentIndex: -1,
-    };
+        return {
+            consultants: [],
+            report: [],
+            currentConsultant: null,
+            currentIndex: -1,
+        };
   },
  
   created() {
@@ -95,10 +95,10 @@ export default {
   },
  
   methods: {
-
       setSelectedRow(consultant, index) {
             this.currentConsultant = consultant;
             this.currentIndex = index;
+            console.log(this.currentConsultant.sport_consultant_id)
         },
     // Get All Consultants
     async getConsultants() {
@@ -114,20 +114,19 @@ export default {
     // Get all consultant customers 
     async getReport() {
         try {
-        const response = await axios.get(`http://localhost:5000/ConsultantCust/${this.currentConsultant.sport_consultant_id}`);
-        this.report = response.data;
-        console.log(response.data)
+            const response = await axios.get(`http://localhost:5000/ConsultantCust/${this.currentConsultant.sport_consultant_id}`);
+            this.report = response.data;
+            console.log(this.currentConsultant.sport_consultant_id)
         } catch (err) {
         console.log(err);
         }
     }
   }
-}
+};
 </script>
 
 
 <style>
-
 .table{
     border: 1px solid #888;
     border-radius: 5px;

@@ -48,6 +48,29 @@ export const getEventCustomers = (id, result) => {
 }
 
 
+//get all events for a single consultant 
+export const getEventsForConsultant = (id, result) => {
+    db.query("select event.name as eventName," +
+                " event.date as eventDate, "+
+                " event.zip_code as zip_code," +
+                " event_type.name as eventType,"+
+                " event_status.name as event_status"+
+                " from sport_consultant_event"+
+                " join event on sport_consultant_event.event_id = event.event_id"+
+                " join event_type on event.event_type_id = event_type.event_type_id"+
+                " join event_status on event.event_status_id = event_status.event_status_id"+
+                " where sport_consultant_id = ?"+
+                " order by eventName",
+     [id], (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });   
+}
+
  
 // Insert Event to Database
 export const insertEvent = (data, result) => {
@@ -176,6 +199,18 @@ export const getEventTypeById = (id, result) => {
 // Insert event_Type to Database
 export const insertEventType = (data, result) => {
     db.query("INSERT INTO event_type SET ?", [data], (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });   
+}
+
+// Insert sport consultant event to Database
+export const insertSportConsultantEvent = (data, result) => {
+    db.query("insert into sport_consultant_event SET ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

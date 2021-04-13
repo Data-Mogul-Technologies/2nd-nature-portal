@@ -21,7 +21,7 @@ showRegistrationPayment, showRegistrationPaymentById, createRegistrationPayment,
 import {showEvents, showEventById, createEvent, updateEvent,deleteEvent,
 showEventStatus,showEventStatusById,createEventStatus,updateEventStatus,deleteEventStatus,
 showEventType, showEventTypeById, createEventType, updateEventType,deleteEventType, showUpcoming, showTotalEvents,
-showEventCustomers} from "../controllers/event.js"
+showEventCustomers, createSportConsultantEvent, showEventsForConsultant} from "../controllers/event.js"
 
 import {allBusiness, showBusinessById, createBusiness, updateBusiness, deleteBusiness} from "../controllers/business.js"
 
@@ -109,10 +109,6 @@ router.post('/Consultants', createConsultant);
  
 // Update Consultant
 router.put('/Consultants/:id', updateConsultant);
- 
-
-
-
 
 /*--------------------------------Consultant Routers End-----------------------------*/
 
@@ -228,6 +224,15 @@ router.delete('/Events/:id', deleteEvent);
 
 //Upcoming Events
 router.get('/UpcomingEvents',showUpcoming); 
+
+// Create event for consultant
+router.post('/EventsForConsultant', createSportConsultantEvent);
+
+// Get Customers for a Single Events
+router.get('/EventCustomers/:id', showEventCustomers);
+
+// Get Events for a Single Consultant
+router.get('/EventsForConsultant/:id', showEventsForConsultant);
 
 
 /*--------------------------------Event Routers End-----------------------------*/

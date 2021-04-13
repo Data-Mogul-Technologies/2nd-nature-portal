@@ -1,7 +1,7 @@
 import {getEvents, insertEvent, updateEventById, deleteEventById,getEventById,
 getEventStatus,getEventStatusById,insertEventStatus,updateEventStatusById,deleteEventStatusById,
 getEventType,getEventTypeById,insertEventType,updateEventTypeById,deleteEventTypeById, getUpcoming, getTotalEvents,
-getEventCustomers} from "../models/eventModel.js"
+getEventCustomers, insertSportConsultantEvent, getEventsForConsultant} from "../models/eventModel.js"
 
 // Get All Events
 export const showEvents = (req, res) => {
@@ -36,8 +36,18 @@ export const showEventCustomers = (req, res) => {
     });
 }
 
-
+//get all events for a single customer
+export const showEventsForConsultant = (req, res) => {
+    getEventsForConsultant(req.params.id, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
  
+
 // Create New Event
 export const createEvent = (req, res) => {
     const data = req.body;
@@ -127,6 +137,18 @@ export const updateEventStatus = (req, res) => {
 export const deleteEventStatus = (req, res) => {
     const id = req.params.id;
     deleteEventStatusById(id, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+
+// Create New Sport consultant event
+export const createSportConsultantEvent = (req, res) => {
+    const data = req.body;
+    insertSportConsultantEvent(data, (err, results) => {
         if (err){
             res.send(err);
         }else{

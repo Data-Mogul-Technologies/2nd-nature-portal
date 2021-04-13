@@ -38,7 +38,7 @@
             <h4>Registered customers</h4>
             <div v-if="allCustomers">
               <div>
-                <CustomerNameDrop @changeCustomerName="selectedCustomerName=$event" v-model="selectedCustomerName"/> 
+                <CustomerNameDrop @changeCustomerName = "selectedCustomerName=$event" v-model="selectedCustomerName"/> 
               <b-button variant="primary" size="sm" @click="addCustomerToEvent">Register a cutomer</b-button>
               </div>
               <ul>
@@ -88,7 +88,7 @@ export default {
       this.currentEvent = event;
       this.currentIndex = index;
       try {
-        const response = await axios.get(`http://localhost:5000/EventAttendees/${this.currentEvent.event_id}`);
+        const response = await axios.get(`http://localhost:5000/EventCustomers/${this.currentEvent.event_id}`);
         this.allCustomers = response.data;
         console.log(response.data)
       } catch (err) {
@@ -98,14 +98,13 @@ export default {
 
     async addCustomerToEvent () {
       try {
-        await axios.post(`http://localhost:5000/Registration`, 
+        await axios.post("http://localhost:5000/Registration", 
         {
           customer_id: this.selectedCustomerName,
           event_id: this.currentEvent.event_id
         });
-        this.selectedCustomerName = 0;
-        this.currentEvent.event_id = 0;
-
+      console.log(this.selectedCustomerName);
+      console.log(this.currentEvent.event_id);
         window.location.reload();
       } catch (err) {
           console.log(err);

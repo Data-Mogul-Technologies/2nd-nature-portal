@@ -1,6 +1,7 @@
 import {getEvents, insertEvent, updateEventById, deleteEventById,getEventById,
 getEventStatus,getEventStatusById,insertEventStatus,updateEventStatusById,deleteEventStatusById,
-getEventType,getEventTypeById,insertEventType,updateEventTypeById,deleteEventTypeById, getUpcoming, getTotalEvents} from "../models/eventModel.js"
+getEventType,getEventTypeById,insertEventType,updateEventTypeById,deleteEventTypeById, getUpcoming, getTotalEvents,
+getEventCustomers} from "../models/eventModel.js"
 
 // Get All Events
 export const showEvents = (req, res) => {
@@ -24,16 +25,16 @@ export const showEventById = (req, res) => {
     });
 }
 
-// //get all customers for a single event
-// export const showEventCustomers = (req, res) => {
-//     getEventCustomers(req.params.id, (err, results) => {
-//         if (err){
-//             res.send(err);
-//         }else{
-//             res.json(results);
-//         }
-//     });
-// }
+//get all customers for a single event
+export const showEventCustomers = (req, res) => {
+    getEventCustomers(req.params.id, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
 
 
  

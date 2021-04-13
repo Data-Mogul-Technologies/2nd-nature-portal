@@ -6,11 +6,13 @@ import Home from '../views/Home.vue'
 import Create from '../components/customer/AddCustomer.vue'
 import CustomerList from '../components/customer/CustomerList.vue'
 import View from '../components/customer/ViewCustomer.vue'
+import EditCustomer from '../components/customer/EditCustomer.vue'
 
 
 import ConsultantList from '../components/consultant/ConsultantList.vue'
 import AddConsultant from '../components/consultant/AddConsultant.vue'
-import EditConsultant from '../components/consultant/ViewConsultant.vue'
+import ViewConsultant from '../components/consultant/ViewConsultant.vue'
+import EditConsultant from '../components/consultant/EditConsultant.vue'
 
 import ConsultantStatusList from '../components/consultant/ConsultantStatusList.vue'
 import AddConsultantStatus from '../components/consultant/AddConsultantStatus.vue'
@@ -64,7 +66,8 @@ import AddPaymentSource from '../components/payment/AddPaymentSource.vue'
 import ViewPaymentSource from '../components/payment/ViewPaymentSource.vue'
 
 import CustServPayList from '../components/payment/CustServPayList.vue'
-import ViewCustServPay from '../components/payment/ViewCustServPay.vue'
+import AddCustServPay from '../components/payment/AddCustServPay.vue'
+import ViewCustServPay from '../components/payment/ViewCustServPay'
 
 import RegPayList from '../components/payment/RegPayList.vue'
 import ViewRegPay from '../components/payment/ViewRegPay.vue'
@@ -123,6 +126,13 @@ const routes = [
     path: '/view/:id',
     component: View
   },
+
+  {
+    name: 'EditCustomer',
+    path: '/EditCustomer/:id',
+    component: EditCustomer
+  },
+  
   {
     path: '/about',
     name: 'About',
@@ -145,8 +155,13 @@ const routes = [
   component: AddConsultant
 },
 {
+  name: 'ViewConsultant',
+  path: '/view/consultant-view/:id',
+  component: ViewConsultant
+},
+{
   name: 'EditConsultant',
-  path: '/view/:id',
+  path: '/view/consultant-edit/:id',
   component: EditConsultant
 },
 /*----------------Business-------------*/
@@ -262,24 +277,6 @@ const routes = [
   component: ViewEventType
 },
 
-{
-  name: 'PendingPayments',
-  path: '/PendingPayments',
-  component: PendingPayments
-}
-,
-{
-  name: 'UpcomingEvents',
-  path: '/UpcomingEvents',
-  component: UpcomingEvents
-}
-,
-{
-  name: 'NewestCustomers',
-  path: '/NewestCustomers',
-  component: NewestCustomers
-},
-
 /*----------------Customer Type-------------*/
 {
   name: 'CustomerTypeList',
@@ -366,11 +363,11 @@ const routes = [
   path: '/payment/service-payment',
   component: CustServPayList
 },
-// {
-//   name: 'AddCustServPay',
-//   path: '/AddCustServPay',
-//   component: AddCustServPay
-// },
+{
+  name: 'AddCustServPay',
+  path: '/AddCustServPay',
+  component: AddCustServPay
+},
 {
   name: 'ViewCustServPay',
   path: '/ViewCustServPay',
@@ -535,7 +532,7 @@ const routes = [
 /*-----Reports---- */
 {
   name: 'ProspectDate',
-  path: '/ProspectDate',
+  path: '/report/prospect-date',
   component: ProspectDate
 },
 
@@ -582,42 +579,42 @@ const routes = [
 },
 {
   name: 'YrRetRateConsult',
-  path: '/YrRetRateConsult',
+  path: '/report/year-retention-rate',
   component: YrRetRateConsult
 },
 {
   name: 'LastYrRetRateConsult',
-  path: '/LastYrRetRateConsult',
+  path: '/report/last-year-retention-rate',
   component: LastYrRetRateConsult
 },
 
 {
   name: 'CurrYrRetRateConsult',
-  path: '/CurrYrRetRateConsult',
+  path: '/report/current-year-retention-rate',
   component: CurrYrRetRateConsult
 },
 
 {
   name: 'RetRateCompany',
-  path: '/RetRateCompany',
+  path: '/report/company-retention-rate',
   component: RetRateCompany
 },
 
 {
   name: 'EventAttendees',
-  path: '/EventAttendees',
+  path: '/report/event-attendees',
   component: EventAttendees
 },
 
 {
   name: 'AnnualPaymentCust',
-  path: '/AnnualPaymentCust',
+  path: '/report/annual-payment',
   component: AnnualPaymentCust
 },
 
 {
   name: 'ATReportResult',
-  path: '/ATReportResult',
+  path: '/report/at-report-result',
   component: ATReportResult
 },
 

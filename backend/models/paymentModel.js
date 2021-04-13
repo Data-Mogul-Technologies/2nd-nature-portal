@@ -8,6 +8,7 @@ export const getCustPayment = (result) => {
     db.query("select customer.first_name," +
     " customer.customer_id,"+
     " customer.last_name," +
+    " customer_service_type_payment.customer_service_type_payment_id,"+
     " service_type.name as 'serviceName',"+
     " customer_service_type_payment.date,"+
     " customer_service_type_payment.amount,"+
@@ -46,7 +47,7 @@ export const getCustPaymentById = (id, result) => {
     " join service_type on service_type.service_type_id = customer_service_type.service_type_id"+
     " join customer_service_type_payment on customer_service_type_payment.customer_service_type_id = customer_service_type.customer_service_type_id"+
     " join payment_source on payment_source.payment_source_id = customer_service_type_payment.payment_source_id"+
-    " join payment_status on payment_status.payment_status_id = customer_service_type_payment.payment_status_id where customer.customer_id = ?", [id], (err, results) => {             
+    " join payment_status on payment_status.payment_status_id = customer_service_type_payment.payment_status_id where customer_service_type_payment.customer_service_type_payment_id = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -70,8 +71,8 @@ export const insertCustPayment = (data, result) => {
  
 // Update CustPayment to Database
 export const updateCustPaymentById = (data, id, result) => {
-    db.query("UPDATE customer_service_type_payment SET payment_status_id = ?, date = ?, amount = ?, payment_source_id = ?, confirmation_num = ?, customer_service_type_id = ?  WHERE customer_service_type_payment_id = ?",
-     [data.payment_status_id, data.date, data.amount,data.payment_source_id,data.confirmation_num, data.customer_service_type_id,  id], (err, results) => {             
+    db.query("UPDATE customer_service_type_payment SET payment_status_id = ?, date = ?, amount = ?, payment_source_id = ?, confirmation_num = ? WHERE customer_service_type_payment_id = ?",
+     [data.payment_status_id, data.date, data.amount,data.payment_source_id,data.confirmation_num,  id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -98,10 +99,11 @@ export const deleteCustPaymentById = (id, result) => {
 export const getRegistrationPayment = (result) => {
     db.query("select customer.first_name, "+
     " customer.customer_id,"+
+    " registration_payment.registration_payment_id,"+
     " customer.last_name,"+
     " event.name as 'eventName',"+
     " event_type.name as 'eventType',"+
-    " registration_payment.date,"+
+    " registration_payment.date as DateMade,"+
     " registration_payment.amount,"+
     " payment_source.name as 'paymentSource',"+
     " registration_payment.confirmation_num,"+
@@ -127,6 +129,7 @@ export const getRegistrationPaymentById = (id, result) => {
     db.query("select customer.first_name, "+
     " customer.customer_id,"+
     " customer.last_name,"+
+    " registration_payment.registration_payment_id,"+
     " event.name as 'eventName',"+
     " event_type.name as 'eventType',"+
     " registration_payment.date,"+
@@ -140,7 +143,7 @@ export const getRegistrationPaymentById = (id, result) => {
     " join event on event.event_id = registration.event_id"+
     " join event_type on event_type.event_type_id = event.event_type_id"+
     " join payment_source on payment_source.payment_source_id = registration_payment.payment_source_id"+
-    " join payment_status on payment_status.payment_status_id = registration_payment.payment_status_id where customer.customer_id = ?", [id], (err, results) => {             
+    " join payment_status on payment_status.payment_status_id = registration_payment.payment_status_id where registration_payment.registration_payment_id = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -164,8 +167,8 @@ export const insertRegistrationPayment = (data, result) => {
  
 // Update Registration Payment to Database
 export const updateRegistrationPaymentById = (data, id, result) => {
-    db.query("UPDATE registration_payment SET payment_status_id = ?, date = ?, amount = ?, payment_source_id = ?, confirmation_num = ?, registration_id = ?  WHERE customer_service_type_payment_id = ?",
-    [data.payment_status_id, data.date, data.amount,data.payment_source_id,data.confirmation_num, data.registration_id,  id], (err, results) => {             
+    db.query("UPDATE registration_payment SET payment_status_id = ?, date = ?, amount = ?, payment_source_id = ?, confirmation_num = ?  WHERE registration_payment_id = ?",
+    [data.payment_status_id, data.date, data.amount,data.payment_source_id,data.confirmation_num,   id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

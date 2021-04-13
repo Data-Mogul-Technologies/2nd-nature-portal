@@ -1,8 +1,8 @@
 <template>
   <div>
-    <router-link :to="{ name: 'Create' }" class="button is-success mt-5"
+    <router-link :to="{ name: 'Create' }" class="button is-danger mt-5"
       >Add New</router-link>
-      <router-link :to="{ name: 'AllCustServ' }" class="button is-outline-primary mt-5"
+      <router-link :to="{ name: 'AllCustServ' }" class="button is-primary mt-5"
       >Service</router-link>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">
       <thead>

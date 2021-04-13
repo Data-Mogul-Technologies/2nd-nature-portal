@@ -1,33 +1,35 @@
 <template>
 
 <div>
-  <h1>Welcome to Second Nature Portal</h1>
-  <h2>Weekly Highlights!</h2><br><br>
+    <b-jumbotron class="jumbotron" text-variant="white" border-variant="dark">
+    <h1>Welcome to Second Nature Portal!</h1>
+  </b-jumbotron>
   <b-card-group deck>
-    <b-card title="Newest Customers">
-      <b-card-text>Your Newest customers are: <p></p> <ul v-for="customer in customers" :key="customer.customer_id">
+    <b-card header="Newest Customers" >
+      <b-card-text class="customers">Your newest customers are: <p></p> <ul v-for="customer in customers" :key="customer.customer_id">
             <li>{{customer.first_name}} {{customer.last_name}} </li>
           </ul></b-card-text>
       <b-button href="/NewestCustomers" variant="primary"> View More </b-button>
     
     </b-card>
     
-    <b-card title="Pending Payments">
+    <b-card header="Pending Payments">
       <b-card-text v-for="payment in payments" :key="payment.paymnet_id">
-        You have {{payment.total}} pending payments  </b-card-text>
+        <p class="text">You have <strong>{{payment.total}}</strong> pending payments</p> <br><br> <br></b-card-text>
       <b-button href="/PendingPayments" variant="primary"> View More </b-button>
     
     </b-card>
 
-    <b-card title="Upcoming Events" >
+    <b-card header="Upcoming Events" >
       <b-card-text v-for="event in events" :key="event.event_id">
-        You have {{event.total}} upcoming events 
+       <p class="text"> You have <strong>{{event.total}}</strong> upcoming events </p> <br> <br> <br>
         </b-card-text>
-      <b-button href="/UpcomingEvents" variant="primary"> View all </b-button>
+      <b-button href="/UpcomingEvents" variant="primary"> View More</b-button>
     </b-card>
 
-    <b-card title="Pending Profiles">
-      <b-card-text>You have these pending profiles</b-card-text>
+    <b-card header="Pending Profiles">
+      <b-card-text v-for="profile in profiles" :key="profile.profile_id">
+      <p class="text">  You have <strong>{{profile.total}} </strong>pending profiles</p> <br> <br><br></b-card-text>
       <b-button href="/PendingProfiles" variant="primary"> View More </b-button>
      </b-card>
    
@@ -35,24 +37,30 @@
   <br>
 
   <b-card-group deck>
-     <b-card title="Retention Rate">
-      <b-card-text><p class="number">NUMBER GOES HERE</p></b-card-text>
-      <b-button href="/PendingProfiles" variant="primary"> View by Consultant </b-button>
+     <b-card header="Retention Rate">
+      <b-card-text class="percentages" v-for="retrate in retrates" :key="retrate.retrate_id">
+        You currently have a <strong class="strong1">{{retrate.RetentionRate}}</strong> retention rate</b-card-text>
+      <b-button href="/CurrYrRetRateConsult" variant="primary"> View by Consultant </b-button>
       
      </b-card>
 
-     <b-card title="Total Revenue">
-      <b-card-text><p class="number">NUMBER</p></b-card-text>
-      <b-button href="/PendingProfiles" variant="primary"> View More </b-button>
+     <b-card header="Total Revenue">
+      <b-card-text class="percentages" v-for="pymt in pymts" :key="pymt.customer_id">
+      Your current total revenue is <strong class="strong1">{{pymt.Total.toLocaleString('en-us',{minimumFractionDigits: 2})}}</strong> dollars!</b-card-text>
+      <b-button href="/AnnualPaymentCust" variant="primary"> View More </b-button>
      </b-card>
   </b-card-group>
 
 <br>
 <b-card-group>
     
-      <b-card title="Feedback">
-      <b-card-text>this where you can see feedback</b-card-text>
-      <b-button href="/PendingProfiles" variant="primary"> View More </b-button>
+      <b-card header="Feedback">
+      <b-card-text v-for="feedback in feedbacks" :key="feedback.feedback_id">
+         <p class="feedback1"> <strong class="feedback">How helpful Comments:</strong> {{feedback.how_helpful_comment }}
+          <strong class="feedback">Recommendation Comments:</strong> {{feedback.recommend_comment}}
+          <strong class="feedback"> General Feedback:</strong> {{feedback.gen_feedback}}</p>
+        </b-card-text>
+      <b-button href="/FeedbackList" variant="primary"> View More </b-button>
      </b-card>
 </b-card-group>
  
@@ -61,16 +69,12 @@
 </template>
 <style scoped>
 h1{
-  font-size: 50px;
+  font-size: 55px;
   text-align: center;
-  color:rgb(0, 75, 119);
+  color:rgb(10, 10, 77);
 }
 
-h2{
-font-size: 45px;
-text-align: center;
-color:rgb(0, 92, 145);
-}
+
 
  .button2 {
     /* display: inline-block; */
@@ -172,6 +176,45 @@ p.number{
   font-size: 20px;;
 }
 
+p.text{
+  font-size: 35px;
+}
+
+strong{
+  color:red;
+}
+
+.customers{
+  font-size: 25px;
+}
+
+.card-header{
+  background-color: rgb(157, 199, 253);
+  font-weight: bold;
+  color:rgb(10, 10, 77);
+  font-size: 25px;
+}
+
+.jumbotron{
+  background-color: rgb(157, 199, 253);
+}
+
+.percentages{
+  font-size: 35px;
+}
+
+.strong1{
+  color:green;
+}
+
+.feedback{
+  color:rgb(10, 10, 77);
+  font-size: 20px;
+}
+
+.feedback1{
+  font-size: 20px;
+}
 
 </style>
 
@@ -187,20 +230,29 @@ export default {
     NewestCustomers,
     PendingProfiles,
     PendingPayments,
-    UpcomingEvents
+    UpcomingEvents,
   },
 
   data(){
     return {
       events: [],
       payments: [],
-      customers:[]
+      customers:[],
+      profiles:[],
+      retrates:[],
+      feedbacks:[],
+      pymts:[]
+
     }
   },
    created() {
     this.getEvents(),
     this.getPayments(),
-    this.getCustomers();
+    this.getCustomers(),
+    this.getProfiles(),
+    this.getRetRate(),
+    this.getFeedback(),
+    this.getAnualPymt();
   },
 
   methods: {
@@ -229,8 +281,46 @@ export default {
       } catch (err) {
         console.log(err);
       }
+      },
+
+      async getProfiles() {
+      try {
+        const response = await axios.get("http://localhost:5000/TotalPendingProfiles");
+        this.profiles = response.data;
+      } catch (err) {
+        console.log(err);
       }
-  }
+      },
+
+      async getRetRate() {
+      try {
+        const response = await axios.get("http://localhost:5000/RetRateCompany");
+        this.retrates = response.data;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
+      async getFeedback() {
+      try {
+        const response = await axios.get("http://localhost:5000/SomeFeedback");
+        this.feedbacks = response.data;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+
+    async getAnualPymt() {
+      try {
+        const response = await axios.get("http://localhost:5000/AnnualPaymentCust");
+        this.pymts = response.data;
+      } catch (err) {
+        console.log(err);
+      }
+    }
+  },
+
+  
 
 }
 </script>

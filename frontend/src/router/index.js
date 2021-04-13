@@ -461,6 +461,29 @@ const routes = [
   name: 'EditProfile',
   path: '/EditProfile',
   component: EditProfile
+},
+{
+  name: 'PendingPayments',
+  path: '/PendingPayments',
+  component: PendingPayments
+}
+,
+{
+  name: 'UpcomingEvents',
+  path: '/UpcomingEvents',
+  component: UpcomingEvents
+}
+,
+{
+  name: 'NewestCustomers',
+  path: '/NewestCustomers',
+  component: NewestCustomers
+}, 
+
+{
+  name: 'PendingProfiles',
+  path: '/PendingProfiles',
+  component: PendingProfiles
 }
 ,
 {

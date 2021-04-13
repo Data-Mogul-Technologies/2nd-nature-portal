@@ -100,16 +100,12 @@
                 <div>
                     <label><strong>Orientation: </strong></label>
                     {{ currentProfile.orientation }}
-                </div>
-                <div>
                     <label><strong>Key Aspects Attacking: </strong></label>
                     {{ currentProfile.key_aspects_attacking }}
-                </div>
-                <div>
+                
                     <label><strong>Vigorous Backswing: </strong></label>
                     {{ currentProfile.vig_backswing }}
-                </div>
-                <div>
+               
                     <label><strong>Patience: </strong></label>
                     {{ currentProfile.patience }}
                 </div>

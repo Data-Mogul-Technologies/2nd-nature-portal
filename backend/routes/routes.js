@@ -33,9 +33,9 @@ allCustServ, showCustServById} from "../controllers/service.js"
 
 import {allProfileStatus, showProfileStatusById, createProfileStatus, updateProfileStatus, deleteProfileStatus, 
 createProfile,showProfiles, showATProfileTypes, showDMD_profile_types, showATProfileById, updateATProfile, showDmdProfileById, updateDmdProfile,
-showProfileById, updateProfile, updateProfileStatusCustomer, showPendingProfiles} from "../controllers/profile.js"
+showProfileById, updateProfile, updateProfileStatusCustomer, showPendingProfiles, showTotalPendingProfiles} from "../controllers/profile.js"
 
-import {showFeedback,showFeedbackById, createFeedback, updateFeedback, deleteFeedback} from "../controllers/feedback.js"
+import {showFeedback,showFeedbackById, createFeedback, updateFeedback, deleteFeedback, showSomeFeedback} from "../controllers/feedback.js"
 
 import {createRegistration, createCustServ} from '../controllers/registration.js'
 
@@ -420,6 +420,10 @@ router.delete('/ProfileStatus/:id', deleteProfileStatus);
 /*----------------------------Feedback Routers------------------------- */
 // Get All Feedback
 router.get('/Feedback', showFeedback);
+
+
+//Get Some Feedback
+router.get('/SomeFeedback', showSomeFeedback);
  
 // Get Single Customer
 router.get('/Feedback/:id', showFeedbackById);
@@ -496,6 +500,9 @@ router.get('/threeCustomers', sortingThreeCustomer);
 
 //pending profiles
 router.get('/PendingProfiles', showPendingProfiles);
+
+//total pending profiles
+router.get('/TotalPendingProfiles', showTotalPendingProfiles);
 
 //export default router
 export default router;

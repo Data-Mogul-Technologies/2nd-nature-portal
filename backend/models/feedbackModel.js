@@ -62,3 +62,15 @@ export const deleteFeedbackById = (id, result) => {
         }
     });   
 }
+
+// Get Some Feedback
+export const getSomeFeedback = (result) => {
+    db.query("SELECT * FROM feedback limit 1", (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });   
+}

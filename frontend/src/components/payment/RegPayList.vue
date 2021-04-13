@@ -3,16 +3,16 @@
 
 <template>
   <div>
-    <router-link :to="{ name: 'RegPayList' }" class="button is-success mt-5"
-      >Add New</router-link>
+    <router-link :to="{ name: 'CustomerList' }" class="button is-success mt-5"
+      >Customer List</router-link>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">
       <thead>
         <tr>
           <th>ID</th>
           <th>First Name</th>
           <th>Last Name</th>
-          <th>eventName</th>
-          <th>eventType</th>
+          <th>Event Name</th>
+          <th>Event Type</th>
           <th>Date</th>
           <th>Amount</th>
           <th>Payment Source</th>
@@ -23,13 +23,14 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="payment in regPayment" :key="payment.customer_id">
+        <tr v-for="payment in regPayment" :key="payment.registration_payment_id">
           <td>{{ payment.customer_id }}</td>
+          
           <td>{{ payment.first_name }}</td>
           <td>{{ payment.last_name }}</td>
           <td>{{ payment.eventName  }}</td>
           <td>{{ payment.eventType }}</td>
-          <td>{{ payment.date | formatDate }}</td>
+          <td>{{ payment.DateMade | formatDate }}</td>
           <td>{{ payment.amount }}</td>
           <td>{{ payment.paymentSource }}</td>
           <td>{{ payment.confirmation_num }}</td>
@@ -38,15 +39,11 @@
           
           <td class="has-text-centered">
             <router-link
-              :to="{ name: 'ViewRegPay', params: { id: payment.customer_id }}"
+              :to="{ name: 'ViewRegPay', params: { id: payment.registration_payment_id }}"
               class="button is-info is-small"
               >View</router-link
             >
-            <a
-              class="button is-danger is-small"
-              @click="deleteRegPayment(payment.customer_id)"
-              >Delete</a
-            >
+            
           </td>
         </tr>
       </tbody>

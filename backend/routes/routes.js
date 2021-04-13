@@ -2,13 +2,13 @@
 import express from "express";
  
 // import function from controller
-import {showCustomers, showCustomerById, allState, createCustomer, updateCustomer, deleteCustomer, 
+import {showCustomers, showCustomerById, allState, createCustomer, updateCustomer, 
 allCustomerStatusTypes, showCustomerStatusById, createCustomerStatus, updateCustomerStatus, deleteCustomerStatus,
 allCustomerTypes, showCustomerTypeById, createCustomerType, updateCustomerType, deleteCustomerType,
 sortingCustomer, sortingThreeCustomer} from "../controllers/Customer.js";
 
 
-import {showConsultants, showConsultantById, createConsultant,updateConsultant,deleteConsultant, 
+import {showConsultants, showConsultantById, createConsultant,updateConsultant,
 allConsultantStatusTypes, showConsultantStatusById, createConsultantStatus, updateConsultantStatus, deleteConsultantStatus} from "../controllers/consultant.js" 
 
 import {showPaymentStatus, showPaymentStatusById, createPaymentStatus, updatePaymentStatus,deletePaymentStatus,
@@ -20,7 +20,8 @@ showRegistrationPayment, showRegistrationPaymentById, createRegistrationPayment,
 
 import {showEvents, showEventById, createEvent, updateEvent,deleteEvent,
 showEventStatus,showEventStatusById,createEventStatus,updateEventStatus,deleteEventStatus,
-showEventType, showEventTypeById, createEventType, updateEventType,deleteEventType, showUpcoming, showTotalEvents} from "../controllers/event.js"
+showEventType, showEventTypeById, createEventType, updateEventType,deleteEventType, showUpcoming, showTotalEvents,
+showEventCustomers} from "../controllers/event.js"
 
 import {allBusiness, showBusinessById, createBusiness, updateBusiness, deleteBusiness} from "../controllers/business.js"
 
@@ -64,7 +65,7 @@ router.get('/CountATReport', allCountATReport )
 router.get('/CountHowHear', allCountHowHear )
 router.get('/CountRecHelp', allCountRecHelp )
 router.get('/CustFeedback', allCustFeedback )
-router.get('/ConsultantCust', allConsultantCust )
+router.get('/ConsultantCust/:id', allConsultantCust )
 
 // /------------------End Report Routes----------/
 
@@ -84,8 +85,7 @@ router.post('/Customers', createCustomer);
 // Update Customer
 router.put('/Customers/:id', updateCustomer);
  
-// Delete Customer by id
-router.delete('/Customers/:id', deleteCustomer);
+
 
 //sort Customer
 router.get('/CustomerByDate', sortingCustomer);
@@ -105,8 +105,7 @@ router.post('/Consultants', createConsultant);
 // Update Consultant
 router.put('/Consultants/:id', updateConsultant);
  
-// Delete Consultant by id
-router.delete('/Consultant/:id', deleteConsultant);
+
 
 
 
@@ -210,8 +209,8 @@ router.get('/Events',showEvents);
 // Get Single Events
 router.get('/Events/:id', showEventById);
 
-// // Get Customers for a Single Events
-// router.get('/EventCustomers/:id', showEventCustomers);
+// Get Customers for a Single Events
+router.get('/EventCustomers/:id', showEventCustomers);
  
 // Create New Events
 router.post('/Events', createEvent);

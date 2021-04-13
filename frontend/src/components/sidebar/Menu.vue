@@ -97,6 +97,17 @@
         </a>
       </li>
 
+       <li>
+        <a
+        href="#"
+        @click.prevent="updateMenu('Insights')"
+        :class="highlightSection('Insights')"
+        >
+          <i class= "fas fa-calendar-alt context-menutitle-icon" aria-hidden="true"></i>
+          Insights
+          <i class="fa fa-chevron-right menuarrow-icon" aria-hidden="true"></i>
+        </a>
+      </li>
 
     </ul>
 

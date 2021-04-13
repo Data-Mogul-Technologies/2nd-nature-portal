@@ -6,7 +6,7 @@
         <tr>
           <th># of Prospected Customers:</th>
           <th># of Actual Customers:</th>
-          <th>RetentionRate:</th>
+          <th>Retention Rate:</th>
         </tr>
       </thead>
       <tbody>

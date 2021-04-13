@@ -23,25 +23,32 @@
       </div>
     </div>
 
+ <div class="field">
+      <label class="label">Service Type</label>
+      <div class="control">
+        <input
+          class="input"
+          type="text"
+          placeholder="Service Type"
+          v-model="ServiceName"
+        />
+      </div>
+    </div>
+
     <div class="field">
       <label class="label">Amount</label>
       <div class="control">
         <input
           class="input"
-          type="text"
+          type="number"
           min="1" max="5"
           v-model="PayAmount"
         />
       </div>
     </div>
 
-    <div class="field">
-      <label class="label">Payment Source</label>
-      <div class="control">
-        <p>{{PaySource}}</p>
-      </div>
-    </div>
-<PaymentSourceDrop @changePaymentSource="selectedPaymentSource=$event"/>
+   <PaymentSourceDrop @changePaymentSource="selectedPaymentSource=$event"/>
+
 
     <div class="field">
       <label class="label">Confirmation #</label>
@@ -49,31 +56,31 @@
         <input
           class="input"
           type="text"
-          placeholder="Confirmation #"
+          placeholder="Mobile Phone"
           v-model="ConfirmNum"
         />
       </div>
     </div>
 
-    <div class="field">
-      <label class="label">Payment Status</label>
-      <div class="control">
-        <p>{{PayStat}}</p>
-      </div>
-    </div>
- <PaymentStatusDrop @changePaymentStatus="selectedPaymentStatus=$event"/>
+    <PaymentStatusDrop @changePaymentStatus="selectedPaymentStatus=$event"/>
+ 
 
-    <div class="field">
+    
+<div class="field">
       <label class="label">Date Made</label>
       <div class="control">
-        <p>{{DateMade | formatDate}}</p>
+        <input
+          class="input"
+          type="date"
+          placeholder="Date Made"
+          v-model="DateMade "
+        />   
       </div>
     </div>
-
     
     
     <div class="control">
-      <button class="button is-success" @click="updateCustomer">UPDATE</button>
+      <button class="button is-success" @click="addPayment">UPDATE</button>
       <router-link :to="{name:'CustServPayList'}"><button class="button is-danger">Cancel</button></router-link>
     </div>
   </div>
@@ -81,8 +88,8 @@
 <script>
 // import axios
 import axios from "axios";
- import PaymentStatusDrop from '../dropdowns/PaymentStatusDrop'
 import PaymentSourceDrop from '../dropdowns/PaymentSourceDrop' 
+import PaymentStatusDrop from '../dropdowns/PaymentStatusDrop'
 export default {
   name: "ViewCustomer",
   components:{
@@ -91,17 +98,14 @@ export default {
   },
   data() {
     return {
-        customers: [],
         CustomerFName : "",
         CustomerLName : "",
+        ServiceName:"",
         DateMade:"",
         PayAmount:"",
-        PaySource : "",
+        selectedPaymentSource : 0,
         ConfirmNum:"",
-        PayStat:"",
-        selectedPaymentStatus: 0,
-        selectedPaymentSource: 0
-        
+        selectedPaymentStatus:0,
         
     };
   },
@@ -113,16 +117,13 @@ export default {
     async getCustomerById() {
       try {
         const response = await axios.get(
-          `http://localhost:5000/CustPayment/${this.$route.params.id}`
+          `http://localhost:5000/CustServ/${this.$route.params.id}`
         );
-        this.customers=response.data;
         this.CustomerFName = response.data.first_name;
         this.CustomerLName = response.data.last_name;
-        this.DateMade = response.data.date;
-        this.PayAmount = response.data.amount;
-        this.PaySource = response.data.paymentSource;
-        this.ConfirmNum = response.data.confirmation_num;
-        this.PayStat = response.data.PaymentStatus;
+        this.ServiceName = response.data.ServiceName;
+        
+        
         
 
       } catch (err) {
@@ -131,24 +132,32 @@ export default {
     },
     
     // Update Customer
-    async updateCustomer() {
+    async addPayment() {
       try {
-        await axios.put(
-          `http://localhost:5000/CustPayment/${this.$route.params.id}`,
+        await axios.post(
+          `http://localhost:5000/CustPayment`,
           {
+            
             
             date: this.DateMade,
             amount: this.PayAmount,
-            payment_status_id: this.selectedPaymentStatus,
-            confirmation_num: this.ConfirmNum,
             payment_source_id: this.selectedPaymentSource,
+            confirmation_num: this.ConfirmNum,
+            payment_status_id: this.selectedPaymentStatus,
+            customer_service_type_id: this.$route.params.id
             
            
           }
         );
+        // this.CustomerFName = "";
+        // this.CustomerLName = "";
+        // this.ServiceName="";
+        // this.DateMade="";
+        // this.PayAmount="";
+        // this.selectedPaymentSource= "";
+        // this.ConfirmNum="";
+        // this.selectedPaymentStatus="";
         
-        console.log(this.selectedPaymentStatus);
-        console.log(this.selectedPaymentSource)
         
         this.$router.push("/payment/service-payment");
       } catch (err) {

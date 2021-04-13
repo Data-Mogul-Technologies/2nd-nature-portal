@@ -74,7 +74,7 @@ updateATProfileById, getDmdProfileById,updateDmdProfileById, getProfileById, upd
         });
     }
 
-    // Update Profile status of prpfile for customer
+    // Update Profile status of profile for customer
     export const updateProfileStatusCustomer = (req, res) => {
         const data  = req.body;
         const id    = req.params.id;

@@ -60,7 +60,6 @@ router.get('/AnnualPaymentCust', allAnnualPaymentCust )
 router.get('/ATReportResult',allATReportResult )
 
 
-////
 router.get('/DMDReportResult', allDMDReportResult )
 router.get('/CountBusSport', allCountBusSport )
 router.get('/CountATReport', allCountATReport )
@@ -91,8 +90,11 @@ router.delete('/Customers/:id', deleteCustomer);
 
 //sort Customer
 router.get('/CustomerByDate', sortingCustomer);
-
 /*--------------------------------End Customer Routers--------------------------*/
+
+
+
+
 /*--------------------------------Consultant Routers-----------------------------*/
 
 //Get All Consultant
@@ -397,7 +399,7 @@ router.get('/dmdProfileTypes', showDMD_profile_types)
 // Update Profile 
 router.put('/Profiles/:id', updateProfile)
 
-// Update Profile 
+// Update Profile status
 router.put('/ProfileStatus4Customer/:id', updateProfileStatusCustomer)
 
 

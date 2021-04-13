@@ -9,7 +9,6 @@
           <th>Business Name</th>
           <th>Service</th>
           <th>Payment Status</th>
-          <th>Actions</th>
         </tr>
       </thead>
       <tbody>

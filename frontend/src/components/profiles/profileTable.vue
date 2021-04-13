@@ -176,10 +176,11 @@ export default {
                 await axios.put(
                     `http://localhost:5000/ProfileStatus4Customer/${this.currentProfile.at_customer_report_id}`,
                     {
-                    status_id: this.selectedProfileStatus
+                    status_at_dmd_id: this.selectedProfileStatus
                     }
                 );
-                this.selectedProfileStatus = 0;
+                // this.selectedProfileStatus = 0;
+                console.log(this.selectedProfileStatus)
 
                 window.location.reload();
             } catch (err) {

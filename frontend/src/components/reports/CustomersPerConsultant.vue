@@ -66,7 +66,7 @@
         <br />
         <b-card>
             <b-card-text>
-                <p>Please select a report for a consultant...</p>
+                <p>Please select a consultant and click list all customers...</p>
             </b-card-text>
         </b-card>
     </div> 

@@ -16,7 +16,22 @@ export const getConsultants = (result) => {
 
 // Get Single Customer
 export const getConsultantById = (id, result) => {
-    db.query("SELECT * FROM sport_consultant WHERE sport_consultant_id = ?", [id], (err, results) => {             
+    db.query("select sport_consultant.first_name,"+
+    " sport_consultant.last_name,"+
+    " sport_consultant.address,"+
+    " sport_consultant.city,"+
+    " sport_consultant.comments,"+
+    " state.name as StateName,"+
+    " sport_consultant.zip_code,"+
+    " sport_consultant.phone,"+
+    " sport_consultant.alt_phone,"+
+    " sport_consultant.email,"+
+    " sport_consultant.start_date,"+
+    " sport_consultant.end_date,"+
+    " sport_consultant_status.name as StatusName"+
+    " from sport_consultant"+
+    " join state on state.state_id = sport_consultant.state_id"+
+    " join sport_consultant_status on sport_consultant_status.sport_consultant_status_id = sport_consultant.sport_consultant_status_id where sport_consultant_id = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -40,8 +55,8 @@ export const insertConsultant = (data, result) => {
 
 // Update Consultant to Database
 export const updateConsultantById = (data, id, result) => {
-    db.query("UPDATE sport_consultant SET first_name = ?, last_name = ?, address = ?, city = ?, zip_code = ?,phone = ?,alt_phone = ?,email = ?, start_date = ?, end_date = ?, comments = ? WHERE sport_consultant_id = ?",
-     [data.first_name,data.last_name, data.address, data.city, data.zip_code, data.phone, data.alt_phone, data.email, data.start_date, data.end_date, data.comments,  id], (err, results) => {             
+    db.query("UPDATE sport_consultant SET first_name = ?, last_name = ?, address = ?, city = ?, zip_code = ?,phone = ?,alt_phone = ?,email = ?, start_date = ?, end_date = ?, comments = ?, state_id = ?, sport_consultant_status_id = ? WHERE sport_consultant_id = ?",
+     [data.first_name,data.last_name, data.address, data.city, data.zip_code, data.phone, data.alt_phone, data.email, data.start_date, data.end_date, data.comments, data.state_id, data.sport_consultant_status_id,  id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -51,18 +66,7 @@ export const updateConsultantById = (data, id, result) => {
     });   
 }
 
-// Delete Consultant to Database
-export const deleteConsultantById = (id, result) => {
-    db.query("DELETE FROM sport_consultant WHERE sport_consultant_id = ?", [id], (err, results) => {             
-        if(err) {
-            console.log(err);
-            result(err, null);
-        } else {
-            result(null, results);
-        }
-    });   
-}
- 
+
 
 
 /*--------------Consultant Status------------*/

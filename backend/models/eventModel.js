@@ -26,13 +26,23 @@ export const getEventById = (id, result) => {
 
 //get all customers for a single event 
 export const getEventCustomers = (id, result) => {
-    db.query("select concat(customer.first_name, ' ', customer.last_name) as customer_name, event_id, registration_id from registration join customer on registration.customer_id = customer.customer_id where event_id = ?",
+    db.query("select customer.first_name as FirstName," +
+    " customer.last_name as LastName," +
+    " customer.customer_id,"+
+    " registration.event_id," +
+    " registration.registration_id" +
+    " from registration"+
+    " join event" +
+    " on registration.event_id=event.event_id"+
+    " join customer"+
+    " on registration.customer_id=customer.customer_id"+
+    " where event.event_id = ?",
      [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
         } else {
-            result(null, results[0]);
+            result(null, results);
         }
     });   
 }

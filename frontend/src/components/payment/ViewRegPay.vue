@@ -59,17 +59,13 @@
       </div>
     </div>
 
-    <div class="field">
+     <div class="field">
       <label class="label">Payment Source</label>
       <div class="control">
-        <input
-          class="input"
-          type="text"
-          min="1" max="5"
-          v-model="PaySource"
-        />
+        <p>{{PaySource}}</p>
       </div>
     </div>
+<PaymentSourceDrop @changePaymentSource="selectedPaymentSource=$event"/>
 
 
     <div class="field">
@@ -77,7 +73,7 @@
       <div class="control">
         <input
           class="input"
-          type="text"
+          type="number"
           placeholder="Confirmation #"
           v-model="ConfirmNum"
         />
@@ -87,14 +83,10 @@
     <div class="field">
       <label class="label">Payment Status</label>
       <div class="control">
-        <input
-          class="input"
-          type="text"
-          placeholder="Payment Status"
-          v-model="PayStat"
-        />
+        <p>{{PayStat}}</p>
       </div>
     </div>
+ <PaymentStatusDrop @changePaymentStatus="selectedPaymentStatus=$event"/>
  
 
     <div class="field">
@@ -103,7 +95,6 @@
         <p>{{DateMade | formatDate}}</p>
       </div>
     </div>
-
     
     
     <div class="control">
@@ -115,11 +106,17 @@
 <script>
 // import axios
 import axios from "axios";
- 
+  import PaymentStatusDrop from '../dropdowns/PaymentStatusDrop'
+import PaymentSourceDrop from '../dropdowns/PaymentSourceDrop' 
 export default {
   name: "ViewCustomer",
+  components:{
+    PaymentSourceDrop,
+    PaymentStatusDrop
+  },
   data() {
     return {
+        customers:[],
         CustomerFName : "",
         CustomerLName : "",
         EventName:"",
@@ -143,6 +140,7 @@ export default {
         const response = await axios.get(
           `http://localhost:5000/RegistrationPayment/${this.$route.params.id}`
         );
+        this.customers=response.data;
         this.CustomerFName = response.data.first_name;
         this.CustomerLName = response.data.last_name;
         this.EventName = response.data.eventName;
@@ -165,29 +163,23 @@ export default {
         await axios.put(
           `http://localhost:5000/RegistrationPayment/${this.$route.params.id}`,
           {
-            first_name: this.CustomerFName,
-            last_name: this.CustomerLName,
-            eventName: this.EventName,
-            eventType: this.EventType,
-            date: this.DateMade,
+            
+            
+            date: this.customers.DateMade,
             amount: this.PayAmount,
-            paymentSource: this.PaySource,
+            payment_source_id: this.selectedPaymentSource,
             confirmation_num: this.ConfirmNum,
-            PaymentStatus: this.PayStat,
+            payment_status_id: this.selectedPaymentStatus,
             
            
           }
         );
-        this.CustomerFName = "";
-        this.CustomerLName = "";
-        this.EventName="";
-        this.EventType="";
-        this.DateMade="";
-        this.PayAmount="";
-        this.PaySource= "";
-        this.ConfirmNum="";
-        this.PayStat="";
         
+        console.log(this.DateMade);
+        console.log(this.PayAmount);
+        console.log(this.ConfirmNum);
+        console.log(this.selectedPaymentStatus);
+        console.log(this.selectedPaymentSource);
         
         this.$router.push("/payment/event-payment");
       } catch (err) {

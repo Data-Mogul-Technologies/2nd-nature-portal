@@ -216,4 +216,62 @@ export default {
 
   ],
 
+  Insights: [
+
+    {
+      type: 'title',
+      txt: 'Insights',
+      icon: 'fas fa-calendar-alt context-menu__title-icon',
+    },
+
+    {
+      type: 'link',
+      txt: 'Prospect Date',
+      link: '/report',
+    },
+
+    {
+      type: 'link',
+      txt: 'Year Retention Rate',
+      link: '/report',
+    },
+
+    {
+      type: 'link',
+      txt: 'Last Year Retention Rate',
+      link: '/report',
+    },
+
+    {
+      type: 'link',
+      txt: 'Current Year Retention Rate',
+      link: '/report',
+    },
+
+    {
+      type: 'link',
+      txt: 'Company Retention Rate',
+      link: '/report',
+    },
+
+    {
+      type: 'link',
+      txt: 'Event Attendees',
+      link: '/report',
+    },
+
+    {
+      type: 'link',
+      txt: 'Annual Payment',
+      link: '/report',
+    },
+
+    {
+      type: 'link',
+      txt: 'AT Report Result',
+      link: '/report',
+    }
+
+  ]
+
 };

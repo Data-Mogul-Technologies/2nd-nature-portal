@@ -1,5 +1,5 @@
 // Import function from Customer Model
-import { getCustomers, getState, getCustomerById, insertCustomer, updateCustomerById, deleteCustomerById,
+import { getCustomers, getState, getCustomerById, insertCustomer, updateCustomerById, 
     getStatusTypes, getCustomerStatusById,insertCustomerStatus,updateCustomerStatusById,deleteCustomerStatusById,
     getCustomerType, getCustomerTypeById, insertCustomerType, updateCustomerTypeById, deleteCustomerTypeById,sortCustomers, threeCustomers } from "../models/CustomerModel.js";
 
@@ -64,17 +64,6 @@ export const updateCustomer = (req, res) => {
     });
 }
  
-// Delete Customer
-export const deleteCustomer = (req, res) => {
-    const id = req.params.id;
-    deleteCustomerById(id, (err, results) => {
-        if (err){
-            res.send(err);
-        }else{
-            res.json(results);
-        }
-    });
-}
 
 /*---------------- Customer Status ---------------------*/
 

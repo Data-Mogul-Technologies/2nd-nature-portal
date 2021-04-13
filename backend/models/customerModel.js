@@ -28,7 +28,29 @@ export const getState = (result) => {
 
 // Get Single Customer
 export const getCustomerById = (id, result) => {
-    db.query("SELECT * FROM customer WHERE customer_id = ?", [id], (err, results) => {             
+    db.query( "select customer.first_name,"+
+    " customer.last_name,"+
+    " customer.address,"+
+    " customer.city,"+
+    " state.name as StateName,"+
+    " customer.zip_code,"+
+    " customer.mobile_phone,"+
+    " customer.office_phone,"+
+    " customer.home_phone,"+
+    " customer.email,"+
+    " customer.hear_about_us,"+
+    " customer.prospect_date,"+
+    " customer.actual_date,"+
+    " customer.comments,"+
+    " customer_status.name as StatusName,"+
+    " customer_type.name as CustomerType,"+
+    " business.name as BusinessName"+
+    " from customer"+
+    " join state on state.state_id = customer.state_id"+
+    " join customer_status on customer_status.customer_status_id = customer.customer_status_id"+
+    " join customer_type on customer_type.customer_type_id = customer.customer_type_id"+
+    " join business on business.business_id = customer.business_id where customer.customer_id = ?"
+           , [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -52,8 +74,8 @@ export const insertCustomer = (data, result) => {
  
 // Update Customer to Database
 export const updateCustomerById = (data, id, result) => {
-    db.query("UPDATE customer SET first_name = ?, last_name = ?, address = ?, city = ?, zip_code = ?, mobile_phone = ?,office_phone = ?,home_phone = ?,email = ?, hear_about_us = ?,how_can_help =?, prospect_date = ?, actual_date = ?, comments = ? WHERE customer_id = ?",
-     [data.first_name,data.last_name, data.address, data.city, data.zip_code, data.mobile_phone, data.office_phone, data.home_phone, data.email, data.hear_about_us, data.how_can_help, data.prospect_date, data.actual_date, data.comments,  id], 
+    db.query("UPDATE customer SET first_name = ?, last_name = ?, address = ?, city = ?, zip_code = ?, mobile_phone = ?,office_phone = ?,home_phone = ?,email = ?, hear_about_us = ?,how_can_help =?, prospect_date = ?, actual_date = ?, comments = ?, state_id = ?, customer_status_id = ?, customer_type_id = ? WHERE customer_id = ?",
+     [data.first_name,data.last_name, data.address, data.city, data.zip_code, data.mobile_phone, data.office_phone, data.home_phone, data.email, data.hear_about_us, data.how_can_help, data.prospect_date, data.actual_date, data.comments, data.state_id, data.customer_status_id, data.customer_type_id,  id], 
      (err, results) => {             
         if(err) {
             console.log(err);
@@ -64,17 +86,7 @@ export const updateCustomerById = (data, id, result) => {
     });   
 }
  
-// Delete Customer to Database
-export const deleteCustomerById = (id, result) => {
-    db.query("DELETE FROM customer WHERE customer_id = ?", [id], (err, results) => {             
-        if(err) {
-            console.log(err);
-            result(err, null);
-        } else {
-            result(null, results);
-        }
-    });   
-}
+
 
 /*----------Customer Status------------*/
 //Get Customer Status Types

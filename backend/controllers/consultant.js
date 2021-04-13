@@ -1,4 +1,4 @@
-import {getConsultants, getConsultantById, insertConsultant,  updateConsultantById, deleteConsultantById, 
+import {getConsultants, getConsultantById, insertConsultant,  updateConsultantById, 
     getConsultantStatusTypes, getConsultantStatusById, insertConsultantStatus, updateConsultantStatusById, deleteConsultantStatusById
 } from "../models/consultantModel.js"
 
@@ -50,17 +50,6 @@ export const updateConsultant = (req, res) => {
     });
 }
 
-// Delete Consultant
-export const deleteConsultant = (req, res) => {
-    const id = req.params.id;
-    deleteConsultantById(id, (err, results) => {
-        if (err){
-            res.send(err);
-        }else{
-            res.json(results);
-        }
-    });
-}
 
 
 

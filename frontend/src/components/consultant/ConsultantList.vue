@@ -23,7 +23,7 @@
           
           <td class="has-text-centered">
             <router-link
-              :to="{ name: 'EditConsultant', params: { id: consultant.sport_consultant_id } }"
+              :to="{ name: 'ViewConsultant', params: { id: consultant.sport_consultant_id } }"
               class="button is-info is-small"
               >View</router-link
             >
@@ -62,15 +62,7 @@ export default {
       }
     },
  
-    // Delete Consultant
-    async deleteConsultant(id) {
-      try {
-        await axios.delete(`http://localhost:5000/Consultants/${id}`);
-        this.getConsultants();
-      } catch (err) {
-        console.log(err);
-      }
-    },
+    
   },
 };
 </script>

@@ -1,5 +1,6 @@
  <template>
   <div>
+    <h1>Add Service</h1>
     <div class="field">
       <label class="label">Customer First Name</label>
       <div class="control">
@@ -85,7 +86,7 @@ export default {
           this.selectedServiceStatus = 0;
           this.selectedServiceType = 0;
         
-        this.$router.push("/view/list-customers");
+        this.$router.push("/AllCustServ");
       } catch (err) {
         console.log(err);
       }

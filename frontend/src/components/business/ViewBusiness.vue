@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Business List</h1>
     <div class="field">
       <label class="label">Business Name</label>
       <div class="control">

@@ -4,7 +4,21 @@ import db from "../config/database.js";
 
 // Get All Consultants
 export const getConsultants = (result) => {
-    db.query("SELECT * FROM sport_consultant", (err, results) => {             
+    db.query("select sport_consultant.first_name,"+
+    " sport_consultant.sport_consultant_id,"+
+    " sport_consultant.last_name,"+
+    " sport_consultant.address,"+
+    " sport_consultant.city,"+
+    " sport_consultant.comments,"+
+    " sport_consultant.zip_code,"+
+    " sport_consultant.phone,"+
+    " sport_consultant.alt_phone,"+
+    " sport_consultant.email,"+
+    " sport_consultant.start_date,"+
+    " sport_consultant.end_date,"+
+    " sport_consultant_status.name as StatusName"+
+    " from sport_consultant"+
+    " join sport_consultant_status on sport_consultant_status.sport_consultant_status_id = sport_consultant.sport_consultant_status_id ", (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -122,6 +136,20 @@ export const updateConsultantStatusById = (data, id, result) => {
 // Delete ConsultantStatus to Database
 export const deleteConsultantStatusById = (id, result) => {
     db.query("DELETE FROM sport_consultant_status WHERE sport_consultant_status_id = ?", [id], (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });   
+}
+
+
+
+// Insert Consultant to Cust
+export const insertCustToConsult = (data, result) => {
+    db.query("INSERT INTO sport_consultant_customer SET ?", [data], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

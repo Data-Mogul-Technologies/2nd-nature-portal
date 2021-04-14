@@ -1,8 +1,11 @@
 <template>
   <div>
-    <div class="field">
-      <label class="label">Business Name</label>
+    <h1>Add Business</h1>
+    <div class="field is-horizontal"> 
+        <div class="field has-addons">
       <div class="control">
+      <label class="label">Business Name</label>
+ 
         <input
           class="input"
           type="text"
@@ -11,13 +14,17 @@
         />
       </div>
     </div>
+    </div>
+
+    
+    <div class="field ">
     <div class="control">
       <button class="button is-success" @click="saveBusiness">Add</button>
       <router-link :to="{name:'BusinessList'}"><button class="button is-danger">Cancel</button></router-link>
     </div>
+    </div>
   
   </div>
-  
 
     
 </template>

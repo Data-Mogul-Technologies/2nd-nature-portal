@@ -1,8 +1,11 @@
 <template>
   <div>
-    <div class="field">
+    <h1>Add Customer Service Payment</h1>
+
+    <div class="field is-horizontal">
+    <div class="field"><div class="control">
       <label class="label">Customer First Name</label>
-      <div class="control">
+      
         <input
           class="input"
           type="text"
@@ -11,9 +14,10 @@
         />
       </div>
     </div>
-    <div class="field">
+    
+    <div class="field"><div class="control">
       <label class="label">Customer Last Name</label>
-      <div class="control">
+      
         <input
           class="input"
           type="text"
@@ -22,26 +26,21 @@
         />
       </div>
     </div>
-
- <div class="field">
-      <label class="label">Service Type</label>
-      <div class="control">
-        <input
-          class="input"
-          type="text"
-          placeholder="Service Type"
-          v-model="ServiceName"
-        />
+    </div>
+ <div class="field has-addons"><div class="control">
+     
+      
+        <p><strong> Current Service Type: </strong>{{customers.ServiceName}}</p>
       </div>
     </div>
 
-    <div class="field">
+    <div class="field has-addons"><div class="control">
       <label class="label">Amount</label>
-      <div class="control">
+      
         <input
           class="input"
           type="number"
-          min="1" max="5"
+          
           v-model="PayAmount"
         />
       </div>
@@ -50,13 +49,13 @@
    <PaymentSourceDrop @changePaymentSource="selectedPaymentSource=$event"/>
 
 
-    <div class="field">
+    <div class="field has-addons"><div class="control">
       <label class="label">Confirmation #</label>
-      <div class="control">
+      
         <input
           class="input"
           type="text"
-          placeholder="Mobile Phone"
+          placeholder="Confirmation"
           v-model="ConfirmNum"
         />
       </div>
@@ -66,9 +65,9 @@
  
 
     
-<div class="field">
+<div class="field has-addons"><div class="control">
       <label class="label">Date Made</label>
-      <div class="control">
+      
         <input
           class="input"
           type="date"
@@ -98,6 +97,7 @@ export default {
   },
   data() {
     return {
+        customers: [],
         CustomerFName : "",
         CustomerLName : "",
         ServiceName:"",
@@ -119,6 +119,7 @@ export default {
         const response = await axios.get(
           `http://localhost:5000/CustServ/${this.$route.params.id}`
         );
+        this.customers = response.data;
         this.CustomerFName = response.data.first_name;
         this.CustomerLName = response.data.last_name;
         this.ServiceName = response.data.ServiceName;

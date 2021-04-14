@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Sport List</h1>
     <router-link :to="{ name: 'AddSport' }" class="button is-success mt-5"
       >Add New</router-link>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">
@@ -26,7 +27,7 @@
             >
             <a
               class="button is-danger is-small"
-              @click="deleteSport(sport.sport_id)"
+              @click="deleteSport(sport.sport_type_id)"
               >Delete</a
             >
           </td>

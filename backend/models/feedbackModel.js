@@ -2,7 +2,18 @@ import db from "../config/database.js";
 
 // Get All Feedbacks
 export const getFeedback = (result) => {
-    db.query("SELECT * FROM feedback", (err, results) => {             
+    db.query("select customer.first_name,"+
+        " feedback.feedback_id,"+
+        " customer.last_name,"+
+        " feedback.date,"+
+        " feedback.how_hear,"+
+        " feedback.how_helpful_rate,"+
+        " feedback.how_helpful_comment,"+
+        " feedback.recommend_rate,"+
+        " feedback.recommend_comment,"+
+        " feedback.gen_feedback"+
+        " from feedback"+
+        " join customer on customer.customer_id = feedback.customer_id order by date desc" , (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -16,7 +27,19 @@ export const getFeedback = (result) => {
 
 // Get Single Feedback
 export const getFeedbackById = (id, result) => {
-    db.query("SELECT * FROM feedback WHERE feedback_id = ?", [id], (err, results) => {             
+    db.query("select customer.first_name,"+
+    " customer.last_name,"+
+    " feedback.feedback_id,"+
+    " customer.customer_id,"+
+    " feedback.date,"+
+    " feedback.how_hear,"+
+    " feedback.how_helpful_rate,"+
+    " feedback.how_helpful_comment,"+
+    " feedback.recommend_rate,"+
+    " feedback.recommend_comment,"+
+    " feedback.gen_feedback"+
+    " from feedback"+
+    " join customer on customer.customer_id = feedback.customer_id where feedback.feedback_id = ?", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -65,7 +88,7 @@ export const deleteFeedbackById = (id, result) => {
 
 // Get Some Feedback
 export const getSomeFeedback = (result) => {
-    db.query("SELECT * FROM feedback limit 1", (err, results) => {             
+    db.query("SELECT * FROM feedback order by date desc limit 1", (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

@@ -1,12 +1,13 @@
 <template>
     <div class="field">
-      <label class="label">Type:</label>
+      <label class="label">Service Type:</label>
+      <span class="select">
       <select name ="ServiceTypeSelect" v-model="selectedServiceType" @change="changeServiceType()">
           <option v-for="ServiceType in ServiceType" v-bind:key="ServiceType.service_type_id" :value="ServiceType.service_type_id">
               {{ServiceType.name}}
               </option>
       </select>
-      
+      </span>
     </div>
     
 </template>
@@ -19,7 +20,7 @@ export default {
   name: "ServiceTypeDrop",
   data: function(){
     return {
-        selectedServiceType: 0,
+        selectedServiceType: 4,
         ServiceType: [],
     }
 

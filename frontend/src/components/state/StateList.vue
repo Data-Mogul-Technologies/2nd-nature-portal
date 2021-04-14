@@ -1,7 +1,7 @@
 <template>
   <div>
-    <h1>Profile Status List</h1>
-    <router-link :to="{ name: 'AddProfileStatus' }" class="button is-success mt-5"
+    <h1>State List</h1>
+    <router-link :to="{ name: 'AddState' }" class="button is-success mt-5"
       >Add New</router-link>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">
       <thead>
@@ -13,20 +13,21 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="proStat in profileStatus" :key="proStat.status_at_dmd_id">
-          <td>{{proStat.status_at_dmd_id}}
-          <td>{{proStat.name}}</td>
+        <tr v-for="state in states" :key="state.state_id">
+         
+         <td>{{ state.state_id }}</td>
+          <td>{{ state.name }}</td>
           
           
           <td class="has-text-centered">
             <router-link
-              :to="{ name: 'ViewProfileStatus', params: { id: proStat.status_at_dmd_id } }"
+              :to="{ name: 'ViewState', params: { id: state.state_id }}"
               class="button is-info is-small"
               >View</router-link
             >
             <a
               class="button is-danger is-small"
-              @click="deleteProfileStatus(proStat.status_at_dmd_id)"
+              @click="deletestate(state.state_id)"
               >Delete</a
             >
           </td>
@@ -41,33 +42,33 @@
 import axios from "axios";
  
 export default {
-  name: "ProfileStatusList",
+  name: "StateList",
   data() {
     return {
-      profileStatus: [],
+      states: [],
     };
   },
  
   created() {
-    this.getProfileStatus();
+    this.getState();
   },
  
   methods: {
-    // Get All ProfileStatus
-    async getProfileStatus() {
+    // Get All state
+    async getState() {
       try {
-        const response = await axios.get("http://localhost:5000/ProfileStatus");
-        this.profileStatus = response.data;
+        const response = await axios.get("http://localhost:5000/State");
+        this.states = response.data;
       } catch (err) {
         console.log(err);
       }
     },
  
-    // Delete ProfileStatus
-    async deleteProfileStatus(id) {
+    // Delete state
+    async deletestate(id) {
       try {
-        await axios.delete(`http://localhost:5000/ProfileStatus/${id}`);
-        this.getProfileStatus();
+        await axios.delete(`http://localhost:5000/State/${id}`);
+        this.getState();
       } catch (err) {
         console.log(err);
       }

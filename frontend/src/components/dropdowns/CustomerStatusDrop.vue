@@ -1,9 +1,11 @@
 <template>
     <div class="field">
       <label class="label">Choose customer status:</label>
+      <span class="select">
       <select name ="customerStatusTypeSelect" v-model="selectedCustomerStatus" @change="changeStatusType()">
           <option v-for="statusType in CustomerStatusTypes" v-bind:key="statusType.customer_status_id" :value="statusType.customer_status_id">{{statusType.name}}</option>
       </select>
+      </span>
       
     </div>
     
@@ -17,7 +19,7 @@ export default {
   name: "CustomerStatusDrop",
   data: function(){
     return {
-        selectedCustomerStatus: 0,
+        selectedCustomerStatus: 1,
         CustomerStatusTypes: [],
     }
 

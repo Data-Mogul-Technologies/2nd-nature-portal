@@ -1,11 +1,13 @@
 <template>
     <div class="field">
-      <label class="label">Status:</label>
+      <label class="label">Event Status:</label>
+      <span class="select">
       <select name ="EventStatusSelect" v-model="selectedEventStatus" @change="changeEventStatus()">
           <option v-for="EventStatus in EventStatus" v-bind:key="EventStatus.event_status_id" :value="EventStatus.event_status_id">
               {{EventStatus.name}}
               </option>
       </select>
+      </span>
       
     </div>
     
@@ -19,7 +21,7 @@ export default {
   name: "EventStatusDrop",
   data: function(){
     return {
-        selectedEventStatus: 0,
+        selectedEventStatus: 5,
         EventStatus: [],
     }
 

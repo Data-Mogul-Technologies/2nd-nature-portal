@@ -1,6 +1,7 @@
 <template>
   <div>
-    <router-link :to="{ name: 'AddConsultant' }" class="button is-success mt-5"
+    <h1>Consultant List</h1>
+    <router-link :to="{ name: 'AddConsultant' }" class="button is-link mt-5"
       >Add New</router-link>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">
       <thead>
@@ -9,6 +10,7 @@
           <th>Last Name</th>
           <th>Email</th>
           <th>Phone Number</th>
+          <th>Status</th>
           <th>Start Date</th>
           <th class="has-text-centered">Actions</th>
         </tr>
@@ -23,13 +25,21 @@
           <td>{{ consultant.last_name }}</td>
           <td>{{ consultant.email }}</td>
           <td>{{ consultant.phone}}</td>
+          <td>{{consultant.StatusName}}</td>
           <td>{{ consultant.start_date | formatDate }}</td>
+          
           
           <td class="has-text-centered">
             <router-link
               :to="{ name: 'ViewConsultant', params: { id: consultant.sport_consultant_id } }"
               class="button is-info is-small"
               >View</router-link
+            >
+
+            <router-link
+              :to="{ name: 'AssignCust', params: { id: consultant.sport_consultant_id } }"
+              class="button is-info is-small"
+              >Assign Customer</router-link
             >
           
           </td>
@@ -91,5 +101,8 @@ export default {
 tr:hover td {
     background-color: #93b9d0;
     cursor: pointer;
+}
+.button{
+ margin: 5px;
 }
 </style>

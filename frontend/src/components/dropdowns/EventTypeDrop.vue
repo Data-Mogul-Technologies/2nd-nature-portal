@@ -1,12 +1,13 @@
 <template>
     <div class="field">
-      <label class="label">Type:</label>
+      <label class="label">Event Type:</label>
+      <span class="select">
       <select name ="EventTypeSelect" v-model="selectedEventType" @change="changeEventType()">
           <option v-for="EventType in EventType" v-bind:key="EventType.event_type_id" :value="EventType.event_type_id">
               {{EventType.name}}
               </option>
       </select>
-      
+      </span>
     </div>
     
 </template>
@@ -19,7 +20,7 @@ export default {
   name: "EventTypeDrop",
   data: function(){
     return {
-        selectedEventType: 0,
+        selectedEventType: 6,
         EventType: [],
     }
 

@@ -1,14 +1,19 @@
 <template>
   <div>
+    <h1>Customer List</h1>
     <router-link :to="{ name: 'Create' }" class="button is-danger mt-5"
       >Add New</router-link>
-      <router-link :to="{ name: 'AllCustServ' }" class="button is-primary mt-5"
-      >Service</router-link>
-    <table class="table is-striped is-bordered mt-2 is-fullwidth">
+      <router-link :to="{ name: 'AllCustServ' }" class="button is-link mt-5"
+      >Service List (Add Payment)</router-link>
+
+      <router-link :to="{ name: 'FeedbackList' }" class="button is-link mt-5"
+      >Feedback</router-link>
+   
+    <table class="table is-striped is-bordered mt-2 is-fullwidth " style="border:{2px; solid;}">
       <thead>
         <tr>
           <th>First Name</th>
-          <th>Last Name Name</th>
+          <th>Last Name</th>
           <th>Email</th>
           <th>Phone Number</th>
           <th>Date Joined</th>
@@ -26,13 +31,19 @@
           <td class="has-text-centered">
             <router-link
               :to="{ name: 'View', params: { id: customer.customer_id } }"
-              class="button is-info is-small"
+              class="button is-link is-small "
               >View</router-link
             >
             <router-link
               :to="{ name: 'AddService', params: { id: customer.customer_id } }"
-              class="button is-info is-small"
+              class="button is-link is-small"
               >Add Service</router-link
+            >
+
+            <router-link
+              :to="{ name: 'AddFeedback', params: { id: customer.customer_id } }"
+              class="button is-link is-small"
+              >Add Feedback</router-link
             >
           </td>
         </tr>
@@ -82,4 +93,26 @@ export default {
 </script>
  
 <style>
+/* .table {
+  border: 1px solid;
+  border-radius: 5px;
+  
+} */
+.table {
+  border: 2px solid #000000;
+}
+
+.table tr td {
+   border: 3px solid #000000;
+}
+
+.table thead th{
+  border: 3px solid #000000;
+  
+}
+
+.button{
+ margin: 5px;
+}
+
 </style>

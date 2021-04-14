@@ -1,10 +1,11 @@
 <template>
     <div class="field">
-      <label class="label">Sport </label>
+      <label class="label">Sport: </label>
+      <span class="select">
       <select name ="sportTypeSelect" v-model="selectedSportType" @change="changeSportType()">
           <option  v-for="sport_type in SportTypes" v-bind:key="sport_type.id" :value="sport_type.sport_type_id" >{{sport_type.name}}</option>
       </select>
-      
+      </span>
     </div>
     
 </template>
@@ -17,7 +18,7 @@ export default {
   name: "SportTypeDrop",
   data: function(){
     return {
-        selectedSportType: 0,
+        selectedSportType: 1,
         SportTypes: [],
 
     }

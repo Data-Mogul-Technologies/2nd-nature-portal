@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>View Profile Status</h1>
     <div class="field">
       <label class="label">Profile Status Name</label>
       <div class="control">
@@ -64,7 +65,7 @@ export default {
         this.ProfileStatusName = "";
        
         
-        this.$router.push("/ProfileStatusList");
+        this.$router.push("/page/profile-status");
       } catch (err) {
         console.log(err);
       }

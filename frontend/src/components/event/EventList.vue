@@ -1,6 +1,7 @@
 <template>
   <div>
-    <router-link :to="{ name: 'AddEvent' }" class="button is-success mt-5"
+    <h1>Event List</h1>
+    <router-link :to="{ name: 'AddEvent' }" class="button is-link mt-5"
       >Add New Event</router-link>
 
     <section class="eventTable">

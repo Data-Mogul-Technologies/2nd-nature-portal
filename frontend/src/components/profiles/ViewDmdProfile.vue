@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>View DMD Profile</h1>
     <div class="field">
       <label class="label">Dominant Driver</label>
       <div class="control">
@@ -80,11 +81,10 @@ export default {
             
           }
         );
-        this.DmdDominant = "";
-        this.DmdSecondary = "";
+       
        
         
-        this.$router.push("/DmdProfileList");
+        this.$router.push("/profile/manage-dm-ds");
       } catch (err) {
         console.log(err);
       }

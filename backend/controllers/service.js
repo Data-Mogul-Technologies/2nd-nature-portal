@@ -1,6 +1,6 @@
 import {getServiceType, getServiceTypeById, insertServiceType, updateServiceTypeById, deleteServiceTypeById,
 getServiceStatus,getServiceStatusById,insertServiceStatus,updateServiceStatusById,deleteServiceStatusById,
-getCustServ, getCustServById} from "../models/serviceModel.js"
+getCustServ, getCustServById, updateCustServStatById} from "../models/serviceModel.js"
 
 //Get All Service
 export const allServiceType = (req, res) => {
@@ -149,3 +149,15 @@ export const showCustServById = (req, res) => {
 }
 
 
+// Update Service
+export const updateCustServStatus = (req, res) => {
+    const data  = req.body;
+    const id    = req.params.id;
+    updateCustServStatById(data, id, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}

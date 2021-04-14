@@ -1,8 +1,9 @@
 <template>
   <div>
-    <div class="field">
+    <h1>View Event</h1>
+    <div class="field has-addons"><div class="control">
       <label class="label">Event Name</label>
-      <div class="control">
+      
         <input
           class="input"
           type="text"
@@ -21,15 +22,16 @@
     </div>
 <EventTypeDrop @changeEventType="selectedEventType=$event"/>  
      <div class="field">
+     <div class="field has-addons"><div class="control">
       <label class="label">Date</label>
-      <div class="control">
+      
         <p>{{EventDate | formatDate}}</p>
       </div>
     </div>
 
- <div class="field">
+ <div class="field has-addons"><div class="control">
       <label class="label">Address</label>
-      <div class="control">
+      
         <input
           class="input"
           type="text"
@@ -39,9 +41,9 @@
       </div>
     </div>
 
-    <div class="field">
+    <div class="field has-addons"><div class="control">
       <label class="label">City</label>
-      <div class="control">
+      
         <input
           class="input"
           type="text"
@@ -53,9 +55,9 @@
 
 <StateDrop @changeState="selectedState=$event"/>    
 
-    <div class="field">
+    <div class="field has-addons"><div class="control">
       <label class="label">Zip Code</label>
-      <div class="control">
+      
         <input
           class="input"
           type="number"
@@ -65,9 +67,9 @@
       </div>
     </div>
  
-    <div class="field">
+    <div class="field"><div class="control">
       <label class="label">Comments</label>
-      <div class="control">
+      
        <textarea rows="4" cols="50" name="comment" form="usrform" v-model="EventComment">
 </textarea>
       </div>

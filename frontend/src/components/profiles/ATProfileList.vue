@@ -1,7 +1,6 @@
 <template>
   <div>
-    <router-link :to="{ name: 'AddATProfile' }" class="button is-success mt-5"
-      >Add New</router-link>
+    <h1>AT Profile List</h1>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">
       <thead>
         <tr>
@@ -19,7 +18,7 @@
           
           <td class="has-text-centered">
             <router-link
-              :to="{ name: 'EditProfile', params: { id: ATprof.at_profile_id } }"
+              :to="{ name: 'ViewATProfile', params: { id: ATprof.at_profile_id } }"
               class="button is-info is-small"
               >View</router-link
             >

@@ -1,6 +1,6 @@
 <template>
   <div>
-    
+    <h1>10 Newest Customers</h1>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">
       <thead>
         <tr>
@@ -26,11 +26,7 @@
               class="button is-info is-small"
               >View</router-link
             >
-            <a
-              class="button is-danger is-small"
-              @click="deleteCustomer(customer.customer_id)"
-              >Delete</a
-            >
+            
           </td>
         </tr>
       </tbody>

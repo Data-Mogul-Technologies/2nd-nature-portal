@@ -17,6 +17,7 @@ import EditConsultant from '../components/consultant/EditConsultant.vue'
 import ConsultantStatusList from '../components/consultant/ConsultantStatusList.vue'
 import AddConsultantStatus from '../components/consultant/AddConsultantStatus.vue'
 import ViewConsultantStatus from '../components/consultant/ViewConsultantStatus.vue'
+import AssignCust from '../components/consultant/AssignCust.vue'
 
 import BusinessList from '../components/business/BusinessList.vue'
 import AddBusiness from '../components/business/AddBusiness.vue'
@@ -44,6 +45,8 @@ import AddCustomerStatus from '../components/customer/AddCustomerStatus.vue'
 import ViewCustomerStatus from '../components/customer/ViewCustomerStatus.vue'
 import NewestCustomers from '../components/customer/NewestCustomers.vue'
 
+import EditService from '../components/service/EditService.vue'
+
 import CustomerTypeList from '../components/customer/CustomerTypeList.vue'
 import AddCustomerType from '../components/customer/AddCustomerType.vue'
 import ViewCustomerType from '../components/customer/ViewCustomerType.vue'
@@ -55,6 +58,10 @@ import ViewServiceType from '../components/service/ViewServiceType.vue'
 import ServiceStatusList from '../components/service/ServiceStatusList.vue'
 import AddServiceStatus from '../components/service/AddServiceStatus.vue'
 import ViewServiceStatus from '../components/service/ViewServiceStatus.vue'
+
+import StateList from '../components/state/StateList.vue'
+import AddState from '../components/state/AddState.vue'
+import ViewState from '../components/state/ViewState.vue'
 
 import PaymentStatusList from '../components/payment/PaymentStatusList.vue'
 import AddPaymentStatus from '../components/payment/AddPaymentStatus.vue'
@@ -309,6 +316,12 @@ const routes = [
   path: '/ViewServiceType',
   component: ViewServiceType
 },
+
+{
+  name: 'EditService',
+  path: '/EditService',
+  component: EditService
+},
 /*----------------Service Status-------------*/
 {
   name: 'ServiceStatusList',
@@ -392,7 +405,7 @@ const routes = [
 /*----------------Feedback Payment-------------*/
 {
   name: 'FeedbackList',
-  path: '/FeedbackList',
+  path: '/feedback/feedback',
   component: FeedbackList
 },
 {
@@ -424,6 +437,23 @@ const routes = [
 
 //***********Profile Routes***********//
 
+/*--------------State ---------*/
+{
+  name: 'StateList',
+  path: '/page/state',
+  component: StateList
+},
+{
+  name: 'AddState',
+  path: '/AddState',
+  component: AddState
+},
+{
+  name: 'ViewState',
+  path: '/ViewState',
+  component: ViewState
+},
+/*---------------State end---------*/
 {
   name: 'profiles',
   path: '/profile/all-action-type-profiles',
@@ -472,30 +502,8 @@ const routes = [
   path: '/EditProfile',
   component: EditProfile
 },
-{
-  name: 'PendingPayments',
-  path: '/PendingPayments',
-  component: PendingPayments
-}
-,
-{
-  name: 'UpcomingEvents',
-  path: '/UpcomingEvents',
-  component: UpcomingEvents
-}
-,
-{
-  name: 'NewestCustomers',
-  path: '/NewestCustomers',
-  component: NewestCustomers
-}, 
 
-{
-  name: 'PendingProfiles',
-  path: '/PendingProfiles',
-  component: PendingProfiles
-}
-,
+
 {
   name: 'PendingPayments',
   path: '/PendingPayments',
@@ -627,7 +635,47 @@ const routes = [
   path: '/report/at-report-result',
   component: ATReportResult
 },
+{
+  name: 'AssignCust',
+  path: '/AssignCust',
+  component: AssignCust
+},
+{
+  name: 'DMDProfileReport',
+  path: '/report/dmd-profile-report',
+  component: () => import('../components/reports/DmdProfileReport.vue')
+},
+{
+  name: 'ATProfileTrend',
+  path: '/report/AT-Profile-Trend',
+  component: () => import('../components/reports/ATProfileTrendReport.vue')
+},
+{
+  name: 'CountATReport',
+  path: '/report/Count-AT-Report',
+  component: () => import('../components/reports/ATProfileCountReport.vue')
+},
+{
+  name: 'ReferralSourceReport',
+  path: '/report/Referral-Source-Report',
+  component: () => import('../components/reports/ReferalSourceReport.vue')
+},
+{
+  name: 'FeedbackReport',
+  path: '/report/Feedback-Report',
+  component: () => import('../components/reports/FeedbackReport.vue')
+},
+{
+  name: 'CustomerFeedback',
+  path: '/report/Customer-Feedback',
+  component: () => import('../components/reports/CustomerFeedback.vue')
+},
 
+{
+  name: 'CustomersPerConsultant',
+  path: '/report/Customers-Per-Consultant',
+  component: () => import('../components/reports/CustomersPerConsultant.vue')
+}
 
 ]
 

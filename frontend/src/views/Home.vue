@@ -40,14 +40,14 @@
      <b-card header="Retention Rate">
       <b-card-text class="percentages" v-for="retrate in retrates" :key="retrate.retrate_id">
         You currently have a <strong class="strong1">{{retrate.RetentionRate}}</strong> retention rate</b-card-text>
-      <b-button href="/CurrYrRetRateConsult" variant="primary"> View by Consultant </b-button>
+      <b-button href="/report/current-year-retention-rate" variant="primary"> View by Consultant </b-button>
       
      </b-card>
 
      <b-card header="Total Revenue">
       <b-card-text class="percentages" v-for="pymt in pymts" :key="pymt.customer_id">
       Your current total revenue is <strong class="strong1">{{pymt.Total.toLocaleString('en-us',{minimumFractionDigits: 2})}}</strong> dollars!</b-card-text>
-      <b-button href="/AnnualPaymentCust" variant="primary"> View More </b-button>
+      <b-button href="/report/annual-payment" variant="primary"> View More </b-button>
      </b-card>
   </b-card-group>
 
@@ -60,7 +60,7 @@
           <strong class="feedback">Recommendation Comments:</strong> {{feedback.recommend_comment}}
           <strong class="feedback"> General Feedback:</strong> {{feedback.gen_feedback}}</p>
         </b-card-text>
-      <b-button href="/FeedbackList" variant="primary"> View More </b-button>
+      <b-button href="/feedback/feedback" variant="primary"> View More </b-button>
      </b-card>
 </b-card-group>
  
@@ -197,6 +197,7 @@ strong{
 
 .jumbotron{
   background-color: rgb(157, 199, 253);
+  padding: 10px;
 }
 
 .percentages{

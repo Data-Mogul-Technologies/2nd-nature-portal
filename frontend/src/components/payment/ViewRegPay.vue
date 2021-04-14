@@ -1,8 +1,13 @@
 <template>
   <div>
+    <h2>View Registration Payment</h2>
     <div class="field">
+      <p><strong>Event Name:</strong> {{customers.eventName}}</p>
+    </div>
+    <div class="field is-horizontal">
+    <div class="field"><div class="control">
       <label class="label">Customer First Name</label>
-      <div class="control">
+      
         <input
           class="input"
           type="text"
@@ -11,9 +16,11 @@
         />
       </div>
     </div>
-    <div class="field">
+    
+
+    <div class="field has-addons"><div class="control">
       <label class="label">Customer Last Name</label>
-      <div class="control">
+      
         <input
           class="input"
           type="text"
@@ -22,34 +29,18 @@
         />
       </div>
     </div>
+    </div>
+
 
  <div class="field">
-      <label class="label">Event Name</label>
-      <div class="control">
-        <input
-          class="input"
-          type="text"
-          placeholder="Event Name"
-          v-model="EventName"
-        />
-      </div>
+      <p><strong>Event Type:</strong> {{customers.eventType}}</p>
     </div>
 
-    <div class="field">
-      <label class="label">Event Type</label>
-      <div class="control">
-        <input
-          class="input"
-          type="text"
-          placeholder="Event Type"
-          v-model="EventType"
-        />
-      </div>
-    </div>
+    
 
-    <div class="field">
+    <div class="field has-addons"><div class="control">
       <label class="label">Amount</label>
-      <div class="control">
+      
         <input
           class="input"
           type="text"
@@ -59,18 +50,18 @@
       </div>
     </div>
 
-     <div class="field">
+     <div class="field"> <div class="control">
       <label class="label">Payment Source</label>
-      <div class="control">
+     
         <p>{{PaySource}}</p>
       </div>
     </div>
 <PaymentSourceDrop @changePaymentSource="selectedPaymentSource=$event"/>
 
 
-    <div class="field">
+    <div class="field has-addons"><div class="control">
       <label class="label">Confirmation #</label>
-      <div class="control">
+      
         <input
           class="input"
           type="number"
@@ -80,18 +71,18 @@
       </div>
     </div>
 
-    <div class="field">
+    <div class="field"> <div class="control">
       <label class="label">Payment Status</label>
-      <div class="control">
+     
         <p>{{PayStat}}</p>
       </div>
     </div>
  <PaymentStatusDrop @changePaymentStatus="selectedPaymentStatus=$event"/>
  
 
-    <div class="field">
+    <div class="field"> <div class="control">
       <label class="label">Date Made</label>
-      <div class="control">
+     
         <p>{{DateMade | formatDate}}</p>
       </div>
     </div>
@@ -191,4 +182,7 @@ export default {
 </script>
  
 <style>
+h2{
+  text-decoration: underline;
+}
 </style>

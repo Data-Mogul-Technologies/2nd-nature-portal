@@ -286,8 +286,14 @@ export const getCustFeedback = (result) => {
 }
 
 export const getConsultantCust = (id,result) => {
-    db.query("SELECT sport_consultant.first_name, sport_consultant.last_name AS 'Consultant', customer.last_name AS 'CustomerLastName', customer.first_name AS 'CustomerFirstName', customer.email AS 'Email', customer.mobile_phone AS 'MobilePhone', business.name AS 'Business' FROM sport_consultant_customer INNER JOIN sport_consultant ON sport_consultant_customer.sport_consultant_id = sport_consultant.sport_consultant_id INNER JOIN customer ON sport_consultant_customer.customer_id = customer.customer_id INNER JOIN business ON customer.business_id = business.business_id WHERE sport_consultant.sport_consultant_id = ? ORDER By customer.last_name"
-     ,[id], (err, results) => {             
+    db.query("SELECT sport_consultant.last_name AS 'Consultant', customer.last_name AS 'CustomerLastName',"+
+    " customer.first_name AS 'CustomerFirstName', customer.email AS 'Email', customer.mobile_phone AS 'MobilePhone', business.name AS 'Business'"+
+    " FROM sport_consultant_customer"+
+    " INNER JOIN sport_consultant ON sport_consultant_customer.sport_consultant_id = sport_consultant.sport_consultant_id"+
+    " INNER JOIN customer ON sport_consultant_customer.customer_id = customer.customer_id"+
+    " INNER JOIN business ON customer.business_id = business.business_id"+
+    " WHERE sport_consultant.sport_consultant_id = ?"+
+    " ORDER By customer.last_name" ,[id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

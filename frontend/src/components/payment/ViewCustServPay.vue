@@ -1,8 +1,11 @@
 <template>
   <div>
-    <div class="field">
-      <label class="label">Customer First Name</label>
+    <h1>View Customer Service Payment</h1>
+   <div class = "field is-horizontal"> 
+    <div class="field has-addons">
       <div class="control">
+      <label class="label">Customer First Name</label>
+      
         <input
           class="input"
           type="text"
@@ -11,9 +14,10 @@
         />
       </div>
     </div>
-    <div class="field">
-      <label class="label">Customer Last Name</label>
+    <div class="field has-addons">
       <div class="control">
+      <label class="label">Customer Last Name</label>
+      
         <input
           class="input"
           type="text"
@@ -22,30 +26,33 @@
         />
       </div>
     </div>
-
-    <div class="field">
-      <label class="label">Amount</label>
+   </div>
+    <div class="field has-addons">
       <div class="control">
+      <label class="label">Amount</label>
+      
         <input
           class="input"
           type="text"
-          min="1" max="5"
+          
           v-model="PayAmount"
         />
       </div>
     </div>
 
-    <div class="field">
-      <label class="label">Payment Source</label>
+    <div class="field has-addons"> 
       <div class="control">
+      <label class="label">Payment Source</label>
+     
         <p>{{PaySource}}</p>
       </div>
     </div>
 <PaymentSourceDrop @changePaymentSource="selectedPaymentSource=$event"/>
 
-    <div class="field">
-      <label class="label">Confirmation #</label>
+    <div class="field has-addons">
       <div class="control">
+      <label class="label">Confirmation #</label>
+      
         <input
           class="input"
           type="text"
@@ -56,16 +63,18 @@
     </div>
 
     <div class="field">
+       <div class="control">
       <label class="label">Payment Status</label>
-      <div class="control">
+     
         <p>{{PayStat}}</p>
       </div>
     </div>
  <PaymentStatusDrop @changePaymentStatus="selectedPaymentStatus=$event"/>
 
     <div class="field">
-      <label class="label">Date Made</label>
       <div class="control">
+      <label class="label">Date Made</label>
+      
         <p>{{DateMade | formatDate}}</p>
       </div>
     </div>

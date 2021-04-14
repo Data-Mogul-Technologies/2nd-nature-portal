@@ -1,20 +1,20 @@
 <template>
   <div>
-    <h1>View Sport</h1>
+    <h1>View State</h1>
     <div class="field">
-      <label class="label">Sport Name</label>
+      <label class="label">State Name</label>
       <div class="control">
         <input
           class="input"
           type="text"
-          placeholder="Sport Name"
-          v-model="SportName"
+          placeholder="State Name"
+          v-model="StateName"
         />
       </div>
     </div>
     <div class="control">
-      <button class="button is-success" @click="updateSport">Update</button>
-      <router-link :to="{name:'SportList'}"><button class="button is-danger">Cancel</button></router-link>
+      <button class="button is-success" @click="updateState">Update</button>
+      <router-link :to="{name:'StateList'}"><button class="button is-danger">Cancel</button></router-link>
     </div>
   
   </div>
@@ -27,24 +27,24 @@
 import axios from "axios";
  
 export default {
-  name: "ViewSport",
+  name: "ViewState",
   data() {
     return {
-        SportName : "",
+        StateName : "",
         
     };
   },
   created: function () {
-    this.getSportById();
+    this.getStateById();
   },
   methods: {
-    // Get Sport By Id
-    async getSportById() {
+    // Get State By Id
+    async getStateById() {
       try {
         const response = await axios.get(
-          `http://localhost:5000/Sports/${this.$route.params.id}`
+          `http://localhost:5000/State/${this.$route.params.id}`
         );
-        this.SportName = response.data.name;
+        this.StateName = response.data.name;
        
 
       } catch (err) {
@@ -53,19 +53,19 @@ export default {
     },
     
     // Update Customer
-    async updateSport() {
+    async updateState() {
       try {
         await axios.put(
-          `http://localhost:5000/Sports/${this.$route.params.id}`,
+          `http://localhost:5000/State/${this.$route.params.id}`,
           {
-            name: this.SportName,
+            name: this.StateName,
             
           }
         );
-        this.SportName = "";
+        this.StateName = "";
        
         
-        this.$router.push("/page/sport-type");
+        this.$router.push("/page/State");
       } catch (err) {
         console.log(err);
       }

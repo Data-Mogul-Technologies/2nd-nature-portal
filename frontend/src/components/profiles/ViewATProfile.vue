@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>View AT Profile</h1>
     <div class="field">
       <label class="label">AT Profile</label>
       <div class="control">
@@ -259,7 +260,7 @@ export default {
         this.TorsoMove="";
         
         
-        this.$router.push("/ATProfileList");
+        this.$router.push("/profile/manage-action-types");
       } catch (err) {
         console.log(err);
       }

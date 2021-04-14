@@ -1,5 +1,6 @@
 <template>
    <div> 
+       <h1>Profile Table</h1>
         <section class="profileTable">
             <table>
                 <thead>

@@ -1,8 +1,11 @@
 <template>
   <div>
-    <div class="field">
-      <label class="label">Event Name</label>
+    <h1>Add Event</h1>
+    
+    <div class="field has-addons">
       <div class="control">
+      <label class="label">Event Name</label>
+      
         <input
           class="input"
           type="text"
@@ -11,10 +14,13 @@
         />
       </div>
     </div>
+    
 
-     <div class="field">
+    
+     <div class="field has-addons">
+       <div class="control">
       <label class="label">Date</label>
-      <div class="control">
+      
         <input
           class="input"
           type="date"
@@ -23,10 +29,11 @@
         />   
       </div>
     </div>
-
- <div class="field">
+    
+<div class="field is-horizontal">
+ <div class="field"><div class="control">
       <label class="label">Address</label>
-      <div class="control">
+      
         <input
           class="input"
           type="text"
@@ -36,13 +43,13 @@
       </div>
     </div>
 
-    <div class="field">
+    <div class="field"><div class="control">
       <label class="label">City</label>
-      <div class="control">
+      
         <input
           class="input"
           type="text"
-          min="1" max="5"
+          
           v-model="EventCity"
         />
       </div>
@@ -50,23 +57,24 @@
 
 <StateDrop @changeState="selectedState=$event"/>    
 
-    <div class="field">
+    <div class="field"><div class="control">
       <label class="label">Zip Code</label>
-      <div class="control">
+      
         <input
           class="input"
           type="number"
-          min="1" max="5"
+          placeholder="(5 digits ex. 77564)"
           v-model="EventZip"
         />
       </div>
     </div>
+</div>
 <EventTypeDrop @changeEventType="selectedEventType=$event"/>   
 <EventStatusDrop @changeEventStatus="selectedEventStatus=$event"/>       
  
-    <div class="field">
+    <div class="field"><div class="control">
       <label class="label">Comments</label>
-      <div class="control">
+      
        <textarea rows="4" cols="50" name="comment" form="usrform" v-model="EventComment">
 </textarea>
       </div>

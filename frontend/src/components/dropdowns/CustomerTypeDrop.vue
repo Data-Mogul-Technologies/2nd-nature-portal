@@ -18,7 +18,7 @@ export default {
   name: "CustomerTypeDrop",
   data: function(){
     return {
-        selectedCustomerType: 0,
+        selectedCustomerType: 4,
         CustomerTypes: [],
     }
 

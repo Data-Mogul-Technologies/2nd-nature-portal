@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>View Payment Source</h1>
     <div class="field">
       <label class="label">Payment Type Name</label>
       <div class="control">

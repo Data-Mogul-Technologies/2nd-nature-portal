@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>View Service Status</h1>
     <div class="field">
       <label class="label">Service Status Name</label>
       <div class="control">

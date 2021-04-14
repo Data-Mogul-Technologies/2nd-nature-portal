@@ -3,6 +3,7 @@
 
 <template>
   <div>
+    <h1>Customer Service Payment List</h1>
     <router-link :to="{ name: 'CustomerList' }" class="button is-link mt-5"
       >Customer List</router-link>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">

@@ -1,6 +1,6 @@
 <template>
     <div class="field">
-      <label class="label">Action Type:</label>
+      <label class="label">Event :</label>
       <span class="select">
       <select name ="EventSelect" v-model="selectedEvent" @change="changeEvent()">
           <option v-for="event in events" v-bind:key="event.event_id" v-bind:value="event.event_id">{{event.name}}</option>
@@ -19,7 +19,7 @@ export default {
 
   data: function(){
     return {
-        selectedEvent: 0,
+        selectedEvent: 1,
         events: [],
     }
 

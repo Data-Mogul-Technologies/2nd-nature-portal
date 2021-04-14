@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Service Status List</h1>
     <router-link :to="{ name: 'AddServiceStatus' }" class="button is-success mt-5"
       >Add New</router-link>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">

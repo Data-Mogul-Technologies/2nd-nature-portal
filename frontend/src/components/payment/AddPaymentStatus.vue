@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Add Payment Status</h1>
     <div class="field">
       <label class="label">Payment Status</label>
       <div class="control">

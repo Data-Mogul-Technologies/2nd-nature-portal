@@ -1,7 +1,11 @@
 import {getProfileStatus, getProfileStatusById, insertProfileStatus, updateProfileStatusById, deleteProfileStatusById,
  getProfiles, getATProfileTypes, getDMD_profile_types, insertProfile,getATProfileById, 
-updateATProfileById, getDmdProfileById,updateDmdProfileById, getProfileById, updateProfileById, updateProfileStatusForCustomer, getPendingProfiles, getTotalPendingProfiles} from "../models/profileModel.js"
+updateATProfileById, getDmdProfileById,updateDmdProfileById, getProfileById, updateProfileById, updateProfileStatusForCustomer, getPendingProfiles, getTotalPendingProfiles,
+} from "../models/profileModel.js"
     
+
+
+ 
     //Get All Profile Status 
     export const allProfileStatus = (req, res) => {
         getProfileStatus((err, results) => {

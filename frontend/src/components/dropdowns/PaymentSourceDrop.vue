@@ -1,6 +1,6 @@
 <template>
     <div class="field">
-      <label class="label">Type:</label>
+      <label class="label">Payment Source:</label>
       <span class="select">
       <select name ="PaymentSourceSelect" v-model="selectedPaymentSource" @change="changePaymentSource()">
           <option v-for="PaymentSource in PaymentSource" v-bind:key="PaymentSource.payment_source_id" :value="PaymentSource.payment_source_id">
@@ -20,7 +20,7 @@ export default {
   name: "PaymentSourceDrop",
   data: function(){
     return {
-        selectedPaymentSource: 0,
+        selectedPaymentSource: 2,
         PaymentSource: [],
     }
 

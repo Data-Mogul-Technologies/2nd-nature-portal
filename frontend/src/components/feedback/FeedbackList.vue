@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Feedback List</h1>
     <router-link :to="{ name: 'CustomerList' }" class="button is-link mt-5"
       >Customer List To Add Feedback</router-link>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">

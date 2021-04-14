@@ -52,6 +52,8 @@ const router = express.Router();
 router.post('/Registration', createRegistration);
 router.post('/CustServ', createCustServ);
 
+
+
 // /------------------Report Routes----------/
 router.get('/ProspectDate', allProspectDate )
 router.get('/YrRetRateConsult', allYrRetRateConsult)

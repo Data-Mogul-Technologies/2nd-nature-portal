@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Add Feedback</h1>
     <div class="field">
      <p> <strong> Customer First Name: </strong> {{customers.first_name}}</p>
     </div>
@@ -9,9 +10,9 @@
       <p><strong>Customer Last Name:</strong> {{customers.last_name}}</p>
     </div>
     
-     <div class="field">
+     <div class="field has-addons"> <div class="control">
       <label class="label">Feedback Date</label>
-      <div class="control">
+     
         <input
           class="input"
           type="date"
@@ -21,9 +22,9 @@
       </div>
     </div>
 
-    <div class="field">
+    <div class="field has-addons"><div class="control">
       <label class="label">How did you hear about us?</label>
-      <div class="control">
+      
         <input
           class="input"
           type="text"
@@ -33,9 +34,9 @@
       </div>
     </div>
 
-    <div class="field">
+    <div class="field has-addons"><div class="control">
       <label class="label">Rate How Helpful</label>
-      <div class="control">
+      
         <input
           class="input"
           type="number"
@@ -45,9 +46,9 @@
       </div>
     </div>
 
-    <div class="field">
-      <label class="label">How helpful</label>
-      <div class="control">
+    <div class="field "><div class="control">
+      <label class="label">Comment on How Helpful We Are</label>
+      
         <input
           class="input"
           type="text"
@@ -57,9 +58,9 @@
       </div>
     </div>
 
-    <div class="field">
+    <div class="field has-addons"><div class="control">
       <label class="label">Recommendation Rate</label>
-      <div class="control">
+      
         <input
           class="input"
           type="number"
@@ -69,9 +70,9 @@
       </div>
     </div>
 
-    <div class="field">
+    <div class="field"><div class="control">
       <label class="label">Recommendation Comment</label>
-      <div class="control">
+      
         <input
           class="input"
           type="text"
@@ -81,9 +82,9 @@
       </div>
     </div>
 
-    <div class="field">
+    <div class="field"><div class="control">
       <label class="label">General Feedback</label>
-      <div class="control">
+      
         <input
           class="input"
           type="text"

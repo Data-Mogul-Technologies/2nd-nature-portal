@@ -1,7 +1,7 @@
 <template>
 
   <div>
-    
+    <h1>Add Consultant</h1>
 <div class = "field is-horizontal">
     <div class="field has-addons">
       <div class="control ">

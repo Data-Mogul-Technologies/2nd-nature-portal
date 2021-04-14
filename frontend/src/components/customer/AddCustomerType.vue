@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Add Customer Type</h1>
     <div class="field">
       <label class="label">Customer Type</label>
       <div class="control">

@@ -20,7 +20,7 @@ export default {
 
   data: function(){
     return {
-        selectedAT: 0,
+        selectedAT: 1,
         actionTypes: [],
     }
 

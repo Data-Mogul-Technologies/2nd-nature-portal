@@ -1,6 +1,6 @@
 <template>
   <div>
-    
+    <h1>Upcoming Events</h1>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">
       <thead>
         <tr>

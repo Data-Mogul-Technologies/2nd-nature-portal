@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>View State</h1>
     <div class="field">
       <label class="label">State Name</label>
       <div class="control">

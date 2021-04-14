@@ -56,7 +56,7 @@
         <input
           class="input"
           type="text"
-          placeholder="Mobile Phone"
+          placeholder="Confirmation"
           v-model="ConfirmNum"
         />
       </div>

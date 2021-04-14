@@ -1,10 +1,13 @@
 <template>
     <div class="field">
+      
       <label class="label">State:</label>
+      <span class="select">
+        
       <select name ="StateSelect" v-model="selectedState"  @change="changeState()">
           <option v-for="state in StateLists" v-bind:key="state.state_id" :value="state.state_id">{{state.name}}</option>
       </select>
-      
+      </span>
     </div>
     
 </template>

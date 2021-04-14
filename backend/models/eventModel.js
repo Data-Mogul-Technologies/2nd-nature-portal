@@ -125,7 +125,7 @@ export const insertEventStatus = (data, result) => {
  
 // Update event_status to Database
 export const updateEventStatusById = (data, id, result) => {
-    db.query("UPDATE event_status SET name = ? WHERE event_id = ?",
+    db.query("UPDATE event_status SET name = ? WHERE event_status_id = ?",
      [data.name,  id], (err, results) => {             
         if(err) {
             console.log(err);

@@ -7,9 +7,11 @@ allCustomerStatusTypes, showCustomerStatusById, createCustomerStatus, updateCust
 allCustomerTypes, showCustomerTypeById, createCustomerType, updateCustomerType, deleteCustomerType,
 sortingCustomer, sortingThreeCustomer} from "../controllers/Customer.js";
 
+import {showStateById, createState, updateState, deleteState} from "../controllers/state.js"
 
 import {showConsultants, showConsultantById, createConsultant,updateConsultant,
-allConsultantStatusTypes, showConsultantStatusById, createConsultantStatus, updateConsultantStatus, deleteConsultantStatus} from "../controllers/consultant.js" 
+allConsultantStatusTypes, showConsultantStatusById, createConsultantStatus, updateConsultantStatus, deleteConsultantStatus,
+createCustToConsult} from "../controllers/consultant.js" 
 
 import {showPaymentStatus, showPaymentStatusById, createPaymentStatus, updatePaymentStatus,deletePaymentStatus,
 showPaymentSource, showPaymentSourceById, createPaymentSource, updatePaymentSource, deletePaymentSource,
@@ -29,7 +31,7 @@ import {allSportTypes, showSportTypesId, createSportTypes, updateSportTypes, del
 
 import {allServiceType, showServiceTypeById, createServiceType, updateServiceType, deleteServiceType,
 allServiceStatus, showServiceStatusById, createServiceStatus, updateServiceStatus, deleteServiceStatus,
-allCustServ, showCustServById} from "../controllers/service.js"
+allCustServ, showCustServById, updateCustServStatus} from "../controllers/service.js"
 
 import {allProfileStatus, showProfileStatusById, createProfileStatus, updateProfileStatus, deleteProfileStatus, 
 createProfile,showProfiles, showATProfileTypes, showDMD_profile_types, showATProfileById, updateATProfile, showDmdProfileById, updateDmdProfile,
@@ -72,9 +74,6 @@ router.get('/ConsultantCust/:id', allConsultantCust )
 /*----------------------------Customer and Associates Routers------------------------- */
 // Get All Customer
 router.get('/Customers', showCustomers);
-
-// Get State Types
-router.get('/State', allState);
  
 // Get Single Customer
 router.get('/Customers/:id', showCustomerById);
@@ -84,11 +83,25 @@ router.post('/Customers', createCustomer);
  
 // Update Customer
 router.put('/Customers/:id', updateCustomer);
- 
-
 
 //sort Customer
 router.get('/CustomerByDate', sortingCustomer);
+
+/*----State----*/
+// Get State Types
+router.get('/State', allState);
+// Get Single Consultant Status
+router.get('/State/:id', showStateById);
+ 
+// Create New Payment Status
+router.post('/State', createState);
+ 
+// Update Payment Status
+router.put('/State/:id', updateState);
+ 
+// Delete Payment Status by id
+router.delete('/State/:id', deleteState);
+/*-----end----*/
 
 /*--------------------------------End Customer Routers--------------------------*/
 /*--------------------------------Consultant Routers-----------------------------*/
@@ -127,6 +140,7 @@ router.put('/ConsultantStatus/:id', updateConsultantStatus);
 // Delete Payment Status by id
 router.delete('/ConsultantStatus/:id', deleteConsultantStatus);
 
+router.post('/CustToConsult', createCustToConsult)
 /*---------------------Consultant Status Routers End--------------------*/
 /*--------------------------------Customer Service Type Payment Routers-----------------------------*/
 //Get All Customer Service Type Payment
@@ -462,26 +476,27 @@ router.get('/PendingProfiles', showPendingProfiles);
 /* -------Cust Serv ---------*/
 router.get('/CustServ/', allCustServ)
 router.get('/CustServ/:id', showCustServById)
-
+// Update Profile Status
+router.put('/CustServ/:id', updateCustServStatus);
 
 /*------------------Report Routes----------*/
-router.get('/ProspectDate', allProspectDate )
-router.get('/YrRetRateConsult', allYrRetRateConsult)
-router.get('/LastYrRetRateConsult', allLastYrRetRateConsult)
-router.get('/CurrYrRetRateConsult', allCurrYrRetRateConsult )
-router.get('/RetRateCompany', allRetRateCompany )
-router.get('/EventAttendees/:id', allEventAttendeesById )
-router.get('/AnnualPaymentCust', allAnnualPaymentCust )
-router.get('/ATReportResult',allATReportResult )
+// router.get('/ProspectDate', allProspectDate )
+// router.get('/YrRetRateConsult', allYrRetRateConsult)
+// router.get('/LastYrRetRateConsult', allLastYrRetRateConsult)
+// router.get('/CurrYrRetRateConsult', allCurrYrRetRateConsult )
+// router.get('/RetRateCompany', allRetRateCompany )
+// router.get('/EventAttendees/:id', allEventAttendeesById )
+// router.get('/AnnualPaymentCust', allAnnualPaymentCust )
+// router.get('/ATReportResult',allATReportResult )
 
 
-router.get('/DMDReportResult', allDMDReportResult )
-router.get('/CountBusSport', allCountBusSport )
-router.get('/CountATReport', allCountATReport )
-router.get('/CountHowHear', allCountHowHear )
-router.get('/CountRecHelp', allCountRecHelp )
-router.get('/CustFeedback', allCustFeedback )
-router.get('/ConsultantCust/:id', allConsultantCust )
+// router.get('/DMDReportResult', allDMDReportResult )
+// router.get('/CountBusSport', allCountBusSport )
+// router.get('/CountATReport', allCountATReport )
+// router.get('/CountHowHear', allCountHowHear )
+// router.get('/CountRecHelp', allCountRecHelp )
+// router.get('/CustFeedback', allCustFeedback )
+// router.get('/ConsultantCust/:id', allConsultantCust )
 
 //pending payments
 //pending profiles

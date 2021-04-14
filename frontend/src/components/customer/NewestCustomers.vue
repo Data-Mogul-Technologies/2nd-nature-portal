@@ -26,11 +26,7 @@
               class="button is-info is-small"
               >View</router-link
             >
-            <a
-              class="button is-danger is-small"
-              @click="deleteCustomer(customer.customer_id)"
-              >Delete</a
-            >
+            
           </td>
         </tr>
       </tbody>

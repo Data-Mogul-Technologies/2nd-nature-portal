@@ -1,10 +1,11 @@
 <template>
     <div class="field">
       <label class="label">Choose customer:</label>
+      <span class="select">
       <select name ="customerNameSelect" v-model="selectedCustomerName" @change="changeCustomerName()">
           <option v-for="customerName in CustomerNames" v-bind:key="customerName.customer_id" :value="customerName.customer_id">{{customerName.first_name }} {{customerName.last_name}}</option>
       </select>
-      
+      </span>
     </div>
     
 </template>

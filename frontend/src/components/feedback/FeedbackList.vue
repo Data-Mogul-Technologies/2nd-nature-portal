@@ -1,11 +1,13 @@
 <template>
   <div>
-    <router-link :to="{ name: 'AddFeedback' }" class="button is-success mt-5"
-      >Add New</router-link>
+    <router-link :to="{ name: 'CustomerList' }" class="button is-link mt-5"
+      >Customer List To Add Feedback</router-link>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">
       <thead>
         <tr>
-          <th>Date      </th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Date</th>
           <th>How did they hear about us?</th>
           <th>How helpful Rating</th>
           <th>How helpful Comment</th>
@@ -19,7 +21,8 @@
       </thead>
       <tbody>
         <tr v-for="feedback in feedbacks" :key="feedback.feedback_id">
-  
+          <td>{{feedback.first_name }}</td>
+          <td>{{feedback.last_name }}</td>
           <td>{{feedback.date | formatDate }}</td>
           <td>{{feedback.how_hear }}</td>
           <td>{{feedback.how_helpful_rate }}</td>

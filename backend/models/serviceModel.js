@@ -170,3 +170,17 @@ export const getCustServById = (id, result) => {
         }
     });   
 }
+
+
+// Update ServiceType to Database
+export const updateCustServStatById = (data, id, result) => {
+    db.query("UPDATE customer_service_type SET  service_status_id = ?, service_type_id = ? WHERE customer_service_type_id = ?",
+     [data.service_status_id, data.service_type_id,  id], (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });   
+}

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link :to="{ name: 'AddServiceStatus' }" class="button is-success mt-5"
+    <router-link :to="{ name: 'AddState' }" class="button is-success mt-5"
       >Add New</router-link>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">
       <thead>
@@ -12,20 +12,21 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="sStat in serviceStatus" :key="sStat.service_status_id">
-          <td>{{sStat.service_status_id}}
-          <td>{{sStat.name}}</td>
+        <tr v-for="state in states" :key="state.state_id">
+         
+         <td>{{ state.state_id }}</td>
+          <td>{{ state.name }}</td>
           
           
           <td class="has-text-centered">
             <router-link
-              :to="{ name: 'ViewServiceStatus', params: { id: sStat.service_status_id } }"
+              :to="{ name: 'ViewState', params: { id: state.state_id }}"
               class="button is-info is-small"
               >View</router-link
             >
             <a
               class="button is-danger is-small"
-              @click="deleteServiceStatus(sStat.service_status_id)"
+              @click="deletestate(state.state_id)"
               >Delete</a
             >
           </td>
@@ -40,33 +41,33 @@
 import axios from "axios";
  
 export default {
-  name: "ServiceStatusList",
+  name: "StateList",
   data() {
     return {
-      serviceStatus: [],
+      states: [],
     };
   },
  
   created() {
-    this.getServiceStatus();
+    this.getState();
   },
  
   methods: {
-    // Get All ServiceStatus
-    async getServiceStatus() {
+    // Get All state
+    async getState() {
       try {
-        const response = await axios.get("http://localhost:5000/ServiceStatus");
-        this.serviceStatus = response.data;
+        const response = await axios.get("http://localhost:5000/State");
+        this.states = response.data;
       } catch (err) {
         console.log(err);
       }
     },
  
-    // Delete ServiceStatus
-    async deleteServiceStatus(id) {
+    // Delete state
+    async deletestate(id) {
       try {
-        await axios.delete(`http://localhost:5000/ServiceStatus/${id}`);
-        this.getServiceStatus();
+        await axios.delete(`http://localhost:5000/State/${id}`);
+        this.getState();
       } catch (err) {
         console.log(err);
       }

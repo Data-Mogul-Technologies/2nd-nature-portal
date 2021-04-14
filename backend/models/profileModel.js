@@ -272,8 +272,8 @@ export const getDmdProfileById = (id, result) => {
  
 // Update Profile_status to Database
 export const updateDmdProfileById = (data, id, result) => {
-    db.query("UPDATE dmd_profile SET name = ? WHERE dmd_profile_id = ?",
-     [data.name,  id], (err, results) => {             
+    db.query("UPDATE dmd_profile SET dom_driver = ?, sec_driver = ? WHERE dmd_profile_id = ?",
+     [data.dom_driver,data.sec_driver,  id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -286,6 +286,7 @@ export const updateDmdProfileById = (data, id, result) => {
 //PendingProfiles
 export const getPendingProfiles = (result) => {
     db.query("select customer.first_name, customer.last_name, status_at_dmd.name as profile_status," +
+    " at_customer_report.at_customer_report_id,"+
     " at_customer_report.date as start_date, at_profile.at_profile, sport_type.name as sport" +
     " from customer join at_customer_report on customer.customer_id = at_customer_report.customer_id " +
     " join at_profile on at_customer_report.action_type_id = at_profile.at_profile_id " +

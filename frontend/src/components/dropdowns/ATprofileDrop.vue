@@ -1,9 +1,11 @@
 <template>
     <div class="field">
       <label class="label">Action Type:</label>
+      <span class="select">
       <select name ="ATSelect" v-model="selectedAT" @change="changeAT()">
           <option v-for="actionType in actionTypes" v-bind:key="actionType.at_profile_id" v-bind:value="actionType.at_profile_id">{{actionType.at_profile}}</option>
       </select>
+      </span>
       
     </div>
     

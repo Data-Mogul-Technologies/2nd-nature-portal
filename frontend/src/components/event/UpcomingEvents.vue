@@ -22,18 +22,9 @@
           <td>{{ event.Status}}</td>
           <td>{{ event.HowManyAttendees}}</td>
           
-          <td class="has-text-centered">
-            <router-link
-              :to="{ name: 'View', params: { id: event.event_id } }"
-              class="button is-info is-small"
-              >View</router-link
-            >
-            <a
-              class="button is-danger is-small"
-              @click="deleteEvent(event.event_id)"
-              >Delete</a
-            >
-          </td>
+         
+            
+         
         </tr>
       </tbody>
     </table>
@@ -68,15 +59,7 @@ export default {
       }
     },
  
-    // Delete Evenet
-    async deleteEvent(id) {
-      try {
-        await axios.delete(`http://localhost:5000/UpcomingEvents/${id}`);
-        this.getEvents();
-      } catch (err) {
-        console.log(err);
-      }
-    },
+   
   },
 };
 </script>

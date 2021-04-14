@@ -1,11 +1,12 @@
 <template>
 
   <div>
-    <ConsultantStatusDrop @changeConsultantStatusType="selectedConsultantStatus=$event"/>
-
-    <div class="field">
-      <label class="label">Consultant First Name</label>
-        <div class="control">
+    
+<div class = "field is-horizontal">
+    <div class="field has-addons">
+      <div class="control ">
+      <label class="label">First Name:</label>
+        
         <input
           class="input"
           type="text"
@@ -15,9 +16,10 @@
       </div>
     </div>
 
-    <div class="field">
-      <label class="label">Consultant Last Name</label>
+    <div class="field has-addons">
       <div class="control">
+      <label class="label">Last Name:</label>
+      
         <input
           class="input"
           type="text"
@@ -26,11 +28,14 @@
         />
       </div>
     </div>
+</div>
 
 
- <div class="field">
-      <label class="label">Address</label>
-      <div class="control">
+<div class = "field is-horizontal">
+ <div class="field has-addons">
+   <div class="control">
+      <label class="label">Address:</label>
+      
         <input
           class="input"
           type="text"
@@ -40,9 +45,10 @@
       </div>
     </div>
 
-    <div class="field">
-      <label class="label">City</label>
+    <div class="field has-addons">
       <div class="control">
+      <label class="label">City:</label>
+     
         <input
           class="input"
           type="text"
@@ -54,51 +60,56 @@
 
 <StateDrop @changeState="selectedState=$event"/>      
 
-    <div class="field">
-      <label class="label">Zip Code</label>
+    <div class="field has-addons">
       <div class="control">
+      <label class="label">Zip Code:</label>
+      
         <input
           class="input"
           type="number"
-          min="1" max="5"
+          
+          placeholder="(5 digits ex. 77564)"
           v-model="ConsultantZip"
         />
       </div>
     </div>
+</div>
 
-
-    <div class="field">
-      <label class="label">Phone</label>
+    <div class="field has-addons">
       <div class="control">
+      <label class="label">Phone:</label>
+      
         <input
           class="input"
           type="text"
-          placeholder="Phone"
+          placeholder="XXX-XXX-XXXX"
           v-model="ConsultantPhone"
         />
       </div>
     </div>
 
-    <div class="field">
-      <label class="label">Alternate Phone</label>
+    <div class="field has-addons">
       <div class="control">
+      <label class="label">Alternate Phone:</label>
+     
         <input
           class="input"
           type="text"
-          placeholder="Alternate Phone"
+          placeholder="XXX-XXX-XXXX"
           v-model="ConsultantAPhone"
         />
       </div>
     </div>
  
 
-    <div class="field">
-      <label class="label">Email</label>
+    <div class="field has-addons">
       <div class="control">
+      <label class="label">Email:</label>
+      
         <input
           class="input"
           type="text"
-          placeholder="Email"
+          placeholder="mail@mail.com"
           v-model="ConsultantEmail"
         />
       </div>
@@ -107,9 +118,10 @@
     
     
 
-   <div class="field">
-      <label class="label">Start Date</label>
-      <div class="control">
+   <div class="field has-addons">
+     <div class="control">
+      <label class="label">Start Date:</label>
+      
         <input
           class="input"
           type="date"
@@ -121,13 +133,13 @@
 
  
     <div class="field">
-      <label class="label">Comments</label>
+      <label class="label">Comments:</label>
       <div class="control">
        <textarea rows="4" cols="50" name="comment" form="usrform" v-model="ConsultantComment">
 </textarea>
       </div>
     </div>
-    
+<ConsultantStatusDrop @changeConsultantStatusType="selectedConsultantStatus=$event"/>    
     <div class="control">
       <button class="button is-success" @click="saveConsultant">Add</button>
       <router-link :to="{name:'ConsultantList'}"><button class="button is-danger">Cancel</button></router-link>
@@ -154,7 +166,7 @@ export default {
         ConsultantAddress:"",
         ConsultantCity:"",
         selectedState:0,
-        ConsultantZip : 0,
+        ConsultantZip : "",
         ConsultantPhone:"",
         ConsultantAPhone:"",
         ConsultantEmail :"",

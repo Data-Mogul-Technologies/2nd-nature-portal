@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Add Profile</h1>
     <b-form v-if="show">
 
       <b-form-group id="input-group">
@@ -18,7 +19,7 @@
       <b-form-group id="input-group" >
         <SportTypeDrop @changeSportType="selectedSportType=$event" v-model="selectedSportType" />
       </b-form-group>
-
+      <div class="field has-addons">
       <b-form-group id="input-group">
         <label class="label">Choose Date:</label>
         <b-form-input
@@ -27,7 +28,8 @@
           placeholder="Enter date"
           required
         ></b-form-input>
-      </b-form-group>      
+      </b-form-group>
+      </div>      
 
       <b-form-group>
         <label class="label">Orientation:</label>
@@ -129,6 +131,7 @@
         ></b-form-textarea>
       </b-form-group>
       <b-button @click="saveProfile" variant="primary">Submit</b-button>
+      <router-link :to="{name:'Home'}"><b-button class="button is-danger">Cancel</b-button></router-link>
     </b-form>
   </div>
 </template>

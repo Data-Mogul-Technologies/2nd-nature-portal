@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>View Feedback</h1>
     <div class="field">
      <p> <strong> Customer First Name: </strong> {{customers.first_name}}</p>
     </div>
@@ -9,9 +10,9 @@
       <p><strong>Customer Last Name:</strong> {{customers.last_name}}</p>
     </div>
 
-    <div class="field">
+    <div class="field has-addons"><div class="control">
       <label class="label">How did you hear about us?</label>
-      <div class="control">
+      
         <input
           class="input"
           type="text"
@@ -21,9 +22,9 @@
       </div>
     </div>
 
-     <div class="field">
+     <div class="field has-addons"><div class="control">
       <label class="label">Recommend Rate</label>
-      <div class="control">
+      
         <input
           class="input"
           type="number"
@@ -34,18 +35,18 @@
     </div>
 
 
-      <div class="field">
+      <div class="field"><div class="control">
       <label class="label">How helpful</label>
-      <div class="control">
+      
        <textarea rows="4" cols="50" name="comment" form="usrform" v-model="FeedbackHelpCom">
 </textarea>
       </div>
     </div>
     
 
-     <div class="field">
+     <div class="field has-addons"><div class="control">
       <label class="label">Help Rating</label>
-      <div class="control">
+      
         <input
           class="input"
           type="number"

@@ -19,7 +19,7 @@ export default {
   name: "CustomerStatusDrop",
   data: function(){
     return {
-        selectedCustomerStatus: 0,
+        selectedCustomerStatus: 1,
         CustomerStatusTypes: [],
     }
 

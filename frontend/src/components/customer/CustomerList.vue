@@ -1,6 +1,6 @@
 <template>
   <div>
-    
+    <h1>Customer List</h1>
     <router-link :to="{ name: 'Create' }" class="button is-danger mt-5"
       >Add New</router-link>
       <router-link :to="{ name: 'AllCustServ' }" class="button is-link mt-5"

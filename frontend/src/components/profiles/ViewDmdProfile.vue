@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>View DMD Profile</h1>
     <div class="field">
       <label class="label">Dominant Driver</label>
       <div class="control">

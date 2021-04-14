@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>View Event Status</h1>
     <div class="field">
       <label class="label">Event Status Name</label>
       <div class="control">

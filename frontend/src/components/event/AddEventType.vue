@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Add Event Type</h1>
     <div class="field">
       <label class="label">Event Type</label>
       <div class="control">

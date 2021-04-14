@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Add Consultant Status</h1>
     <div class="field">
       <label class="label">Consultant Status</label>
       <div class="control">

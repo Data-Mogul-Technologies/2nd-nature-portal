@@ -1,5 +1,6 @@
  <template>
   <div>
+    <h1>Add Service</h1>
     <div class="field">
       <label class="label">Customer First Name</label>
       <div class="control">

@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>View Sport</h1>
     <div class="field">
       <label class="label">Sport Name</label>
       <div class="control">

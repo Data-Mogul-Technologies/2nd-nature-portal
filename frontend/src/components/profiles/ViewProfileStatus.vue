@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>View Profile Status</h1>
     <div class="field">
       <label class="label">Profile Status Name</label>
       <div class="control">

@@ -1,6 +1,6 @@
 <template>
   <div>
-    
+    <h1>View Customer</h1>
     
     <div class="field">
      <p> <strong> Customer First Name: </strong> {{customers.first_name}}</p>

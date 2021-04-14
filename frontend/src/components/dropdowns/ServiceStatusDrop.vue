@@ -21,7 +21,7 @@ export default {
   name: "ServiceStatusDrop",
   data: function(){
     return {
-        selectedServiceStatus: 0,
+        selectedServiceStatus: 3,
         ServiceStatus: [],
     }
 

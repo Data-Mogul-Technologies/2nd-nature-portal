@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>View Customer Service Payment</h1>
    <div class = "field is-horizontal"> 
     <div class="field has-addons">
       <div class="control">

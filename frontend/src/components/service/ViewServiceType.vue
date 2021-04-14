@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>View Service Type</h1>
     <div class="field">
       <label class="label">Service Type Name</label>
       <div class="control">

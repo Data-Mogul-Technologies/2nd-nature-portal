@@ -13,7 +13,7 @@ export default {
 
     {
       type: 'link',
-      txt: 'All profiles',
+      txt: 'All Profiles',
       link: '/profile',
     },
 
@@ -65,7 +65,7 @@ export default {
 
     {
       type: 'link',
-      txt: 'Add customer',
+      txt: 'Add Customer',
       link: '/create',
     },
 
@@ -82,13 +82,13 @@ export default {
 
     {
       type: 'link',
-      txt: 'List consultants',
+      txt: 'List Consultants',
       link: '/page',
     },
 
     {
       type: 'link',
-      txt: 'Add new consultant',
+      txt: 'Add New Consultant',
       link: '/page',
     }
   ],
@@ -129,7 +129,7 @@ export default {
 
     {
       type: 'link',
-      txt: 'Add new event',
+      txt: 'Add New Event',
       link: '/event',
     }
 

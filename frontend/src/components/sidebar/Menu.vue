@@ -68,7 +68,7 @@
         :class="highlightSection('Events')"
         >
           <i class= "fas fa-calendar-alt context-menutitle-icon" aria-hidden="true"></i>
-          Events
+            Events
           <i class="fa fa-chevron-right menu__arrow-icon" aria-hidden="true"></i>
         </a>
       </li>

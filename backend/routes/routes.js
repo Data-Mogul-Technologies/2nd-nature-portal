@@ -33,11 +33,12 @@ allCustServ, showCustServById} from "../controllers/service.js"
 
 import {allProfileStatus, showProfileStatusById, createProfileStatus, updateProfileStatus, deleteProfileStatus, 
 createProfile,showProfiles, showATProfileTypes, showDMD_profile_types, showATProfileById, updateATProfile, showDmdProfileById, updateDmdProfile,
-showProfileById, updateProfile, updateProfileStatusCustomer, showPendingProfiles, showTotalPendingProfiles} from "../controllers/profile.js"
+showProfileById, updateProfile, updateProfileStatusCustomer, showPendingProfiles, showTotalPendingProfiles, 
+showAllDmdProfiles, updateAboutDriver, updateCustDMDStatus, createDmdProfile} from "../controllers/profile.js"
 
 import {showFeedback,showFeedbackById, createFeedback, updateFeedback, deleteFeedback, showSomeFeedback} from "../controllers/feedback.js"
 
-import {createRegistration, createCustServ} from '../controllers/registration.js'
+import {createRegistration, createCustServ, createDefaultRegistrationPayment} from '../controllers/registration.js'
 
 import {allProspectDate, allYrRetRateConsult, allLastYrRetRateConsult, allCurrYrRetRateConsult,
 allRetRateCompany, allEventAttendeesById, allAnnualPaymentCust, allATReportResult,
@@ -48,6 +49,7 @@ allCustFeedback, allConsultantCust} from '../controllers/report.js'
 const router = express.Router();
 
 router.post('/Registration', createRegistration);
+router.post('/DefaultRegistrationPayment', createDefaultRegistrationPayment);
 router.post('/CustServ', createCustServ);
 
 // /------------------Report Routes----------/
@@ -386,11 +388,17 @@ router.delete('/ServiceStatus/:id', deleteServiceStatus);
 // Create New Profile
 router.post('/Profiles', createProfile);
 
-//Get all profiles 
+// Create New DMD Profile
+router.post('/DmdProfiles', createDmdProfile);
+
+//Get all AT profiles 
 router.get('/Profiles', showProfiles)
 
-// Get Single Profile
+// Get Single AT Profile
 router.get('/Profiles/:id', showProfileById);
+
+//Get all DMD profiles
+router.get('/DmdProfiles',showAllDmdProfiles)
 
 //Get all profile types
 router.get('/ATProfileTypes', showATProfileTypes)
@@ -398,7 +406,7 @@ router.get('/ATProfileTypes', showATProfileTypes)
 //Get all dmd profile types
 router.get('/dmdProfileTypes', showDMD_profile_types)
 
-// //Get all PendingProfiles
+// Get all PendingProfiles
 // router.get('/PendingProfiles', showPendingProfiles)
 
 // Update Profile 
@@ -407,6 +415,11 @@ router.put('/Profiles/:id', updateProfile)
 // Update Profile status
 router.put('/ProfileStatus4Customer/:id', updateProfileStatusCustomer)
 
+//update dmd profile status
+router.put('/DmdProfilesStatus/:id', updateCustDMDStatus);
+
+//update about drivers for dmd profile
+router.put('/UpdateAboutDriver/:id', updateAboutDriver);
 
 /*----------------------------Profile Routers End------------------------- */
 

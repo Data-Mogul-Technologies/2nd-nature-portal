@@ -435,7 +435,11 @@ const routes = [
   path: '/profile/Add-New-Action-Type-Profile',
   component: () => import('../components/profiles/AddProfile.vue')
 },
-
+{
+  name: 'AddDMDProfile',
+  path: '/profile/Add-New-DMD-Profile',
+  component: () => import('../components/profiles/AddDmdProfile.vue')
+},
 {
   name: 'DmdProfiles',
   path: '/profile/All-DMD-profiles',

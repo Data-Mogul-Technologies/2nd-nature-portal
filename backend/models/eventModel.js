@@ -14,7 +14,7 @@ export const getEvents = (result) => {
 
 // Get Single Event
 export const getEventById = (id, result) => {
-    db.query("SELECT * FROM event WHERE event_id = ?", [id], (err, results) => {             
+    db.query("SELECT event.*, state.name as state, event_type.name as event_type, event_status.name as event_status from event join state on event.state_id = state.state_id join event_type on event.event_type_id = event_type.event_type_id join event_status on event.event_status_id = event_status.event_status_id;", [id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -26,17 +26,26 @@ export const getEventById = (id, result) => {
 
 //get all customers for a single event 
 export const getEventCustomers = (id, result) => {
-    db.query("select customer.first_name as FirstName," +
-    " customer.last_name as LastName," +
-    " customer.customer_id,"+
-    " registration.event_id," +
-    " registration.registration_id" +
-    " from registration"+
-    " join event" +
-    " on registration.event_id=event.event_id"+
-    " join customer"+
-    " on registration.customer_id=customer.customer_id"+
-    " where event.event_id = ?",
+    db.query("select customer.first_name as FirstName,"+
+               " customer.last_name as LastName,"+
+               " customer.mobile_phone,"+
+               " customer.email,"+
+               " payment_status.name as PaymentStatus,"+
+               " customer.customer_id,"+
+               " registration.registration_id,"+
+               " registration.event_id,"+
+               " registration.registration_id,"+
+               " registration_payment.registration_payment_id"+
+               " from registration"+
+               " join event"+
+               " on registration.event_id=event.event_id"+
+               " join registration_payment"+
+            " on registration.registration_id = registration_payment.registration_id"+
+            " join payment_status"+
+            " on registration_payment.payment_status_id = payment_status.payment_status_id"+
+            " join customer"+
+            " on registration.customer_id=customer.customer_id"+
+            " where event.event_id = ?",
      [id], (err, results) => {             
         if(err) {
             console.log(err);
@@ -86,8 +95,8 @@ export const insertEvent = (data, result) => {
  
 // Update Event to Database
 export const updateEventById = (data, id, result) => {
-    db.query("UPDATE event SET name = ?, date = ?, address = ?,city = ?, zip_code = ?, comments = ? WHERE event_id = ?",
-     [data.name,data.date, data.address, data.city, data.zip_code, data.comments,  id], (err, results) => {             
+    db.query("UPDATE event SET name = ?, date = ?, address = ?,city = ?, zip_code = ?, comments = ?, event_status_id = ?, event_type_id = ?, state_id = ?  WHERE event_id = ?",
+     [data.name,data.date, data.address, data.city, data.zip_code, data.comments,data.event_status_id,data.event_type_id, data.state_id,  id], (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

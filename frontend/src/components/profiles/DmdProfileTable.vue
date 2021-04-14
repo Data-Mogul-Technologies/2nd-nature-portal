@@ -175,7 +175,7 @@ export default {
                     }
                 );
                 console.log(this.about_drivers)
-                // window.location.reload();
+                window.location.reload();
             } catch (err) {
                 console.log(err);
             }

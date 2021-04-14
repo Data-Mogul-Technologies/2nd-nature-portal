@@ -1,8 +1,61 @@
 import {getProfileStatus, getProfileStatusById, insertProfileStatus, updateProfileStatusById, deleteProfileStatusById,
  getProfiles, getATProfileTypes, getDMD_profile_types, insertProfile,getATProfileById, 
-updateATProfileById, getDmdProfileById,updateDmdProfileById, getProfileById, updateProfileById, updateProfileStatusForCustomer, getPendingProfiles, getTotalPendingProfiles} from "../models/profileModel.js"
-    
-    //Get All Profile Status 
+updateATProfileById, getDmdProfileById,updateDmdProfileById, getProfileById, updateProfileById, 
+updateProfileStatusForCustomer, getPendingProfiles, getTotalPendingProfiles, getAllDmdProfiles,
+updateCustDMDStatusById, updateAboutDriverById, insertDmdProfile} from "../models/profileModel.js"
+
+
+//create new DMD profile
+export const createDmdProfile = (req, res) => {
+    const data = req.body;
+    insertDmdProfile(data, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+insertDmdProfile
+
+//update status for dmd profile
+export const updateCustDMDStatus = (req, res) => {
+    const data  = req.body;
+    const id    = req.params.id;
+    updateCustDMDStatusById(data, id, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+
+//update about drivers for dmd profile 
+export const updateAboutDriver = (req, res) => {
+    const data  = req.body;
+    const id    = req.params.id;
+    updateAboutDriverById(data, id, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+
+//Get All DMD Profiles 
+export const showAllDmdProfiles = (req, res) => {
+    getAllDmdProfiles((err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+
+//Get All Profile Status 
     export const allProfileStatus = (req, res) => {
         getProfileStatus((err, results) => {
             if (err){

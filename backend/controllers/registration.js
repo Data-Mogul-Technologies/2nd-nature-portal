@@ -1,4 +1,4 @@
-import {insertRegistration, insertCustServ} from '../models/registrationModel.js'
+import {insertRegistration, insertCustServ, insertDefaultRegistrationPayment} from '../models/registrationModel.js'
 
 
 
@@ -7,6 +7,16 @@ import {insertRegistration, insertCustServ} from '../models/registrationModel.js
 export const createRegistration = (req, res) => {
     const data = req.body;
     insertRegistration(data, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}
+
+export const createDefaultRegistrationPayment = (req, res) => {
+    insertDefaultRegistrationPayment((err, results) => {
         if (err){
             res.send(err);
         }else{

@@ -65,7 +65,7 @@ export const deleteProfileStatusById = (id, result) => {
 /*--------------Profile Creation-------------*/
 
 
-// Get All profiles
+// Get All Action Type profiles
 export const getProfiles = (result) => {
     db.query("select customer.first_name," + 
                     "customer.last_name," +
@@ -114,7 +114,7 @@ export const getProfiles = (result) => {
     });   
 }
 
-//get single profile
+//get single action type profile
 export const getProfileById = (id, result) => {
     db.query("select customer.first_name," + 
                 "customer.last_name," +
@@ -216,6 +216,22 @@ export const insertProfile = (data, result) => {
     });   
 }
 
+
+// Insert dmd profile report to Database
+export const insertDmdProfile = (data, result) => {
+    db.query("insert into dmd_customer_report SET ?", [data], (err, results) => {             
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });   
+}
+
+
+
+
 // Get all dmd_profile_types
 export const getDMD_profile_types = (result) => {
     db.query("SELECT * FROM dmd_profile", (err, results) => {
@@ -310,6 +326,62 @@ export const getTotalPendingProfiles = (result) => {
     " join sport_type on at_customer_report.sport_type_id = sport_type.sport_type_id " +
     " join status_at_dmd on at_customer_report.status_at_dmd_id = status_at_dmd.status_at_dmd_id " +
     " and status_at_dmd.status_at_dmd_id = 2 order by first_name asc)total" , (err, results) => {
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });
+}
+
+//get all DMD profiles 
+export const getAllDmdProfiles = (result) => {
+    db.query("select customer.first_name,"+
+                    " customer.last_name,"+
+                    " dmd_customer_report.dmd_customer_report_id,"+
+                    " dmd_profile.dom_driver,"+
+                    " dmd_profile.sec_driver,"+
+                    " dmd_customer_report.date,"+
+                    "dmd_customer_report.about_drivers,"+
+                    " status_at_dmd.name as profile_status"+
+                " from dmd_customer_report"+
+                " join customer "+
+                " on dmd_customer_report.customer_id = customer.customer_id"+
+                " join dmd_profile"+
+                " on dmd_customer_report.dmd_action_type_id = dmd_profile.dmd_profile_id"+
+                " join status_at_dmd"+
+                " on dmd_customer_report.status_id = status_at_dmd.status_at_dmd_id",
+                (err, results) => {
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });
+}
+
+
+//update dmd profile status
+export const updateCustDMDStatusById = (data, id, result) => {
+    db.query("UPDATE dmd_customer_report SET status_id = ? WHERE dmd_customer_report_id = ?",
+     [data.status_id,  id], 
+     (err, results) => {
+        if(err) {
+            console.log(err);
+            result(err, null);
+        } else {
+            result(null, results);
+        }
+    });
+}
+
+//update about driver for dmd profile
+export const updateAboutDriverById = (data, id, result) => {
+    db.query("update dmd_customer_report set about_drivers = ? where dmd_customer_report_id = ?",
+     [data.about_drivers,  id], 
+     (err, results) => {
         if(err) {
             console.log(err);
             result(err, null);

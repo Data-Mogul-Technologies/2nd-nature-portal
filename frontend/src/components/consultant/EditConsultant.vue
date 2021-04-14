@@ -1,8 +1,10 @@
 <template>
   <div>
-    <div class="field">
-      <label class="label">Consultant First Name</label>
+   <div class="field is-horizontal"> 
+    <div class="field has-addons">
       <div class="control">
+      <label class="label">Consultant First Name:</label>
+      
         <input
           class="input"
           type="text"
@@ -12,8 +14,9 @@
       </div>
     </div>
     <div class="field">
-      <label class="label">Consultant Last Name</label>
       <div class="control">
+      <label class="label">Consultant Last Name:</label>
+      
         <input
           class="input"
           type="text"
@@ -22,10 +25,12 @@
         />
       </div>
     </div>
-
+   </div>
+ <div class="field is-horizontal">   
  <div class="field">
-      <label class="label">Address</label>
-      <div class="control">
+   <div class="control">
+      <label class="label">Address:</label>
+      
         <input
           class="input"
           type="text"
@@ -36,60 +41,66 @@
     </div>
 
     <div class="field">
-      <label class="label">City</label>
       <div class="control">
+      <label class="label">City:</label>
+      
         <input
           class="input"
           type="text"
-          min="1" max="5"
+          
           v-model="ConsultantCity"
         />
       </div>
     </div>
 
     <div class="field">
-      <label class="label">Zip Code</label>
+      <label class="label">Zip Code:</label>
       <div class="control">
         <input
           class="input"
           type="number"
-          min="1" max="5"
+          
           v-model="ConsultantZip"
         />
       </div>
     </div>
-<p><strong>State: </strong>{{consultants.StateName}}</p>
-<StateDrop @changeState="selectedState=$event"/>
+    </div>
+<p><strong>Current State: </strong> {{consultants.StateName}}</p>
 
+<StateDrop @changeState="selectedState=$event"/>
+ <div class="field is-horizontal">   
     <div class="field">
-      <label class="label">Phone</label>
       <div class="control">
+      <label class="label">Phone</label>
+      
         <input
           class="input"
           type="text"
-          placeholder="Phone"
+          placeholder="XXX-XXX-XXXX"
           v-model="ConsultantPhone"
         />
       </div>
     </div>
 
-    <div class="field">
-      <label class="label">Alternate Phone</label>
+    <div class="field"> 
       <div class="control">
+      <label class="label">Alternate Phone:</label>
+     
         <input
           class="input"
           type="text"
-          placeholder="Alternate Phone"
+          placeholder="XXX-XXX-XXXX"
           v-model="ConsultantAPhone"
         />
       </div>
     </div>
- 
+ </div>
  
 
-    <div class="field">
-      <label class="label">Email</label>
+    <div class="field has-addons">
       <div class="control">
+      <label class="label">Email:</label>
+      
         <input
           class="input"
           type="text"
@@ -100,14 +111,14 @@
     </div>
 
     <div class="field">
-      <label class="label">Start Date</label>
+      <label class="label">Start Date:</label>
       <div class="control">
         <p>{{ConsultantSDate | formatDate}}</p>
       </div>
     </div>
 
     <div class="field">
-      <label class="label">End Date</label>
+      <label class="label">End Date:</label>
       <div class="control">
         <p>{{ConsultantEDate | formatDate}}</p>
       </div>
@@ -119,7 +130,7 @@
     <ConsultantStatusDrop @changeConsultantStatusType="selectedConsultantStatus=$event"/>
  
     <div class="field">
-      <label class="label">Comments</label>
+      <label class="label">Comments:</label>
       <div class="control">
        <textarea rows="4" cols="50" name="comment" form="usrform" v-model="ConsultantComment">
 </textarea>

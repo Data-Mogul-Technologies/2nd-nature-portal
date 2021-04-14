@@ -1,8 +1,9 @@
 <template>
   <div>
-    <div class="field">
-      <label class="label">Customer First Name</label>
+    <div class="field is-horizontal">
+      <div class="field has-addons">
       <div class="control">
+      <label class="label">Customer First Name:</label>
         <input
           class="input"
           type="text"
@@ -12,9 +13,10 @@
       </div>
     </div>
 
-    <div class="field">
-      <label class="label">Customer Last Name</label>
-      <div class="control">
+   <div class="field has-addons">
+    <div class="control">
+      <label class="label">Customer Last Name:</label>
+      
         <input
           class="input"
           type="text"
@@ -23,16 +25,21 @@
         />
       </div>
     </div>
-
-    <CustomerStatusDrop @changeStatusType="selectedCustomerStatus=$event"/>
+    </div>
+ 
+    
+    <div class="field is-horizontal">
     <CustomerTypeDrop @changeCustomerType="selectedCustomerType=$event"/>
-    <BusinessDrop @changeBusiness="selectedBusiness=$event"/>
     <SportTypeDrop @changeSportType="selectedSportType=$event"/>
-
-
- <div class="field">
-      <label class="label">Address</label>
-      <div class="control">
+    <BusinessDrop @changeBusiness="selectedBusiness=$event"/>
+    
+    </div>
+ 
+    <div class = "field is-horizontal">
+    <div class="field has-addons">
+    <div class="control">
+      <label class="label">Address:</label>
+   
         <input
           class="input"
           type="text"
@@ -42,13 +49,14 @@
       </div>
     </div>
 
-    <div class="field">
-      <label class="label">City</label>
+    <div class="field has-addons">
       <div class="control">
+      <label class="label">City:</label>
+      
         <input
           class="input"
           type="text"
-          min="1" max="5"
+          
           v-model="CustomerCity"
         />
       </div>
@@ -56,70 +64,78 @@
 
     <StateDrop @changeState="selectedState=$event"/>    
 
-    <div class="field">
-      <label class="label">Zip Code</label>
-      <div class="control">
+      <div class="field has-addons">
+       <div class="control">
+      <label class="label">Zip Code:</label>
+     
         <input
           class="input"
           type="number"
-          min="1" max="5"
+          
           v-model="CustomerZip"
+          placeholder="(5 digits ex. 77564)"
         />
       </div>
     </div>
+    </div>
 
-
-    <div class="field">
-      <label class="label">Mobile Phone</label>
-      <div class="control">
+  <div class ="field is-horizontal">
+    <div class="field has-addons">
+       <div class="control">
+      <label class="label">Mobile Phone:</label>
+      
         <input
           class="input"
           type="text"
-          placeholder="Mobile Phone"
+          placeholder="XXX-XXX-XXXX"
           v-model="CustomerMPhone"
         />
       </div>
     </div>
 
-    <div class="field">
-      <label class="label">Office Phone</label>
-      <div class="control">
+    <div class="field has-addons">
+       <div class="control">
+      <label class="label">Office Phone:</label>
+      
         <input
           class="input"
           type="text"
-          placeholder="Office Phone"
+          placeholder="XXX-XXX-XXXX"
           v-model="CustomerOPhone"
         />
       </div>
     </div>
  
- <div class="field">
-      <label class="label">Home Phone</label>
-      <div class="control">
+      <div class="field has-addons">
+       <div class="control">
+      <label class="label">Home Phone:</label>
+      
         <input
           class="input"
           type="text"
-          placeholder="Home Phone"
+          placeholder="XXX-XXX-XXXX"
           v-model="CustomerHPhone"
         />
       </div>
     </div>
-
-    <div class="field">
-      <label class="label">Email</label>
-      <div class="control">
+  </div>
+      <div class="field has-addons">
+       <div class="control">
+      <label class="label">Email:</label>
+      
         <input
           class="input"
           type="text"
-          placeholder="Email"
+          placeholder="example@mail.com"
           v-model="CustomerEmail"
         />
       </div>
     </div>
 
-    <div class="field">
-      <label class="label">Reference?</label>
+    <div class="field has-addons">
       <div class="control">
+      <label class="label">Reference:</label>
+      
         <input
           class="input"
           type="text"
@@ -130,7 +146,7 @@
     </div>
 
     <div class="field">
-      <label class="label">How Can 2NP Help</label>
+      <label class="label">How Can 2NP Help:</label>
       <div class="control">
         <input
           class="input"
@@ -142,7 +158,7 @@
     </div>
 
    <div class="field">
-      <label class="label">Prospect Date</label>
+      <label class="label">Prospect Date:</label>
       <div class="control">
         <input
           class="input"
@@ -154,7 +170,7 @@
     </div>
 
     <div class="field">
-      <label class="label">Actual Date</label>
+      <label class="label">Actual Date:</label>
       <div class="control">
         <input
           class="input"
@@ -164,9 +180,8 @@
         />   
       </div>
     </div>
- <!-- <ServiceStatusDrop @changeServiceStatusType="selectedServiceStatus=$event"/>
-    <ServiceTypeDrop @changeCustomerType="selectedServiceType=$event"/> -->
-    <div class="field">
+ <CustomerStatusDrop @changeStatusType="selectedCustomerStatus=$event"/>
+    <div class="field">     
       <label class="label">Comments</label>
       <div class="control">
        <textarea rows="4" cols="50" name="comment" form="usrform" v-model="CustomerComment">
@@ -174,13 +189,14 @@
       </div>
     </div>
     
+
     <div class="control">
       <button class="button is-success" @click="saveCustomer ">Add</button>
       <router-link :to="{name:'CustomerList'}"><button class="button is-danger">Cancel</button></router-link>
     </div>
 
-    
-  </div>
+  </div>  
+  
 
   
 </template>
@@ -192,8 +208,7 @@ import CustomerTypeDrop from '../dropdowns/CustomerTypeDrop';
 import BusinessDrop from '../dropdowns/BusinessDrop';
 import SportTypeDrop from '../dropdowns/SportTypeDrop';
 import StateDrop from '../dropdowns/StateDrop';
-// import ServiceStatusDrop from '../dropdowns/ServiceStatusDrop'
-// import ServiceTypeDrop from '../dropdowns/ServiceTypeDrop'
+
 
 export default {
   name: "AddCustomer",
@@ -219,7 +234,7 @@ export default {
         CustomerAddress:"",
         CustomerCity:"",
         selectedState:0,
-        CustomerZip : 0,
+        CustomerZip : "",
         CustomerMPhone:"",
         CustomerOPhone:"",
         CustomerHPhone:"",

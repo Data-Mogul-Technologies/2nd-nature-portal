@@ -1,11 +1,12 @@
 <template>
     <div class="field">
+      <span class="select">
       <select name ="ProfileStatusSelect" v-model="selectedProfileStatus" @change="changeProfileStatus()">
           <option v-for="ProfileStatus in ProfileStatus" v-bind:key="ProfileStatus.status_at_dmd_id" :value="ProfileStatus.status_at_dmd_id">
               {{ProfileStatus.name}}
             </option>
       </select>
-      
+      </span>
     </div>
     
 </template>

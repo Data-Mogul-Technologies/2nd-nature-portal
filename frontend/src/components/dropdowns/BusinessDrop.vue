@@ -1,9 +1,11 @@
 <template>
     <div class="field">
       <label class="label">Business:</label>
+      <span class="select">
       <select name ="businessTypeSelect" v-model="selectedBusiness" @change="changeBusiness()">
           <option v-for="businessType in BusinessTypes" v-bind:key="businessType._id" v-bind:value="businessType.business_id">{{businessType.name}}</option>
       </select>
+      </span>
       
     </div>
     

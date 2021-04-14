@@ -3,7 +3,7 @@ import db from "../config/database.js";
  
 // Get All Customers
 export const getCustomers = (result) => {
-    db.query("SELECT * FROM customer", (err, results) => {             
+    db.query("SELECT * FROM customer order by actual_date desc ", (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);
@@ -32,6 +32,7 @@ export const getCustomerById = (id, result) => {
     " customer.last_name,"+
     " customer.address,"+
     " customer.city,"+
+    " state.state_id,"+
     " state.name as StateName,"+
     " customer.zip_code,"+
     " customer.mobile_phone,"+

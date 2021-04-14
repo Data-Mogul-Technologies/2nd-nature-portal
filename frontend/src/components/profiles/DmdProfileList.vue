@@ -24,11 +24,7 @@
               class="button is-info is-small"
               >View</router-link
             >
-            <a
-              class="button is-danger is-small"
-              @click="deleteDmdProfile(Dmdprof.dmd_profile_id)"
-              >Delete</a
-            >
+            
           </td>
         </tr>
       </tbody>

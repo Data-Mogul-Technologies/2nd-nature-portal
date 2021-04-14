@@ -26,7 +26,7 @@
             >
             <a
               class="button is-danger is-small"
-              @click="deleteSport(sport.sport_id)"
+              @click="deleteSport(sport.sport_type_id)"
               >Delete</a
             >
           </td>

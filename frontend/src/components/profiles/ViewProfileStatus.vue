@@ -64,7 +64,7 @@ export default {
         this.ProfileStatusName = "";
        
         
-        this.$router.push("/ProfileStatusList");
+        this.$router.push("/page/profile-status");
       } catch (err) {
         console.log(err);
       }

@@ -1,5 +1,6 @@
 import {getConsultants, getConsultantById, insertConsultant,  updateConsultantById, 
-    getConsultantStatusTypes, getConsultantStatusById, insertConsultantStatus, updateConsultantStatusById, deleteConsultantStatusById
+    getConsultantStatusTypes, getConsultantStatusById, insertConsultantStatus, 
+    updateConsultantStatusById, deleteConsultantStatusById, insertCustToConsult
 } from "../models/consultantModel.js"
 
 // Get All Consultants
@@ -113,3 +114,19 @@ export const deleteConsultantStatus = (req, res) => {
     });
 }
 
+
+
+
+
+
+// Create New Consultant Customer Assign
+export const createCustToConsult = (req, res) => {
+    const data = req.body;
+    insertCustToConsult(data, (err, results) => {
+        if (err){
+            res.send(err);
+        }else{
+            res.json(results);
+        }
+    });
+}

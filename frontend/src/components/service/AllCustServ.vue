@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link :to="{ name: 'CustomerList' }" class="button is-success mt-5"
+    <router-link :to="{ name: 'CustomerList' }" class="button is-link mt-5"
       >Customer List</router-link>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">
       <thead>
@@ -22,6 +22,11 @@
           
           
           <td class="has-text-centered">
+             <router-link
+              :to="{ name: 'EditService', params: { id: customer.customer_service_type_id } }"
+              class="button is-info is-small"
+              >Update Status</router-link
+            >
             <router-link
               :to="{ name: 'AddCustServPay', params: { id: customer.customer_service_type_id } }"
               class="button is-info is-small"

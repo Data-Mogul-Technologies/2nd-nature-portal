@@ -61,31 +61,7 @@
         </a>
       </li>
 
-      <li>
-        <a
-        href="#"
-        @click.prevent="updateMenu('payment')"
-        :class="highlightSection('payment')"
-        >
-          <i class="fa fa-user menu__icon" aria-hidden="true"></i>
-          Payment
-          <i class="fa fa-chevron-right menu__arrow-icon" aria-hidden="true"></i>
-        </a>
-      </li>
-
-      <li>
-        <a
-        href="#"
-        @click.prevent="updateMenu('manage')"
-        :class="highlightSection('manage')"
-        >
-          <i class="fa fa-user menu__icon" aria-hidden="true"></i>
-          Manage Status/Types
-          <i class="fa fa-chevron-right menu__arrow-icon" aria-hidden="true"></i>
-        </a>
-      </li>
-
-      <li>
+       <li>
         <a
         href="#"
         @click.prevent="updateMenu('Events')"
@@ -93,9 +69,23 @@
         >
           <i class= "fas fa-calendar-alt context-menutitle-icon" aria-hidden="true"></i>
           Events
-          <i class="fa fa-chevron-right menuarrow-icon" aria-hidden="true"></i>
+          <i class="fa fa-chevron-right menu__arrow-icon" aria-hidden="true"></i>
         </a>
       </li>
+
+      <li>
+        <a
+        href="#"
+        @click.prevent="updateMenu('payment')"
+        :class="highlightSection('payment')"
+        >
+          <i class="fas fa-dollar-sign" aria-hidden="true"></i>
+          Payment
+          <i class="fa fa-chevron-right menu__arrow-icon" aria-hidden="true"></i>
+        </a>
+      </li>
+
+
 
        <li>
         <a
@@ -103,9 +93,31 @@
         @click.prevent="updateMenu('Insights')"
         :class="highlightSection('Insights')"
         >
-          <i class= "fas fa-calendar-alt context-menutitle-icon" aria-hidden="true"></i>
+          <i class= "fas fa-chalkboard" aria-hidden="true"></i>
           Insights
-          <i class="fa fa-chevron-right menuarrow-icon" aria-hidden="true"></i>
+          <i class="fa fa-chevron-right menu__arrow-icon" aria-hidden="true"></i>
+        </a>
+      </li>
+       <li>
+        <a
+        href="#"
+        @click.prevent="updateMenu('Feedback')"
+        :class="highlightSection('Feedback')"
+        >
+          <i class= "far fa-comments" aria-hidden="true"></i>
+          Feedback
+          <i class="fa fa-chevron-right menu__arrow-icon" aria-hidden="true"></i>
+        </a>
+      </li>
+      <li>
+        <a
+        href="#"
+        @click.prevent="updateMenu('manage')"
+        :class="highlightSection('manage')"
+        >
+          <i class="fas fa-user-cog" aria-hidden="true"></i>
+          Manage Status/Types
+          <i class="fa fa-chevron-right menu__arrow-icon" aria-hidden="true"></i>
         </a>
       </li>
 

@@ -80,11 +80,10 @@ export default {
             
           }
         );
-        this.DmdDominant = "";
-        this.DmdSecondary = "";
+       
        
         
-        this.$router.push("/DmdProfileList");
+        this.$router.push("/profile/manage-dm-ds");
       } catch (err) {
         console.log(err);
       }

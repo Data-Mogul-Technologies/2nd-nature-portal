@@ -1,15 +1,17 @@
 <template>
   <div>
-    
+    <h1>Pending Profiles</h1>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">
+      
       <thead>
-         <h1>Pending Profiles</h1>
+         
         <tr>
           <th>First Name</th>
           <th>Last Name</th>
           <th>Sport Type</th>
           <th>Profile Status</th>
           <th>Start Date</th> 
+          <th>Actions</th> 
          
         </tr>
       </thead>
@@ -20,8 +22,13 @@
           <td>{{ customer.sport }}</td>
           <td>{{ customer.profile_status }}</td>
           <td>{{ customer.start_date | formatDate }}</td>
-      
-      
+      <td>
+      <router-link
+              :to="{ name: 'EditProfile', params: { id: customer.at_customer_report_id } }"
+              class="button is-info is-small"
+              >View</router-link
+            >
+      </td>
         </tr>
       </tbody>
     </table>

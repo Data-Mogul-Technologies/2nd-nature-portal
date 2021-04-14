@@ -1,6 +1,15 @@
 <template>
   <div>
     <div class="field">
+     <p> <strong> Customer First Name: </strong> {{customers.first_name}}</p>
+    </div>
+
+
+    <div class="field">
+      <p><strong>Customer Last Name:</strong> {{customers.last_name}}</p>
+    </div>
+    
+     <div class="field">
       <label class="label">Feedback Date</label>
       <div class="control">
         <input
@@ -24,17 +33,17 @@
       </div>
     </div>
 
-    <!-- <div class="field">
-      <label class="label">Helpful Rating</label>
+    <div class="field">
+      <label class="label">Rate How Helpful</label>
       <div class="control">
-
-        <label for="one"> 1 </label><input type="radio" :checked="radio===1" id="one" name="one" value="1" @change="radio = $event.target.value" v-model="FeedbackRecRate"/>
-        <label for="two"> 2 </label><input type="radio" :checked="radio===2" id="two" name="two" value="2" @change="radio = $event.target.value" v-model="FeedbackRecRate"/>
-        <label for="three"> 3 </label><input type="radio" :checked="radio===3" id="three" name="three" value="3" @change="radio = $event.target.value" v-model="FeedbackRecRate"/>
-        <label for="four"> 4 </label><input type="radio" :checked="radio===4" id="four" name="four" value="4" @change="radio = $event.target.value" v-model="FeedbackRecRate"/>
-        <label for="five"> 5 </label><input type="radio" :checked="radio===5" id="five" name="five" value="5" @change="radio = $event.target.value" v-model="FeedbackRecRate"/>
+        <input
+          class="input"
+          type="number"
+          placeholder="(1-5)"
+          v-model="FeedbackHelpRate"
+        />
       </div>
-    </div> -->
+    </div>
 
     <div class="field">
       <label class="label">How helpful</label>
@@ -48,17 +57,17 @@
       </div>
     </div>
 
-    <!-- <div class="field">
-      <label class="label">Feedback Date</label>
+    <div class="field">
+      <label class="label">Recommendation Rate</label>
       <div class="control">
         <input
           class="input"
-          type="text"
-          placeholder="Feedback Date"
-          v-model="FeedbackDate"
+          type="number"
+          placeholder="(1-5)"
+          v-model="FeedbackRecRate"
         />
       </div>
-    </div> -->
+    </div>
 
     <div class="field">
       <label class="label">Recommendation Comment</label>
@@ -102,44 +111,62 @@ import axios from "axios";
 
 export default {
   name: "AddFeedback",
- 
+ component:{
+   
+ },
   data() {
     
     return {
-        FeedbackDate : YYYY-MM-DD,
+        customers:[],
+        FeedbackDate : "",
         FeedbackHear : "",
-        FeedbackHelpRate: 0,
+        FeedbackHelpRate: "",
         FeedbackHelpCom: "",
-        FeedbackRecRate: 0,
+        FeedbackRecRate: "",
         FeedbackRecCom: "",
-        FeedbackGen: ""
+        FeedbackGen: "",
+        selectedCustomerName: "",
+        
     };
   },
-  
+  created: function () {
+    this.getFeedbackById();
+  },
   methods: {
+
+    async getFeedbackById() {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/Customers/${this.$route.params.id}`
+        );
+        this.customers = response.data
+        
+        
+       
+
+      } catch (err) {
+        console.log(err);
+      }
+    },
     // Create New Feedback
     async saveFeedback() {
       try { 
         await axios.post("http://localhost:5000/Feedback", {
+            customer_id: this.$route.params.id,
             date: this.FeedbackDate,
             how_hear: this.FeedbackHear,
             how_helpful_rate: this.FeedbackHelpRate,
             how_helpful_comment: this.FeedbackHelpCom,
             recommend_rate: this.FeedbackRecRate,
             recommend_comment: this.FeedbackRecCom,
-            gen_feedback: this.FeedbacFeedbackGenkDate,
+            gen_feedback: this.FeedbackGen,
+            
         });
         
-        this.FeedbackDate = "";
-        this.FeedbackHear = "";
-        this.FeedbackHelpRate= 0;
-        this.FeedbackHelpCom= "";
-        this.FeedbackRecRate= 0;
-        this.FeedbackRecCom= "";
-        this.FeedbackGen= "";
+       
         
         
-        this.$router.push("/FeedbackList");
+        this.$router.push("/feedback/feedback");
       } catch (err) {
         console.log(err);
       }

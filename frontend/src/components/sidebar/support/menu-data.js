@@ -13,13 +13,25 @@ export default {
 
     {
       type: 'link',
-      txt: 'All profiles',
+      txt: 'All Action Type profiles',
       link: '/profile',
     },
 
     {
       type: 'link',
       txt: 'Add New Action Type Profile',
+      link: '/profile',
+    },
+    
+    {
+      type: 'link',
+      txt: 'Manage Action Types',
+      link: '/profile',
+    },
+
+    {
+      type: 'link',
+      txt: 'All DMD profiles',
       link: '/profile',
     },
 
@@ -32,12 +44,6 @@ export default {
     {
       type: 'link',
       txt: "Manage DMD's",
-      link: '/profile',
-    },
-
-    {
-      type: 'link',
-      txt: 'Manage Action Types',
       link: '/profile',
     }
 

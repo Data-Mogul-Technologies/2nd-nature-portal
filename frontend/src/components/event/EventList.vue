@@ -10,6 +10,7 @@
                     <th v-for="(object, index) in config" :key="index"> 
                         {{object.title}}
                     </th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody >
@@ -26,6 +27,13 @@
                           {{new Date(row[object.key]).toLocaleDateString()}} 
                         </span>
                     </td>
+                    <td>
+                      <router-link
+                        :to="{ name: 'ViewEvent', params: { id: row.event_id }}"
+                        >
+                          <b-button variant="primary" size="sm">Edit event </b-button>
+                      </router-link>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -39,19 +47,43 @@
             <div v-if="allCustomers">
               <div>
                 <CustomerNameDrop @changeCustomerName = "selectedCustomerName=$event" v-model="selectedCustomerName"/> 
-              <b-button variant="primary" size="sm" @click="addCustomerToEvent">Register a cutomer</b-button>
+              <b-button variant="primary" size="sm" @click="addCustomerToEvent">Register cutomer</b-button>
               </div>
-              <ul>
-                <li v-for="customer in allCustomers" :key="customer.registration_id">
-                  {{customer.FirstName}} {{customer.LastName}}
-                </li>
-              </ul>
+
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th>Customer name</th>
+                    <th>Phone number</th>
+                    <th>Email</th>
+                    <th>Payment Status</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="(customer, index) in allCustomers"
+                      :key="index"
+                  >
+                    <td>{{customer.FirstName}} {{customer.LastName}}</td>
+                    <td>{{customer.mobile_phone}}</td>
+                    <td>{{customer.email}}</td>
+                    <td>{{customer.PaymentStatus}}</td>
+                    <td>
+                      <router-link
+                        :to="{ name: 'ViewRegPay', params: { id: customer.registration_payment_id }}"
+                        >
+                        <b-button variant="primary" >Edit payment info </b-button>
+                        </router-link>
+                    </td>
+                    
+                  </tr>
+                </tbody>
+              </table>             
             </div>
             <div v-else>
-              <p>No cusomers registered for event. </p>
+              <p>No customers registered for event. </p>
             </div>
           </div>
-
           <div v-else>
             <br />
             <p>Please click on an Event...</p>
@@ -96,6 +128,7 @@ export default {
       }
     },
 
+    //get all customers for single event
     async addCustomerToEvent () {
       try {
         await axios.post("http://localhost:5000/Registration", 
@@ -105,11 +138,17 @@ export default {
         });
       console.log(this.selectedCustomerName);
       console.log(this.currentEvent.event_id);
+      } catch (err) {
+        console.log(err);
+      }
+
+      try {
+        await axios.post("http://localhost:5000/DefaultRegistrationPayment");
         window.location.reload();
       } catch (err) {
-          console.log(err);
-          }
+        console.log(err);
       }
+    }
   }
 };
 </script>
@@ -145,7 +184,6 @@ export default {
             cursor: pointer;
         }
     }
-
 }
 
 </style>

@@ -63,7 +63,6 @@
                     <th>Event Date</th>
                     <th>Zip code</th>
                     <th>Event Status</th>
-                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -142,21 +141,6 @@ export default {
             sport_consultant_id: this.$route.params.id,
             event_id: this.selectedEvent
         });
-        // this.selectedConsultantStatus=0;
-        // this.ConsultantFName = "";
-        // this.ConsultantLName = "";
-        // this.ConsultantAddress="";
-        // this.ConsultantCity="";
-        // this.selectedState="";
-        // this.ConsultantZip= 0;
-        // this.ConsultantPhone="";
-        // this.ConsultantAPhone="";
-        
-        // this.ConsultantEmail = "";
-        
-        // this.ConsultantSDate="";
-        // this.ConsultantEDate="";
-        // this.ConsultantComment="";
 
         window.location.reload();
         // this.$router.push("/page/list-consultants");

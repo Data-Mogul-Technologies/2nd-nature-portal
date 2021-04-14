@@ -11,7 +11,15 @@
         />
       </div>
     </div>
+    <div class="field">
+      <p><strong>Current Event Status:</strong> {{events.event_status}}</p>
+    </div>
+<EventStatusDrop @changeEventStatus="selectedEventStatus=$event"/>  
 
+<div class="field">
+      <p><strong>Current Event Type:</strong> {{events.event_type}}</p>
+    </div>
+<EventTypeDrop @changeEventType="selectedEventType=$event"/>  
      <div class="field">
       <label class="label">Date</label>
       <div class="control">
@@ -74,27 +82,30 @@
 <script>
 // import axios
 import axios from "axios";
-
+import EventTypeDrop from '../dropdowns/EventTypeDrop';
+import EventStatusDrop from '../dropdowns/EventStatusDrop';
 
 import StateDrop from '../dropdowns/StateDrop';
 
 export default {
   name: "ViewEvent",
   components:{
-    
+    EventTypeDrop,
+    EventStatusDrop,
     StateDrop
   },
   data() {
     
     return {
+        events: [],
         EventName : "",
         EventDate:"",
         EventAddress:"",
         EventCity:"",
         selectedState:0,
         EventZip : 0,
-        // selectedEventType: 0,
-        // selectedEventStatus: 0,
+        selectedEventType: 0,
+        selectedEventStatus: 0,
         EventComment:"",
     };
   },
@@ -108,6 +119,7 @@ export default {
         const response = await axios.get(
           `http://localhost:5000/Events/${this.$route.params.id}`
         );
+        this.events = response.data;
         this.EventName = response.data.name;
         this.EventDate = response.data.date;
         this.EventAddress = response.data.address;
@@ -131,17 +143,14 @@ export default {
             address: this.EventAddress,
             city: this.EventCity,
             zip_code: this.EventZip,
-            comments: this.EventComment
+            comments: this.EventComment,
+            event_type_id: this.selectedEventType,
+            event_status_id: this.selectedEventStatus,
+            state_id: this.selectedState
           }
         );
-        this.EventName = "";
-        this.EventDate="";
-        this.EventAddress="";
-        this.EventCity="";
-        this.EventZip= 0;
-        this.EventComment="";
-        
-        this.$router.push("/event/list-event");
+       
+        this.$router.push("/event/list-events");
       } catch (err) {
         console.log(err);
       }

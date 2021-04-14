@@ -424,16 +424,22 @@ const routes = [
 
 //***********Profile Routes***********//
 
-
 {
   name: 'profiles',
-  path: '/profile/all-profiles',
+  path: '/profile/all-action-type-profiles',
   component: () => import('../views/AllProfiles.vue')
 },
+
 {
   name: 'AddProfile',
   path: '/profile/Add-New-Action-Type-Profile',
   component: () => import('../components/profiles/AddProfile.vue')
+},
+
+{
+  name: 'DmdProfiles',
+  path: '/profile/All-DMD-profiles',
+  component: () => import('../views/AllDmdProfiles.vue')
 },
 /*----------- At Profile ------------*/
 {

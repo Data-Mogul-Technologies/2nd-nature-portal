@@ -158,8 +158,8 @@
     <div class="field">
       <label class="label">Comments</label>
       <div class="control">
-       <textarea rows="4" cols="50" name="comment" form="usrform" v-model="CustomerComment">
-</textarea>
+        <textarea rows="4" cols="50" name="comment" form="usrform" v-model="CustomerComment">
+        </textarea>
       </div>
     </div>
  

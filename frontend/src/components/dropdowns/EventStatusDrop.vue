@@ -21,7 +21,7 @@ export default {
   name: "EventStatusDrop",
   data: function(){
     return {
-        selectedEventStatus: 5,
+        selectedEventStatus: 0,
         EventStatus: [],
     }
 

@@ -20,7 +20,7 @@ export default {
   name: "ServiceTypeDrop",
   data: function(){
     return {
-        selectedServiceType: 4,
+        selectedServiceType: 0,
         ServiceType: [],
     }
 

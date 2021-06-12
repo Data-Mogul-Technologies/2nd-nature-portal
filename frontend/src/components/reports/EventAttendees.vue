@@ -1,6 +1,6 @@
 <template>
   <div>
-   <h1>Prospect Customer Report</h1>
+   <h1>Event Attendees</h1>
     <table class="table is-striped is-bordered mt-10 is-fullwidth">
       <thead>
         <tr>

@@ -19,7 +19,7 @@ export default {
   name: "ConsultantNameDrop",
   data: function(){
     return {
-        selectedConsultantName: 1,
+        selectedConsultantName: 0,
         ConsultantNames: [],
     }
 

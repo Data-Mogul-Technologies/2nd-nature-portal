@@ -20,7 +20,7 @@ export default {
   name: "EventTypeDrop",
   data: function(){
     return {
-        selectedEventType: 6,
+        selectedEventType: 0,
         EventType: [],
     }
 

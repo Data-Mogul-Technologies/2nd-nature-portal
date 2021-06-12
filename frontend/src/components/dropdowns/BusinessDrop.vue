@@ -19,7 +19,7 @@ export default {
   name: "BusinessDrop",
   data: function(){
     return {
-        selectedBusiness: 1,
+        selectedBusiness: 0,
         BusinessTypes: [],
     }
 

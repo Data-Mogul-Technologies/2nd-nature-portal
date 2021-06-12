@@ -181,12 +181,6 @@ export default {
 
     {
       type: 'link',
-      txt: 'Event Attendees',
-      link: '/report',
-    },
-
-    {
-      type: 'link',
       txt: 'Annual Payment',
       link: '/report',
     },

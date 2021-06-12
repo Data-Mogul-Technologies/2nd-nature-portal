@@ -25,7 +25,7 @@
           <td>{{ record.SportType }}</td>
           <td>{{ record.DMDDominantDriver }}</td>
           <td>{{ record.SecondaryDriver }}</td>
-          <td>{{ record.ReportDate }}</td>
+          <td>{{ record.ReportDate | formatDate }}</td>
           <td>{{ record.DMDReportStatus }}</td>
           
           <!-- <td class="has-text-centered">

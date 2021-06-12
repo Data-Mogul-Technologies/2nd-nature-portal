@@ -39,11 +39,6 @@
               class="button is-info is-small"
               >View</router-link
             >
-            <a
-              class="button is-danger is-small"
-              @click="deleteFeedback(feedback.feedback_id)"
-              >Delete</a
-            >
           </td>
         </tr>
       </tbody>
@@ -73,16 +68,6 @@ export default {
       try {
         const response = await axios.get("http://localhost:5000/Feedback");
         this.feedbacks = response.data;
-      } catch (err) {
-        console.log(err);
-      }
-    },
- 
-    // Delete Feedback
-    async deleteFeedback(id) {
-      try {
-        await axios.delete(`http://localhost:5000/Feedback/${id}`);
-        this.getFeedback();
       } catch (err) {
         console.log(err);
       }

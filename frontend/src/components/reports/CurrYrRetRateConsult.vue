@@ -16,8 +16,8 @@
         <tr v-for="customer in customers" :key="customer.customer_id">
           <td>{{ customer.FirstName }}</td>
           <td>{{ customer.LastName }}</td>
-          <td>{{ customer.ProspectDate | formatDate }}</td>
-          <td>{{ customer.ActualDate | formatDate }}</td>
+          <td>{{ customer.ProspectDate  }}</td>
+          <td>{{ customer.ActualDate  }}</td>
           <td>{{ customer.RetentionRate }}</td>
 
           

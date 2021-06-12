@@ -352,7 +352,8 @@ export const getAllDmdProfiles = (result) => {
                 " join dmd_profile"+
                 " on dmd_customer_report.dmd_action_type_id = dmd_profile.dmd_profile_id"+
                 " join status_at_dmd"+
-                " on dmd_customer_report.status_id = status_at_dmd.status_at_dmd_id",
+                " on dmd_customer_report.status_id = status_at_dmd.status_at_dmd_id" +
+                " order by dmd_customer_report.date desc",
                 (err, results) => {
         if(err) {
             console.log(err);

@@ -18,11 +18,9 @@
                 </tr>
             </tbody>
         </table>
-        <b-button-group>
+        <!-- <b-button-group>
             <b-button variant="success" @click="getReport">List all customers</b-button>
-            <!-- <b-button variant="info">List all events</b-button>
-            <b-button variant="warning">List all services</b-button> -->
-        </b-button-group>
+        </b-button-group> -->
         </div>
 
     <!-- <b-button-group>
@@ -91,15 +89,22 @@ export default {
  
   created() {
     this.getConsultants();
-    this.getReport();
+    // this.getReport();
   },
  
   methods: {
 
-      setSelectedRow(consultant, index) {
+      async setSelectedRow(consultant, index) {
             this.currentConsultant = consultant;
             this.currentIndex = index;
             console.log(consultant.sport_consultant_id)
+                    try {
+        const response = await axios.get(`http://localhost:5000/ConsultantCust/${this.currentConsultant.sport_consultant_id}`);
+        this.report = response.data;
+        console.log(response.data)
+        } catch (err) {
+        console.log(err);
+        }
         },
     // Get All Consultants
     async getConsultants() {
@@ -112,16 +117,16 @@ export default {
       }
     },
 
-    // Get all consultant customers 
-    async getReport() {
-        try {
-        const response = await axios.get(`http://localhost:5000/ConsultantCust/${this.currentConsultant.sport_consultant_id}`);
-        this.report = response.data;
-        console.log(response.data)
-        } catch (err) {
-        console.log(err);
-        }
-    }
+    // // Get all consultant customers 
+    // async getReport() {
+    //     try {
+    //     const response = await axios.get(`http://localhost:5000/ConsultantCust/${this.currentConsultant.sport_consultant_id}`);
+    //     this.report = response.data;
+    //     console.log(response.data)
+    //     } catch (err) {
+    //     console.log(err);
+    //     }
+    // }
   }
 }
 </script>

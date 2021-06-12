@@ -19,7 +19,7 @@ export default {
   name: "ProfileStatusDrop",
   data: function(){
     return {
-        selectedProfileStatus: 2,
+        selectedProfileStatus: 0,
         ProfileStatus: [],
     }
 

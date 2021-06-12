@@ -114,7 +114,9 @@ export const getRegistrationPayment = (result) => {
     " join event on event.event_id = registration.event_id"+
     " join event_type on event_type.event_type_id = event.event_type_id"+
     " join payment_source on payment_source.payment_source_id = registration_payment.payment_source_id"+
-    " join payment_status on payment_status.payment_status_id = registration_payment.payment_status_id", (err, results) => {             
+    " join payment_status on payment_status.payment_status_id = registration_payment.payment_status_id" +
+    " order by DateMade desc",
+     (err, results) => {             
         if(err) {
             console.log(err);
             result(err, null);

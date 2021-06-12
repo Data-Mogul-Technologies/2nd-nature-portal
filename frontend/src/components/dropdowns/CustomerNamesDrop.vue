@@ -18,7 +18,7 @@ export default {
   name: "CustomerNameDrop",
   data: function(){
     return {
-        selectedCustomerName: 1,
+        selectedCustomerName: 0,
         CustomerNames: [],
     }
 

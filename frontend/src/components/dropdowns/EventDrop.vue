@@ -19,7 +19,7 @@ export default {
 
   data: function(){
     return {
-        selectedEvent: 1,
+        selectedEvent: 0,
         events: [],
     }
 

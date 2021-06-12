@@ -20,7 +20,7 @@ export default {
   name: "PaymentSourceDrop",
   data: function(){
     return {
-        selectedPaymentSource: 2,
+        selectedPaymentSource: 0,
         PaymentSource: [],
     }
 

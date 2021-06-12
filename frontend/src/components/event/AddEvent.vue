@@ -142,7 +142,7 @@ export default {
         this.selectedEventType = 0;
         this.selectedEventStatus = 0;
         this.EventComment="";
-        this.$router.push("/event/list-event");
+        this.$router.push("/event/list-events");
       } catch (err) {
         console.log(err);
       }

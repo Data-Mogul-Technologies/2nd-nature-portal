@@ -1,6 +1,8 @@
 <template>
   <div>
     <h1>Upcoming Events</h1>
+    <router-link :to="{ name: 'EventList' }" class="button is-link mt-5"
+      >Event List</router-link>
     <table class="table is-striped is-bordered mt-2 is-fullwidth">
       <thead>
         <tr>
@@ -10,7 +12,7 @@
           <th>State</th>
           <th>Status</th>
           <th>Number of Attendees</th>
-          <th class="has-text-centered">Actions</th>
+          
         </tr>
       </thead>
       <tbody>

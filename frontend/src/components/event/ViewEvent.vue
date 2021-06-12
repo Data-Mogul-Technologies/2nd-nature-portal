@@ -80,6 +80,7 @@
       <router-link :to="{name:'EventList'}"><button class="button is-danger">Cancel</button></router-link>
     </div>
   </div>
+  </div>
 </template>
 <script>
 // import axios

@@ -21,7 +21,7 @@ export default {
   name: "ConsultantStatusDrop",
   data: function(){
     return {
-        selectedConsultantStatus: 3,
+        selectedConsultantStatus: 0,
         ConsultantStatusTypes: [],
     }
 

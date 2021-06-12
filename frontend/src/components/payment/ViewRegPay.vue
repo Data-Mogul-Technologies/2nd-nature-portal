@@ -81,9 +81,14 @@
  
 
     <div class="field"> <div class="control">
-      <label class="label">Date Made</label>
-     
+      <label class="label">Payment date:</label>
         <p>{{DateMade | formatDate}}</p>
+          <input
+            class="input"
+            type="date"
+            placeholder="Confirmation #"
+            v-model="DateMade"
+        />
       </div>
     </div>
     
@@ -156,7 +161,7 @@ export default {
           {
             
             
-            date: this.customers.DateMade,
+            date: this.DateMade,
             amount: this.PayAmount,
             payment_source_id: this.selectedPaymentSource,
             confirmation_num: this.ConfirmNum,

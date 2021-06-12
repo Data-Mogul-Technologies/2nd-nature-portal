@@ -20,7 +20,7 @@ export default {
   name: "PaymentStatusDrop",
   data: function(){
     return {
-        selectedPaymentStatus: 2,
+        selectedPaymentStatus: 0,
         PaymentStatus: [],
     }
 

@@ -18,7 +18,7 @@ export default {
   name: "SportTypeDrop",
   data: function(){
     return {
-        selectedSportType: 1,
+        selectedSportType: 0,
         SportTypes: [],
 
     }

@@ -6,8 +6,13 @@
       <router-link :to="{ name: 'AllCustServ' }" class="button is-link mt-5"
       >Service List (Add Payment)</router-link>
 
+      <router-link :to="{ name: 'EventList' }" class="button is-link mt-5"
+      >Add Event Payment</router-link>
+
       <router-link :to="{ name: 'FeedbackList' }" class="button is-link mt-5"
       >Feedback</router-link>
+
+      
    
     <table class="table is-striped is-bordered mt-2 is-fullwidth " style="border:{2px; solid;}">
       <thead>

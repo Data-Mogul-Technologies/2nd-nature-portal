@@ -20,7 +20,7 @@ export default {
   name: "StateDrop",
   data: function(){
     return {
-        selectedState: 43,
+        selectedState: 0,
         StateLists: [],
     }
 

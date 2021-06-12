@@ -158,9 +158,9 @@
       </div>
     </div>
 
-   <div class="field">
+   <div class="field has-addons"><div class="control">
       <label class="label">Prospect Date:</label>
-      <div class="control">
+      
         <input
           class="input"
           type="date"
@@ -170,9 +170,10 @@
       </div>
     </div>
 
-    <div class="field">
-      <label class="label">Actual Date:</label>
+    <div class="field has-addons">
       <div class="control">
+      <label class="label">Actual Date:</label>
+      
         <input
           class="input"
           type="date"
@@ -275,25 +276,7 @@ export default {
             actual_date: this.CustomerADate,
             comments: this.CustomerComment
         });
-        this.CustomerFName = "";
-        this.CustomerLName = "";
-        this.selectedCustomerStatus=0;
-        this.selectedCustomerType=0;
-        this.selectedBusiness=0;
-        this.selectedSportType=0;
-        this.CustomerAddress="";
-        this.CustomerCity="";
-        this.selectedState=0;
-        this.CustomerZip= 0;
-        this.CustomerMPhone="";
-        this.CustomerOPhone="";
-        this.CustomerHPhone="";
-        this.CustomerEmail = "";
-        this.CustomerHeard="";
-        this.CustomerHelp="";
-        this.CustomerPDate="";
-        this.CustomerADate="";
-        this.CustomerComment="";
+        
         this.$router.push("/view/list-customers")
       } catch (err) {
         console.log(err);

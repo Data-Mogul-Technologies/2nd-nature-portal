@@ -144,6 +144,9 @@
         ></b-form-textarea>
       </b-form-group>
       <b-button @click="updateProfile" variant="primary">Submit</b-button>
+    <router-link :to="{name:'profiles'}"><b-button variant="danger">Cancel</b-button></router-link>
+      
+
     </b-form>
   </div>
 </template>
@@ -242,7 +245,7 @@ export default {
                 this.ball_defense="";
                 this.physical_training="";
 
-                this.$router.push("/profile/all-profiles")
+                this.$router.push("/profile/all-action-type-profiles")
             } catch (err) {
                 console.log(err);
             }

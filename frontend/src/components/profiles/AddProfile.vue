@@ -179,7 +179,7 @@ import axios from "axios";
           await axios.post("http://localhost:5000/Profiles", {
             customer_id: this.selectedCustomerName,
             action_type_id: this.selectedAT,
-            status_id: this.selectedProfileStatus,
+            status_at_dmd_id: this.selectedProfileStatus,
             sport_type_id: this.selectedSportType,
             date: this.date,
             orientation: this.orientation_details,
@@ -206,7 +206,7 @@ import axios from "axios";
             // this.selectedBall_Def = "";
             this.ball_def = "";
             this.physical_training = "";
-            this.$router.push("/profile/all-profiles")
+            this.$router.push("/profile/all-action-type-profiles")
           } catch (err) {
               console.log(err);
           }
